@@ -171,7 +171,7 @@
   }
 
   /* Hero: write the first lettering in, then wipe it and write the next one. */
-  function heroLettering(box, label, arts, hold) {
+  function heroLettering(box, label, eraser, arts, hold) {
     if (!box || !arts.length) return;
     var cache = {}, i = 0, visible = true, timer;
     var calm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -183,8 +183,8 @@
     }
     function write(k) {
       return load(k).then(function (svg) {
-        box.classList.remove('wipe');
         box.innerHTML = svg;
+        eraser.classList.remove('go');
         label.textContent = arts[k].text;
         if (calm) return;
         box.style.setProperty('--s', (arts[k].split || 100) + '%');
@@ -198,9 +198,10 @@
       if (!visible || document.hidden) { timer = setTimeout(next, 1500); return; }
       var k = (i + 1) % arts.length;
       load(k);
-      box.classList.remove('write1', 'write2');
-      box.classList.add('wipe');
-      setTimeout(function () { i = k; write(i).then(schedule); }, 700);
+      eraser.classList.remove('go');
+      void eraser.getBoundingClientRect();
+      eraser.classList.add('go');
+      setTimeout(function () { i = k; write(i).then(schedule); }, 1250);
     }
     function schedule() { if (!calm && arts.length > 1) timer = setTimeout(next, hold); }
     if ('IntersectionObserver' in window) new IntersectionObserver(function (en) { visible = en[0].isIntersecting; }).observe(box);
@@ -211,7 +212,8 @@
     var H = S.home;
     var arts = H.heroArt || [];
     var hero = '<h1><span class="sr-only" data-hero-text>' + esc(arts[0] ? arts[0].text : '') + '</span>' +
-      '<span class="letter" data-letter aria-hidden="true"></span></h1>';
+      '<span class="letter" data-letter aria-hidden="true"></span>' +
+      '<svg class="eraser" data-eraser viewBox="0 0 1800 700" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M-40,690 L1840,600 L-40,520 L1840,430 L-40,350 L1840,260 L-40,180 L1840,90 L-40,10 L1840,-40"/></svg></h1>';
     var cards = S.caseStudies.map(function (c) {
       return '<article class="card"><a class="fig" href="case-study.html?p=' + c.slug + '" tabindex="-1" aria-hidden="true">' + frame('bold') + media(c.thumb) +
         '<span class="lock">' + I.lock + 'Locked</span></a>' +
@@ -233,6 +235,7 @@
       '<section class="hero">' +
         '<div class="hero-art">' + hero + '</div>' +
         '<p class="intro">' + H.intro + '</p>' +
+        '<a class="down" href="#work" aria-label="Scroll to featured work"><svg viewBox="0 0 34 52" aria-hidden="true"><path d="M17 3 C15.5 15 18.5 28 16.5 47"/><path d="M5 35 C9 39 13 44 16.5 48 C20 43 24.5 38 29 34"/><path d="M18.5 6 C17 20 19.5 30 17.5 44" style="stroke-width:1.6;opacity:.7"/></svg></a>' +
         sectionTitle(H.featuredTitle, H.featuredArt, 'work') +
       '</section>' +
       '<div class="cards">' + cards + '</div>' +
@@ -261,7 +264,7 @@
     main.querySelector('[data-next]').addEventListener('click', function () { show(i + 1); auto(); });
     dots.addEventListener('click', function (e) { var d = e.target.closest('.dot'); if (d) { show(+d.getAttribute('data-k')); auto(); } });
     show(0); auto();
-    heroLettering(main.querySelector('[data-letter]'), main.querySelector('[data-hero-text]'), arts, (H.heroHoldSeconds || 6) * 1000);
+    heroLettering(main.querySelector('[data-letter]'), main.querySelector('[data-hero-text]'), main.querySelector('[data-eraser]'), arts, (H.heroHoldSeconds || 6) * 1000);
 
     // wall: on touch, first tap shows the overlay, second tap opens
     main.querySelectorAll('.tile').forEach(function (t) {

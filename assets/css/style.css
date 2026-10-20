@@ -70,24 +70,31 @@ a:focus-visible,button:focus-visible,input:focus-visible,[tabindex]:focus-visibl
 .only-m{display:none}
 
 /* ===== Home ===== */
-.hero{position:relative;padding:64px var(--gutter) 0;text-align:center}
-.hero-art{position:relative;width:min(1180px,100%);margin:0 auto}
-.hero h1{margin:0}
+.hero{position:relative;padding:16px var(--gutter) 0;text-align:center}
+.hero-art{position:relative;width:min(1180px,100%);margin:-4% auto 0}
+.hero h1{margin:0;position:relative}
 .letter{display:block;width:100%;aspect-ratio:1800/700}
 .letter svg,.letter img{display:block;width:100%;height:100%}
-.letter.wipe{animation:wipe .65s cubic-bezier(.6,.05,.4,1) forwards}
-@keyframes wipe{0%{clip-path:inset(0 0 0 0);filter:blur(0)}100%{clip-path:inset(0 0 0 100%);filter:blur(3px);opacity:.3}}
 .letter.write1{animation:write1 1.5s cubic-bezier(.45,.1,.4,1) both}
 .letter.write2{animation:write2 2.2s cubic-bezier(.45,.1,.4,1) both}
 @keyframes write1{0%{clip-path:polygon(0 0,0 0,0 100%,0 100%)}100%{clip-path:polygon(0 0,100% 0,100% 100%,0 100%)}}
 @keyframes write2{0%{clip-path:polygon(0 0,0 0,0 var(--s),0 var(--s),0 100%,0 100%)}50%{clip-path:polygon(0 0,100% 0,100% var(--s),0 var(--s),0 100%,0 100%)}100%{clip-path:polygon(0 0,100% 0,100% var(--s),100% var(--s),100% 100%,0 100%)}}
-.intro{max-width:600px;margin:20px auto 0;font-size:clamp(17px,1.35vw,19px);line-height:1.45;text-align:center;color:var(--ink-2)}
+.eraser{position:absolute;inset:-2% -1%;width:102%;height:104%;pointer-events:none;overflow:visible}
+.eraser path{fill:none;stroke:var(--paper);stroke-width:150;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1;stroke-dashoffset:1}
+.eraser.go path{animation:erase 1.1s cubic-bezier(.5,.1,.5,1) forwards}
+@keyframes erase{to{stroke-dashoffset:0}}
+.intro{max-width:600px;margin:-1.5vw auto 0;font-size:clamp(17px,1.35vw,19px);line-height:1.45;text-align:center;color:var(--ink-2)}
 .intro mark{color:var(--ink)}
 .sec-title{text-align:center;padding:0 var(--gutter)}
 .sec-title h2{margin:0;font-family:var(--head);font-weight:400;font-size:clamp(40px,4.4vw,52px)}
 .sec-title img{margin:0 auto;max-height:90px;width:auto}
 .sec-title .ul{display:block;width:230px;height:16px;margin:2px auto 0}
-#work{padding-top:150px;scroll-margin-top:90px}
+#work{padding-top:96px;scroll-margin-top:90px}
+.down{display:inline-flex;align-items:center;justify-content:center;width:56px;height:64px;margin-top:28px;color:var(--ink)}
+.down svg{width:34px;height:52px;overflow:visible;filter:url(#pencil);animation:nudge 2.8s ease-in-out infinite;transform-origin:50% 0}
+.down svg path{fill:none;stroke:currentColor;stroke-width:3.6;stroke-linecap:round;stroke-linejoin:round}
+@keyframes nudge{0%,26%,100%{transform:none}4%{transform:translateY(6px) rotate(-9deg)}9%{transform:translateY(0) rotate(8deg)}14%{transform:translateY(6px) rotate(-7deg)}19%{transform:translateY(0) rotate(5deg)}23%{transform:rotate(-2deg)}}
+@media (prefers-reduced-motion:reduce){.down svg{animation:none}}
 
 .cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:48px 32px;max-width:1320px;margin:56px auto 0;padding:0 var(--gutter)}
 .card{display:flex;flex-direction:column;gap:12px}
@@ -132,8 +139,9 @@ a:focus-visible,button:focus-visible,input:focus-visible,[tabindex]:focus-visibl
   .navbox{font-size:13px;padding:6px 10px;letter-spacing:.04em}
   .nav{gap:6px}
   .brand{font-size:21px}
-  .hero{padding-top:28px}
-  #work{padding-top:72px}
+  .hero{padding-top:12px}
+  .intro{margin-top:4px}
+  #work{padding-top:56px}
   .cards{grid-template-columns:1fr;gap:56px;margin-top:40px;padding:0 16px}
   .wall{grid-template-columns:repeat(2,minmax(0,1fr));margin-top:32px}
   .tile,.tile.w4{grid-column:span 1}
