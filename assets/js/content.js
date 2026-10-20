@@ -172,7 +172,7 @@ window.SITE = {
       year: "2023",
       line: "Helping new users find value on their own, from the first click",
       tags: ["Product-led growth", "Onboarding", "Research"],
-      thumb: { src: "", label: "Thumbnail · 4:3" },
+      thumb: { src: "images/solutions-hub/thumb.webp", label: "Onboarding: what type of business are you?" },
       title: "Solutions Hub.",
       subtitle: "Designing for product-led growth.",
       context: ["Funnel", "2023", "Product Designer", "Product-led growth team"],
@@ -183,8 +183,8 @@ window.SITE = {
         "Designed components that were reused in other parts of the product"
       ],
       heroImages: [
-        { src: "", label: "Hero · Solutions Hub", ratio: "16/10" },
-        { src: "", label: "Onboarding flow", ratio: "16/9" }
+        { src: "images/solutions-hub/welcome.webp", label: "Onboarding starts by asking who you are", ratio: "2000/1422" },
+        { src: "images/solutions-hub/custom-fields.webp", label: "Ready-made custom fields map cross-channel data", ratio: "2000/1422" }
       ],
       stats: [
         { n: "+37%", label: "dashboard feature adoption" },
@@ -192,9 +192,9 @@ window.SITE = {
         { n: "40+", label: "slides of research synthesis" }
       ],
       sections: [
-        { type: "decision", heading: "Connect the website and the product", text: "I designed Solutions Hub, a library of ready-made solutions that links the website to the app. New users pick a use case, self-serve their way to a free account and start from something useful instead of a blank page.", image: { src: "", label: "Solutions Hub screens", ratio: "4/3" } },
-        { type: "decision", heading: "Onboard people by who they are", text: "Agencies see and use Funnel differently from in-house marketers, even without extra benefits. So we designed tailored onboarding paths, with several simple ways to start seeing value.", image: { src: "", label: "Agency onboarding", ratio: "4/3" } },
-        { type: "image", image: { src: "", label: "Full width · onboarding paths", ratio: "21/9" } },
+        { type: "decision", heading: "Connect the website and the product", text: "I designed Solutions Hub, a library of ready-made solutions that links the website to the app. New users pick a use case, self-serve their way to a free account and start from something useful instead of a blank page.", image: { src: "images/solutions-hub/hub-top.webp", label: "Solutions Hub: pick a way to start, or a dashboard template", ratio: "784/700" } },
+        { type: "decision", heading: "Onboard people by who they are", text: "Agencies see and use Funnel differently from in-house marketers, even without extra benefits. So we designed tailored onboarding paths, with several simple ways to start seeing value.", image: { src: "images/solutions-hub/agencies.webp", label: "Agencies get offered assisted onboarding, not a sales call", ratio: "2000/1422" } },
+        { type: "image", image: { src: "images/solutions-hub/workspace.webp", label: "Agency path: set up the first client workspace", ratio: "2000/1422" } },
         { type: "decision", heading: "Build the case with research", text: "We spent weeks gathering insights from marketing, customer success, partners, past interviews with agencies and benchmarks of other tools. The result was a 40+ slide synthesis that shaped the work.", image: { src: "", label: "Research slides", ratio: "4/3" } }
       ],
       learned: "Personalizing an experience doesn't need new features. Sometimes it just needs a different first step."
