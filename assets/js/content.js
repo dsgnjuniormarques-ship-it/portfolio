@@ -266,7 +266,7 @@ window.SITE = {
     },
     {
       slug: "livelo-crm", name: "Livelo CRM", company: "Dextra for Livelo", year: "2016–17",
-      thumb: { src: "", label: "Image · 4:3" },
+      thumb: { src: "images/livelo-crm/thumb.webp", label: "Clube Livelo" },
       description: "Livelo is Brazil's biggest loyalty program. We designed communication journeys across email, SMS and push for 6 card tiers from 2 banks, covering expiring points, new points, point balances, travel, shopping and experiences, plus seasonal moments like Black Friday and Christmas.",
       stats: [
         { n: "3M+", label: "customers activated" },
@@ -275,12 +275,10 @@ window.SITE = {
       ],
       tags: ["CRM", "Lifecycle", "Email · SMS · Push", "Loyalty"],
       images: [
-        { src: "", label: "Lifecycle journey map", ratio: "4/3" },
-        { src: "", label: "Email header banners · 6 card tiers", ratio: "21/8" },
-        { src: "", label: "Full email · points expiring", ratio: "4/5", narrow: true },
-        { src: "", label: "Push notification", ratio: "9/16", pair: true },
-        { src: "", label: "SMS", ratio: "9/16", pair: true },
-        { src: "", label: "Seasonal campaign · Black Friday", ratio: "16/10" }
+        { src: "images/livelo-crm/clube-livelo.webp", label: "Clube Livelo key visual", ratio: "1/1" },
+        { src: "images/livelo-crm/email-points-expiring.webp", label: "Email: points about to expire", ratio: "600/1689", pair: true },
+        { src: "images/livelo-crm/email-clube-livelo.webp", label: "Email: Clube Livelo subscription offer", ratio: "600/1209", pair: true },
+        { src: "images/livelo-crm/email-childrens-day.webp", label: "Email: Children's Day seasonal campaign", ratio: "600/2178", narrow: true }
       ]
     },
     {
