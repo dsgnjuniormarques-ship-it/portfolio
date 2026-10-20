@@ -44,7 +44,7 @@
     if (!img.src) return '<div class="ph" style="aspect-ratio:' + ratio + '">' + esc(img.label || 'Image') + '</div>';
     var isVid = /\.(mp4|webm|mov)$/i.test(img.src);
     var el = isVid
-      ? '<video class="media" src="' + esc(img.src) + '" autoplay muted loop playsinline style="aspect-ratio:' + ratio + '"></video>'
+      ? '<video class="media" src="' + esc(img.src) + '"' + (img.poster ? ' poster="' + esc(img.poster) + '"' : '') + ' autoplay muted loop playsinline preload="metadata" aria-label="' + esc(img.label || '') + '" style="aspect-ratio:' + ratio + '"></video>'
       : '<img class="media" src="' + esc(img.src) + '" alt="' + esc(img.alt || img.label || '') + '" loading="lazy" style="aspect-ratio:' + ratio + '">';
     if (zoom && !isVid) return '<button class="zoom" type="button" data-zoom="' + esc(img.src) + '" aria-label="Open image full screen: ' + esc(img.label || '') + '">' + el + '</button>';
     return el;

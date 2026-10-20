@@ -302,15 +302,22 @@ window.SITE = {
     },
     {
       slug: "livelo-social", name: "Livelo Social", company: "Livelo", year: "2017–19",
-      thumb: { src: "", label: "Image · 4:3" },
-      description: "Content strategy, editorial calendars, copy and design for Livelo's social channels.",
+      thumb: { src: "images/livelo-social/thumb.webp", label: "Deck Social Dezembro 2018" },
+      description: "For over a year, between agency partners, I ran Livelo's social channels end to end: the content strategy, monthly editorial calendars with goals and KPIs, the copy and every post's design, including animated pieces.",
       stats: [],
-      tags: ["Social", "Content strategy", "Copywriting"],
+      tags: ["Social", "Content strategy", "Copywriting", "Motion"],
       images: [
-        { src: "", label: "Post", ratio: "1/1", pair: true },
-        { src: "", label: "Post", ratio: "1/1", pair: true },
-        { src: "", label: "Post", ratio: "1/1", pair: true },
-        { src: "", label: "Post", ratio: "1/1", pair: true }
+        { src: "images/livelo-social/deck-cover.webp", label: "Monthly social deck, December 2018", ratio: "2000/1125" },
+        { src: "images/livelo-social/deck-calendar.webp", label: "Editorial calendar for Facebook and Instagram, with goals and KPIs", ratio: "2000/1125" },
+        { src: "images/livelo-social/deck-samba.webp", label: "Post concept with idea and copy: Dia do Samba", ratio: "2000/1125" },
+        { src: "images/livelo-social/typing-square.mp4", poster: "images/livelo-social/typing-square.jpg", label: "Animated post: Livelo typing intro", ratio: "1/1", pair: true },
+        { src: "images/livelo-social/travel.mp4", poster: "images/livelo-social/travel.jpg", label: "Animated post: travel", ratio: "1/1", pair: true },
+        { src: "images/livelo-social/typing-wide.mp4", poster: "images/livelo-social/typing-wide.jpg", label: "Animated post: typing intro, link format", ratio: "1200/628", pair: true },
+        { src: "images/livelo-social/products-wide.mp4", poster: "images/livelo-social/products-wide.jpg", label: "Animated post: product selection, link format", ratio: "1200/628", pair: true },
+        { src: "images/livelo-social/products-square.mp4", poster: "images/livelo-social/products-square.jpg", label: "Animated post: product selection", ratio: "1/1", pair: true },
+        { src: "images/livelo-social/os-da-top.mp4", poster: "images/livelo-social/os-da-top.jpg", label: "Animated post: Os da Top Livelo", ratio: "1/1", pair: true },
+        { src: "images/livelo-social/sportsday.mp4", poster: "images/livelo-social/sportsday.jpg", label: "Animated post: Dia do Esportista", ratio: "1/1", pair: true },
+        { src: "images/livelo-social/kindle.webp", label: "Post: Kindle reward", ratio: "1/1", pair: true }
       ]
     }
   ],
