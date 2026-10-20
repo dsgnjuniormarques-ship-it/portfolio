@@ -244,7 +244,7 @@
       '<section class="people" aria-label="Testimonials"><div class="t">' +
         (H.peopleArt ? '<h2><img src="' + esc(H.peopleArt) + '" alt="' + esc(H.peopleTitle) + '"></h2>' : '<h2>' + esc(H.peopleTitle) + '</h2>') +
       '</div><div class="q"><figure class="bubble">' + frame('bubble', 'draw thin') +
-        '<span class="open" aria-hidden="true">“</span><blockquote data-q></blockquote><figcaption><b data-qn></b><span data-qr></span></figcaption></figure>' +
+        '<span class="open" aria-hidden="true">“</span><div class="qstack" data-qstack></div></figure>' +
         '<div class="qctl"><button class="ibtn" type="button" data-prev aria-label="Previous quote">' + I.prev + '</button><span data-dots style="display:flex"></span><button class="ibtn" type="button" data-next aria-label="Next quote">' + I.next + '</button></div>' +
       '</div></section>';
 
@@ -252,14 +252,24 @@
     var qs = S.testimonials, i = 0, timer;
     var dots = main.querySelector('[data-dots]');
     dots.innerHTML = qs.map(function (_, k) { return '<button class="dot" type="button" aria-label="Show quote ' + (k + 1) + '" data-k="' + k + '"><i></i></button>'; }).join('');
+    // every quote sits in the same grid cell, so the bubble always fits the longest one
+    var stack = main.querySelector('[data-qstack]');
+    stack.innerHTML = qs.map(function (q) {
+      return '<div class="qitem" aria-hidden="true"><blockquote>' + esc(q.text) + '</blockquote><figcaption><b>' + esc(q.name) + '</b><span>' + esc(q.role) + '</span></figcaption></div>';
+    }).join('');
+    var items = stack.querySelectorAll('.qitem');
     function show(k) {
       i = (k + qs.length) % qs.length;
-      main.querySelector('[data-q]').textContent = qs[i].text;
-      main.querySelector('[data-qn]').textContent = qs[i].name;
-      main.querySelector('[data-qr]').textContent = qs[i].role;
+      items.forEach(function (el, j) { el.classList.toggle('on', j === i); el.setAttribute('aria-hidden', String(j !== i)); });
       dots.querySelectorAll('.dot').forEach(function (d, j) { if (j === i) d.setAttribute('aria-current', 'true'); else d.removeAttribute('aria-current'); });
     }
-    function auto() { clearInterval(timer); if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) timer = setInterval(function () { show(i + 1); }, 7000); }
+    // reading time: about 5 s plus 55 ms per character, never under 8 s
+    function readMs(q) { return Math.max(8000, 5000 + q.text.length * 55); }
+    function auto() {
+      clearTimeout(timer);
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      timer = setTimeout(function () { show(i + 1); auto(); }, readMs(qs[i]));
+    }
     main.querySelector('[data-prev]').addEventListener('click', function () { show(i - 1); auto(); });
     main.querySelector('[data-next]').addEventListener('click', function () { show(i + 1); auto(); });
     dots.addEventListener('click', function (e) { var d = e.target.closest('.dot'); if (d) { show(+d.getAttribute('data-k')); auto(); } });

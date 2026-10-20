@@ -34,7 +34,7 @@ window.SITE = {
       { src: "images/lettering/hero-4.svg", text: "Great design gets out of the way", split: 54 },
       { src: "images/lettering/hero-5.svg", text: "Great design makes you feel something", split: 52 }
     ],
-    heroHoldSeconds: 6,       // how long each one stays before the next is written
+    heroHoldSeconds: 8,       // how long each one stays before the next is written
     intro: "Product designer in Stockholm, born and raised in Brazil. For 12 years I've designed everything from nationwide marketing campaigns to B2B products built from zero. The last five years at Funnel taught me to design with <mark>hard data</mark>, and to anchor every idea in <mark>real customer feedback</mark>.",
     featuredTitle: "Featured work",
     featuredArt: "",          // e.g. "images/lettering/featured-work.svg"
@@ -315,8 +315,8 @@ window.SITE = {
     why: "I started designing before I knew the word for it. At 14, working in the same restaurant kitchen as my mom, I refused to just throw lettuce in a bowl. Every container was a canvas, and I loved watching people smile at their salads. Years later, a scholarship to study advertising showed me that what I loved was bigger than visuals: crafting a message that makes people feel something and see the world a little differently. That's still why I design.",
     facts: ["From Brazil, based in Stockholm", "Portuguese and English", "BA in Advertising and Marketing", "12 years in design"],
     tools: ["Figma", "Claude Design", "Cursor", "Adobe Creative Suite", "Miro"],
-    hardSkills: [["Discovery and research", 2], ["Interaction design", 4], ["UI and visual design", 5], ["Design systems", 3], ["Prototyping (AI and code)", 5], ["Data-informed design", 4], ["Workshop facilitation", 3], ["Brand, illustration and motion", 3]],
-    softSkills: [["Communication and storytelling", 5], ["Cross-functional collaboration", 4], ["Comfort with ambiguity", 3], ["Empathy and listening", 5], ["Stakeholder management", 2], ["Curiosity", 5], ["Ownership", 5], ["Mentoring", 4]],
+    hardSkills: [["Discovery and research", 3], ["Interaction design", 4], ["UI and visual design", 5], ["Design systems", 3], ["Prototyping (AI and code)", 5], ["Data-informed design", 4], ["Workshop facilitation", 3], ["Brand, illustration and motion", 4]],
+    softSkills: [["Communication and storytelling", 5], ["Cross-functional collaboration", 4], ["Comfort with ambiguity", 3], ["Empathy and listening", 5], ["Stakeholder management", 4], ["Curiosity", 5], ["Ownership", 5], ["Mentoring", 4]],
     timelineTitle: "From a farm in Brazil to the blue line",
     timeline: [
       { year: "1994", title: "Born on a farm", text: "In rural southern Brazil." },
