@@ -221,7 +221,7 @@ window.SITE = {
     },
     {
       slug: "google-analytics-connector", name: "Google Analytics connector", company: "Funnel", year: "2022",
-      thumb: { src: "", label: "Image · 4:3" },
+      thumb: { src: "images/ga-connector/thumb.webp", label: "Connect Google Analytics: choose a report type" },
       description: "My first project at Funnel, on a design team less than 6 months old. Google Analytics was one of our top 10 connectors, and customers kept picking the wrong settings, then wondering why their data didn't match. I moved the flow inside the app, made the steps visible and let users compare report types at a glance.",
       stats: [
         { n: "4.5/5", label: "user rating in tests" },
@@ -230,9 +230,10 @@ window.SITE = {
       ],
       tags: ["Integrations", "Usability", "Design culture"],
       images: [
-        { src: "", label: "Before", ratio: "16/10" },
-        { src: "", label: "After", ratio: "16/10" },
-        { src: "", label: "Report comparison", ratio: "4/3" }
+        { src: "images/ga-connector/after-default.webp", label: "After: visible steps, and report types you can compare at a glance", ratio: "1440/1024" },
+        { src: "images/ga-connector/before-default.webp", label: "Before: one dropdown and a hidden list of defaults", ratio: "1230/570" },
+        { src: "images/ga-connector/before-manual.webp", label: "Before: manual setup", ratio: "1440/2525", pair: true },
+        { src: "images/ga-connector/after-manual.webp", label: "After: manual setup, with selected fields counted per group", ratio: "1300/2576", pair: true }
       ]
     },
     {
