@@ -64,9 +64,9 @@
 
     var h = document.createElement('header');
     h.className = 'site-header';
-    h.innerHTML = '<div class="bar"><div><a class="navbox marker" href="about.html"' + (page === 'about' ? ' aria-current="page"' : '') + '>About</a></div>' +
-      '<a class="brand" href="index.html">' + esc(S.name) + '</a>' +
-      '<div style="display:flex;justify-content:flex-end"><a class="navbox marker" href="index.html#work">Work</a></div></div>' +
+    h.innerHTML = '<div class="bar"><a class="brand" href="index.html">' + esc(S.name) + '</a>' +
+      '<nav class="nav" aria-label="Main"><a class="navbox marker" href="about.html"' + (page === 'about' ? ' aria-current="page"' : '') + '>About</a>' +
+      '<a class="navbox marker" href="index.html#work">Work</a></nav></div>' +
       '<svg class="sk thin rule" viewBox="0 0 1000 6" preserveAspectRatio="none" aria-hidden="true"><path d="M0,3 C200,1 400,5 600,2.5 C800,1 900,4.5 1000,2"/></svg>';
     document.body.insertBefore(h, document.body.children[1]);
 
@@ -170,11 +170,52 @@
       '<svg class="sk acc draw ul" viewBox="0 0 200 20" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M4,12 C40,6 90,15 130,9 C160,5 185,12 196,8"/></svg></div>';
   }
 
+  /* Hero: write the first lettering in, then wipe it and write the next one. */
+  function heroLettering(box, label, arts, hold) {
+    if (!box || !arts.length) return;
+    var cache = {}, i = 0, visible = true, timer;
+    var calm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    function load(k) {
+      var a = arts[k];
+      if (!cache[k]) cache[k] = fetch(a.src).then(function (r) { if (!r.ok) throw 0; return r.text(); })
+        .catch(function () { return '<img src="' + esc(a.src) + '" alt="">'; });
+      return cache[k];
+    }
+    function write(k) {
+      return load(k).then(function (svg) {
+        box.classList.remove('wipe');
+        box.innerHTML = svg;
+        label.textContent = arts[k].text;
+        var el = box.querySelector('svg');
+        if (!el || calm) return;
+        var paths = Array.prototype.slice.call(el.querySelectorAll('path')).map(function (p) {
+          var b; try { b = p.getBBox(); } catch (e) { b = { x: 0, y: 0, width: 0, height: 0 }; }
+          return { p: p, row: Math.round((b.y + b.height / 2) / 140), x: b.x, big: b.width > 1700 };
+        }).filter(function (o) { return !o.big; });
+        paths.sort(function (a, b) { return a.row - b.row || a.x - b.x; });
+        var step = Math.max(0.8, Math.min(55, 1800 / paths.length));
+        paths.forEach(function (o, n) { o.p.style.animationDelay = Math.round(n * step) + 'ms'; });
+        el.classList.add('write');
+      });
+    }
+    function next() {
+      clearTimeout(timer);
+      if (!visible || document.hidden) { timer = setTimeout(next, 1500); return; }
+      var k = (i + 1) % arts.length;
+      load(k);
+      box.classList.add('wipe');
+      setTimeout(function () { i = k; write(i).then(schedule); }, 700);
+    }
+    function schedule() { if (!calm && arts.length > 1) timer = setTimeout(next, hold); }
+    if ('IntersectionObserver' in window) new IntersectionObserver(function (en) { visible = en[0].isIntersecting; }).observe(box);
+    write(0).then(schedule);
+  }
+
   function home(main) {
     var H = S.home;
-    var hero = H.heroArt
-      ? '<h1><img src="' + esc(H.heroArt) + '" alt="' + esc(H.heroLine1 + ' ' + H.heroLine2) + '"></h1>'
-      : '<h1>' + esc(H.heroLine1) + '</h1><p class="sub">' + esc(H.heroLine2) + '</p>';
+    var arts = H.heroArt || [];
+    var hero = '<h1><span class="sr-only" data-hero-text>' + esc(arts[0] ? arts[0].text : '') + '</span>' +
+      '<span class="letter" data-letter aria-hidden="true"></span></h1>';
     var cards = S.caseStudies.map(function (c) {
       return '<article class="card"><a class="fig" href="case-study.html?p=' + c.slug + '" tabindex="-1" aria-hidden="true">' + frame('bold') + media(c.thumb) +
         '<span class="lock">' + I.lock + 'Locked</span></a>' +
@@ -194,7 +235,6 @@
 
     main.innerHTML =
       '<section class="hero">' +
-        '<svg class="sk px draw hero-arrow" viewBox="0 0 560 600" aria-hidden="true"><path pathLength="1" d="M380,40 C520,40 560,200 520,330 C480,460 320,520 160,530 C90,535 50,550 40,592"/><path pathLength="1" d="M40,594 L20,568 M40,594 L62,572"/></svg>' +
         '<div class="hero-art">' + hero + '</div>' +
         '<p class="intro">' + H.intro + '</p>' +
         sectionTitle(H.featuredTitle, H.featuredArt, 'work') +
@@ -225,6 +265,7 @@
     main.querySelector('[data-next]').addEventListener('click', function () { show(i + 1); auto(); });
     dots.addEventListener('click', function (e) { var d = e.target.closest('.dot'); if (d) { show(+d.getAttribute('data-k')); auto(); } });
     show(0); auto();
+    heroLettering(main.querySelector('[data-letter]'), main.querySelector('[data-hero-text]'), arts, (H.heroHoldSeconds || 6) * 1000);
 
     // wall: on touch, first tap shows the overlay, second tap opens
     main.querySelectorAll('.tile').forEach(function (t) {

@@ -12,21 +12,27 @@
 */
 
 window.SITE = {
-  name: "Evaldo M.",
+  name: "Evaldo Marques",
   fullName: "Evaldo Marques",
   email: "dsgn.juniormarques@gmail.com",
   linkedin: "https://www.linkedin.com/in/evaldomarques/",
   cv: "cv/Evaldo-Marques-CV.pdf",
 
-  // SHA-256 of the case study password (currently "tickles").
+  // SHA-256 of the case study password (currently "magic2026").
   // Ask Claude to change it, or generate a new hash at any SHA-256 tool.
-  passwordHash: "b271f993e0fd074cc209756680e7569a15be1cf6427045925256fffa8c1f025b",
+  passwordHash: "d414cb41b60072f58df1789d129afdf4bbc480969bffd68192c32a957c3b2e0e",
 
   home: {
-    // Leave "" to use the font version until your hand-lettered SVGs are ready.
-    heroArt: "",              // e.g. "images/lettering/good-design.svg"
-    heroLine1: "Good design",
-    heroLine2: "tickles the brain",
+    // Hand-lettered hero. The first one shows on load, then they take turns:
+    // the current one is wiped away and the next one is written in.
+    heroArt: [
+      { src: "images/lettering/hero-1.svg", text: "Great design tickles the brain" },
+      { src: "images/lettering/hero-2.svg", text: "Great design does not ask for permission" },
+      { src: "images/lettering/hero-3.svg", text: "Great design earns a second look" },
+      { src: "images/lettering/hero-4.svg", text: "Great design gets out of the way" },
+      { src: "images/lettering/hero-5.svg", text: "Great design makes you feel something" }
+    ],
+    heroHoldSeconds: 6,       // how long each one stays before the next is written
     intro: "Product designer in Stockholm, born and raised in Brazil. For 12 years I've designed everything from nationwide marketing campaigns to B2B products built from zero. The last five years at Funnel taught me to design with <mark>hard data</mark>, and to anchor every idea in <mark>real customer feedback</mark>.",
     featuredTitle: "Featured work",
     featuredArt: "",          // e.g. "images/lettering/featured-work.svg"
