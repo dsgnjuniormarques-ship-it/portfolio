@@ -284,15 +284,20 @@ window.SITE = {
     {
       slug: "livelo-campaigns", name: "Livelo Campaigns", company: "Livelo", year: "2017–19",
       thumb: { src: "images/livelo-campaigns/thumb.webp", label: "Junte + pontos com muito mais liberdade" },
-      description: "A full brand redesign, plus nationwide campaigns across OOH, print, digital and events for Brazil's biggest loyalty program.",
+      description: "A full brand redesign, plus nationwide campaigns across OOH, print, events and paid social for Brazil's biggest loyalty program.",
       stats: [],
-      tags: ["Brand", "Campaigns", "OOH · Print · Digital"],
+      tags: ["Brand", "Campaigns", "OOH · Print", "Paid social"],
       images: [
         { src: "images/livelo-campaigns/liberdade.webp", label: "Print: Junte + pontos com muito mais liberdade", ratio: "1800/1576" },
         { src: "images/livelo-campaigns/shop-and-earn.webp", label: "Print: earn points with partner stores", ratio: "1800/1583" },
         { src: "images/livelo-campaigns/fathers-day.webp", label: "Print: Father's Day partner campaign", ratio: "1767/1547" },
         { src: "images/livelo-campaigns/livelo-empresas.webp", label: "Livelo Empresas: incentive and loyalty for companies", ratio: "1669/2173", pair: true },
-        { src: "images/livelo-campaigns/brand-banner.webp", label: "Event banner: Seus pontos. Suas escolhas.", ratio: "1800/3030", pair: true }
+        { src: "images/livelo-campaigns/brand-banner.webp", label: "Event banner: Seus pontos. Suas escolhas.", ratio: "1800/3030", pair: true },
+        { src: "images/livelo-campaigns/ad-smartphones.webp", label: "Paid social ad: smartphones", ratio: "1200/628", pair: true },
+        { src: "images/livelo-campaigns/ad-tech.webp", label: "Paid social ad: tech", ratio: "1200/628", pair: true },
+        { src: "images/livelo-campaigns/ad-kitchen.webp", label: "Paid social ad: kitchen", ratio: "1200/628", pair: true },
+        { src: "images/livelo-campaigns/ad-sports.webp", label: "Paid social ad: sports", ratio: "1200/628", pair: true },
+        { src: "images/livelo-campaigns/ad-fashion.webp", label: "Paid social ad: fashion", ratio: "1200/628" }
       ]
     },
     {
