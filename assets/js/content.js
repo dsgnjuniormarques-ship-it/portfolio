@@ -249,7 +249,7 @@ window.SITE = {
     },
     {
       slug: "alelo-design-system", name: "Alelo Design System", company: "Insidelink for Alelo", year: "2020–21",
-      thumb: { src: "", label: "Image · 4:3" },
+      thumb: { src: "images/alelo-design-system/thumb.webp", label: "Alelo components" },
       description: "I led the creation of Alelo's Figma design system: 15+ libraries audited and merged into around 300 shared components, for 10 products and 12 designers, in the middle of a rebrand. It's built in three layers: Core styles, Web components and Mobile components.",
       stats: [
         { n: "~300", label: "shared components" },
@@ -258,9 +258,10 @@ window.SITE = {
       ],
       tags: ["Design systems", "Figma", "Consulting"],
       images: [
-        { src: "", label: "Component sheet", ratio: "16/10" },
-        { src: "", label: "Library structure", ratio: "4/3" },
-        { src: "", label: "Example screen", ratio: "4/3" }
+        { src: "images/alelo-design-system/components.webp", label: "Components: cards, alerts, inputs, tabs, pagination and steppers", ratio: "1920/1080" },
+        { src: "images/alelo-design-system/color-scheme.webp", label: "Color scheme: primaries, secondaries, neutrals, status and product colors", ratio: "1532/945" },
+        { src: "images/alelo-design-system/brand-icons.webp", label: "Brand icons for illustrating the customer journey", ratio: "876/951", pair: true },
+        { src: "images/alelo-design-system/interface-icons.webp", label: "Interface icons at 32, 24 and 16 px", ratio: "911/952", pair: true }
       ]
     },
     {
