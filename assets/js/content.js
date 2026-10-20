@@ -237,14 +237,14 @@ window.SITE = {
     },
     {
       slug: "alelo-loyalty", name: "Alelo B2B Loyalty Program", company: "Insidelink for Alelo", year: "2020",
-      thumb: { src: "", label: "Image · 4:3" },
+      thumb: { src: "images/alelo-loyalty/thumb.webp", label: "Alelo Recompensas account" },
       description: "Alelo is a Brazilian financial services company handling benefits, incentives and corporate expenses, with cards for meals, groceries, mobility, culture and more. I designed the concept for their B2B loyalty program, letting corporate clients earn and redeem rewards while discovering products suited to their needs.",
       stats: [],
       tags: ["Loyalty", "B2B", "Concept"],
       images: [
-        { src: "", label: "Concept overview", ratio: "16/10" },
-        { src: "", label: "Rewards catalog", ratio: "4/3" },
-        { src: "", label: "Earning points", ratio: "4/3" }
+        { src: "images/alelo-loyalty/home.webp", label: "Home: trade points for Alelo products or partner benefits", ratio: "1229/2576", narrow: true },
+        { src: "images/alelo-loyalty/my-account.webp", label: "My account: points balance, history and wish list", ratio: "1440/1576" },
+        { src: "images/alelo-loyalty/redeem-product.webp", label: "Redeeming points for a product, customized for the company", ratio: "1440/1641" }
       ]
     },
     {
