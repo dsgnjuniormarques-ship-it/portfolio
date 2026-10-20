@@ -236,8 +236,8 @@
         '<div class="hero-art">' + hero + '</div>' +
         '<p class="intro">' + H.intro + '</p>' +
         '<a class="down" href="#work" aria-label="Scroll to featured work"><svg viewBox="0 0 34 52" aria-hidden="true"><path d="M17 3 C15.5 15 18.5 28 16.5 47"/><path d="M5 35 C9 39 13 44 16.5 48 C20 43 24.5 38 29 34"/><path d="M18.5 6 C17 20 19.5 30 17.5 44" style="stroke-width:1.6;opacity:.7"/></svg></a>' +
-        sectionTitle(H.featuredTitle, H.featuredArt, 'work') +
       '</section>' +
+      sectionTitle(H.featuredTitle, H.featuredArt, 'work') +
       '<div class="cards">' + cards + '</div>' +
       '<div style="padding-top:140px">' + sectionTitle(H.otherTitle, H.otherArt) + '</div>' +
       '<div class="wall">' + tiles + '</div>' +

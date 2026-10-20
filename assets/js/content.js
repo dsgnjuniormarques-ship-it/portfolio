@@ -45,11 +45,13 @@ window.SITE = {
   },
 
   // Replace with real quotes, names and roles.
+  // Real words from colleagues (lightly trimmed). Add surnames if they want them.
   testimonials: [
-    { text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus, posuere velit aliquet.", name: "[Name Surname]", role: "[Role], [Company]" },
-    { text: "Vestibulum id ligula porta felis euismod semper. Cras mattis consectetur purus sit amet fermentum. Maecenas faucibus mollis interdum.", name: "[Name Surname]", role: "[Role], [Company]" },
-    { text: "Aenean lacinia bibendum nulla sed consectetur. Nullam quis risus eget urna mollis ornare vel eu leo. Curabitur blandit tempus porttitor.", name: "[Name Surname]", role: "[Role], [Company]" },
-    { text: "Etiam porta sem malesuada magna mollis euismod. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.", name: "[Name Surname]", role: "[Role], [Company]" }
+    { text: "I don't think I've ever seen a higher degree of \u201cfirst draft excellence\u201d from a designer during my career. You are GOOD and FAST. When you speak, others listen.", name: "Emilie Ljungdal", role: "Product Manager, Funnel" },
+    { text: "Simply one of the best colleagues I've ever worked with. If we ever feel stuck, he has a remarkable ability to help us break free, think outside the box, and bring fresh perspectives.", name: "Elena Gjeroska", role: "Staff Designer, Funnel" },
+    { text: "He doesn't just want to design a B2B app, he designs delightful experiences that make the user enjoy using the app, not just make it through.", name: "Alex", role: "Product Manager, Funnel" },
+    { text: "A real mood raiser, and a significant factor in bringing the team together. He takes feedback very well, with an open mind, while explaining the train of thought behind his design.", name: "Bj\u00f6rn", role: "Senior Engineer, Funnel" },
+    { text: "Really good at making people feel comfortable. Willing to help out, and doesn't only look at his own team.", name: "Nina", role: "Head of Product, Funnel" }
   ],
 
   // ---------- FEATURED CASE STUDIES (password protected) ----------
