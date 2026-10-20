@@ -186,16 +186,11 @@
         box.classList.remove('wipe');
         box.innerHTML = svg;
         label.textContent = arts[k].text;
-        var el = box.querySelector('svg');
-        if (!el || calm) return;
-        var paths = Array.prototype.slice.call(el.querySelectorAll('path')).map(function (p) {
-          var b; try { b = p.getBBox(); } catch (e) { b = { x: 0, y: 0, width: 0, height: 0 }; }
-          return { p: p, row: Math.round((b.y + b.height / 2) / 140), x: b.x, big: b.width > 1700 };
-        }).filter(function (o) { return !o.big; });
-        paths.sort(function (a, b) { return a.row - b.row || a.x - b.x; });
-        var step = Math.max(0.8, Math.min(55, 1800 / paths.length));
-        paths.forEach(function (o, n) { o.p.style.animationDelay = Math.round(n * step) + 'ms'; });
-        el.classList.add('write');
+        if (calm) return;
+        box.style.setProperty('--s', (arts[k].split || 100) + '%');
+        box.classList.remove('write1', 'write2');
+        void box.offsetWidth;
+        box.classList.add(arts[k].split ? 'write2' : 'write1');
       });
     }
     function next() {
@@ -203,6 +198,7 @@
       if (!visible || document.hidden) { timer = setTimeout(next, 1500); return; }
       var k = (i + 1) % arts.length;
       load(k);
+      box.classList.remove('write1', 'write2');
       box.classList.add('wipe');
       setTimeout(function () { i = k; write(i).then(schedule); }, 700);
     }

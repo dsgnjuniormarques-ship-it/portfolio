@@ -25,12 +25,14 @@ window.SITE = {
   home: {
     // Hand-lettered hero. The first one shows on load, then they take turns:
     // the current one is wiped away and the next one is written in.
+    // "split" is where line 1 ends (in % of the height), so each line is written in turn.
+    // Leave split out for a drawing that should be written in one sweep.
     heroArt: [
       { src: "images/lettering/hero-1.svg", text: "Great design tickles the brain" },
-      { src: "images/lettering/hero-2.svg", text: "Great design does not ask for permission" },
-      { src: "images/lettering/hero-3.svg", text: "Great design earns a second look" },
-      { src: "images/lettering/hero-4.svg", text: "Great design gets out of the way" },
-      { src: "images/lettering/hero-5.svg", text: "Great design makes you feel something" }
+      { src: "images/lettering/hero-2.svg", text: "Great design does not ask for permission", split: 41 },
+      { src: "images/lettering/hero-3.svg", text: "Great design earns a second look", split: 52 },
+      { src: "images/lettering/hero-4.svg", text: "Great design gets out of the way", split: 54 },
+      { src: "images/lettering/hero-5.svg", text: "Great design makes you feel something", split: 52 }
     ],
     heroHoldSeconds: 6,       // how long each one stays before the next is written
     intro: "Product designer in Stockholm, born and raised in Brazil. For 12 years I've designed everything from nationwide marketing campaigns to B2B products built from zero. The last five years at Funnel taught me to design with <mark>hard data</mark>, and to anchor every idea in <mark>real customer feedback</mark>.",
