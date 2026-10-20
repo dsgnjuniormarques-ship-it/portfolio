@@ -75,7 +75,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,[tabindex]:focus-visibl
 .hero h1{margin:0;font-family:var(--hand);font-weight:700;font-size:clamp(52px,8vw,88px);line-height:.95}
 .hero .sub{margin:10px 0 0;font-family:var(--hand);font-size:clamp(18px,2.4vw,26px);letter-spacing:.18em;text-transform:uppercase}
 .intro{max-width:640px;margin:44px auto 0;font-size:clamp(18px,1.6vw,21px);line-height:1.6;text-align:center}
-.hero-arrow{position:absolute;left:50%;top:80px;width:560px;height:600px}
+.hero-arrow{position:absolute;left:50%;top:16px;width:560px;height:600px}
 .sec-title{text-align:center;padding:0 var(--gutter)}
 .sec-title h2{margin:0;font-family:var(--hand);font-weight:700;font-size:clamp(36px,4vw,46px)}
 .sec-title img{margin:0 auto;max-height:90px;width:auto}
