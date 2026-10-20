@@ -205,16 +205,18 @@ window.SITE = {
   projects: [
     {
       slug: "advanced-measurement", name: "Advanced Measurement", company: "Funnel", year: "2026",
-      thumb: { src: "", label: "Image · 4:3" },
+      thumb: { src: "images/advanced-measurement/thumb.webp", label: "Media Plans overview" },
       description: "Two months with the Hamburg team, at 25% of my time, to make our most premium product easier to use. I dug into marketing mix modeling and multi-touch attribution, simplified the UI and rebuilt the Media Plan flow around how marketers actually think, replacing data science lingo with marketer language.",
       quote: "Oh, right, of course. It makes so much more sense. Let's just build it.",
       quoteBy: "The Hamburg team",
       stats: [],
       tags: ["Measurement", "MMM", "Simplification"],
       images: [
-        { src: "", label: "Media Plan · before and after", ratio: "16/10" },
-        { src: "", label: "New Media Plan flow", ratio: "16/10" },
-        { src: "", label: "Detail", ratio: "4/3" }
+        { src: "images/advanced-measurement/media-plans.webp", label: "Media Plans: every plan and its goal at a glance", ratio: "4/3" },
+        { src: "images/advanced-measurement/create-media-plan.webp", label: "Creating a media plan in marketer language", ratio: "1/1", narrow: true },
+        { src: "images/advanced-measurement/plan-results.webp", label: "Plan results: current vs optimal spend", ratio: "1440/1564" },
+        { src: "images/advanced-measurement/chart-detail.webp", label: "Current vs optimal performance by day", ratio: "1/1", pair: true },
+        { src: "images/advanced-measurement/plan-cards.webp", label: "Plan cards with goal and status", ratio: "1/1", pair: true }
       ]
     },
     {
