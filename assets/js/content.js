@@ -150,7 +150,7 @@ window.SITE = {
       ],
       heroImages: [
         { src: "", label: "Hero · the new dashboard builder", ratio: "16/10" },
-        { src: "", label: "Clip · today's experience (20 to 30 s)", ratio: "16/9" }
+        { src: "images/reporting/current.mp4", poster: "images/reporting/current.jpg", label: "Today's experience: building a dashboard in Funnel", ratio: "1600/1002" }
       ],
       stats: [
         { n: "~50%", label: "of Funnel customers use dashboards" },
