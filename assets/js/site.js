@@ -57,10 +57,10 @@
     return '<div class="car" data-car>' +
       '<figure class="fig">' + frame('bold') +
         '<div class="car-vp" tabindex="0" role="region" aria-roledescription="carousel" aria-label="' + esc(label || 'Images') + '"><div class="car-track">' +
-          items.map(function (im, i) { return '<div class="car-slide" role="group" aria-roledescription="slide" aria-label="' + (i + 1) + ' of ' + n + ': ' + esc(im.label || '') + '" style="aspect-ratio:' + (items.ratio || '16/10') + '">' + media(im, true) + '</div>'; }).join('') +
+          items.map(function (im, i) { return '<div class="car-slide" role="group" aria-roledescription="slide" aria-label="' + (i + 1) + ' of ' + n + ': ' + esc(im.label || '') + '" data-group="' + esc(im.group || '') + '" style="aspect-ratio:' + (items.ratio || '16/10') + '">' + media(im, true) + '</div>'; }).join('') +
         '</div></div>' +
       '</figure>' +
-      '<div class="car-bar"><p class="car-cap" aria-live="polite">' + esc(items[0].label || '') + '</p><span class="car-n">1 / ' + n + '</span>' +
+      '<div class="car-bar"><p class="car-cap" aria-live="polite"><span class="car-grp"' + (items[0].group ? '' : ' hidden') + '>' + esc(items[0].group || '') + '</span><span class="car-txt">' + esc(items[0].label || '') + '</span></p><span class="car-n">1 / ' + n + '</span>' +
         '<button class="ibtn" type="button" data-car-go="-1" aria-label="Previous image">' + I.prev + '</button><button class="ibtn" type="button" data-car-go="1" aria-label="Next image">' + I.next + '</button></div>' +
     '</div>';
   }
@@ -70,7 +70,8 @@
       var labels = Array.prototype.map.call(slides, function (s) { return s.getAttribute('aria-label').replace(/^\d+ of \d+: /, ''); });
       var cur = 0;
       function at() { return Math.round(vp.scrollLeft / vp.clientWidth); }
-      function show(i) { cur = i; cap.textContent = labels[i]; num.textContent = (i + 1) + ' / ' + slides.length; }
+      var grp = c.querySelector('.car-grp'), txt = c.querySelector('.car-txt');
+      function show(i) { cur = i; txt.textContent = labels[i]; var g = slides[i].getAttribute('data-group'); grp.textContent = g; grp.hidden = !g; num.textContent = (i + 1) + ' / ' + slides.length; }
       function go(i) { i = (i + slides.length) % slides.length; vp.scrollTo({ left: i * vp.clientWidth, behavior: 'smooth' }); show(i); }
       var t; vp.addEventListener('scroll', function () { clearTimeout(t); t = setTimeout(function () { var i = at(); if (i !== cur) show(i); }, 80); });
       c.querySelectorAll('[data-car-go]').forEach(function (b) { b.addEventListener('click', function () { go(at() + +b.getAttribute('data-car-go')); }); });

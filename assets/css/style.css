@@ -313,3 +313,5 @@ a:focus-visible,button:focus-visible,input:focus-visible,[tabindex]:focus-visibl
 .steps li{counter-increment:st;position:relative;padding-left:40px;font-size:16px;line-height:1.5}
 .steps li::before{content:counter(st);position:absolute;left:0;top:-1px;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-family:var(--hand);font-size:16px;border:2px solid var(--ink);border-radius:50% 45% 52% 48%/48% 52% 46% 54%}
 @media (max-width:640px){.car-bar{flex-wrap:wrap}.car-cap{flex-basis:100%;order:3}}
+.car-grp{display:inline-block;margin-right:10px;padding:1px 10px;border:2px solid var(--ink);border-radius:255px 15px 225px 15px/15px 225px 15px 255px;font-size:14px;color:var(--ink);vertical-align:2px;background:#fff}
+.car-grp[hidden]{display:none}

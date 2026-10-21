@@ -115,9 +115,18 @@ window.SITE = {
             { src: "images/activate/vision-2-ai.webp", label: "Funnel AI in context, right next to the setup" },
             { src: "images/activate/vision-3-preview.webp", label: "Data preview: see exactly what gets sent before you send it" }
           ] },
-        { type: "decision", heading: "Design for the parts we didn't own", text: "Each of the 7 ad platforms has its own rules, and part of the job, tracking, happens outside Funnel. We couldn't build all of it. So I removed every bit of friction I could inside the product, and created guides that helped customers feel confident doing the rest.", image: { src: "", label: "Platform setup flow", ratio: "4/3" } },
+        { type: "decision", heading: "Design for the parts we didn't own",
+          text: "Each of the 7 ad platforms has its own rules, and part of the job, tracking, happens outside Funnel. We couldn't build all of it. So I removed every bit of friction I could inside the product, and designed the knowledge around it: help articles for every step of a conversion upload, and sales materials that let customer-facing teams explain Activate with confidence.",
+          carouselRatio: "16/10",
+          carousel: [
+            { src: "images/activate/kb-search.webp", group: "Knowledge base", label: "Every step of a conversion upload has an article" },
+            { src: "images/activate/kb-article.webp", group: "Knowledge base", label: "Conversion uploads: the overview article" },
+            { src: "images/activate/sales-cover.webp", group: "Sales materials", label: "Funnel Activate: an introduction deck" },
+            { src: "images/activate/sales-journey-title.webp", group: "Sales materials", label: "From start to success: the Activate user journey" },
+            { src: "images/activate/sales-journeys.webp", group: "Sales materials", label: "High-level user journeys for 3 types of customer" }
+          ] },
         { type: "video", youtube: "J1AJcvoiaQQ", label: "Activate explained" },
-        { type: "decision", heading: "Validate with every release", text: "We worked with design partners from the start. Every meaningful update went in front of 1 to 3 customers, about 15 conversations in total. I also explored how AI could live inside the workflow instead of beside it. That concept, Data Chats, went on to shape Funnel's wider AI offering.", image: { src: "", label: "Data Chats concept", ratio: "4/3" } }
+        { type: "decision", heading: "Validate with every release", text: "We worked with design partners from the start. Every meaningful update went in front of 1 to 3 customers, about 15 conversations in total. I also mined Gong sales calls to hear how prospects described the problem in their own words, which kept every release grounded in real needs.", image: { src: "images/activate/gong-insights.webp", label: "Gong calls: what prospects said about conversions", ratio: "1350/1084" } }
       ],
       learned: "A product can be great and still depend on things it doesn't control. Designing the knowledge around it mattered as much as the screens."
     },
