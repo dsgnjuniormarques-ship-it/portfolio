@@ -139,7 +139,6 @@ window.SITE = {
       tags: ["AI", "Data visualization", "Redesign"],
       thumb: { src: "", label: "Thumbnail · 4:3" },
       layout: "split",
-      frames: "clean",
       title: "Marketing Reporting.",
       subtitle: "Rethinking how people build dashboards, with AI and on their own.",
       context: ["Funnel", "2026, in progress", "Lead designer on Reporting", "1 PM · 3 engineers"],

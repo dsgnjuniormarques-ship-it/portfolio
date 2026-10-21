@@ -321,7 +321,7 @@
     var c = list[idx], nx = list[(idx + 1) % list.length];
     document.title = c.name + ' · ' + S.name;
     function render() {
-      main.className = 'wrap' + (c.frames === 'clean' ? ' clean' : '');
+      main.className = 'wrap clean';
       var n = 0;
       var body = c.sections.map(function (s) {
         if (s.type === 'image') return fig(s.image, 'wide');
@@ -387,7 +387,7 @@
     var idx = Math.max(0, list.findIndex(function (p) { return p.slug === param('p'); }));
     var p = list[idx], nx = list[(idx + 1) % list.length];
     document.title = p.name + ' · ' + S.name;
-    main.className = 'sp';
+    main.className = 'sp clean';
     var imgs = [], pairs = [];
     p.images.forEach(function (im) {
       if (im.pair) { pairs.push(im); if (pairs.length === 2) { imgs.push('<div class="pair">' + pairs.map(function (x) { return fig(x); }).join('') + '</div>'); pairs = []; } return; }
