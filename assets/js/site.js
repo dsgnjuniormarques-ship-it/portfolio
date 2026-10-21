@@ -357,7 +357,7 @@
       }).join('');
       main.innerHTML =
         '<div style="display:flex;flex-direction:column;gap:32px"><a class="lnk marker back" href="index.html#work">' + ARROW_L + 'Back to work</a>' +
-        (c.layout === 'split' ?
+        (c.layout !== 'classic' ?
         '<div class="row top split">' +
           '<div class="col-text" style="gap:28px">' + tags(c.context) + '<h1 class="cs-title">' + esc(c.title) + '<small>' + esc(c.subtitle) + '</small></h1></div>' +
           '<div class="col-text" style="gap:28px">' +
