@@ -157,12 +157,21 @@ window.SITE = {
         { n: "5", label: "people on the team: 3 engineers, 1 PM and me" }
       ],
       sections: [
-        { type: "decision", heading: "Listen at scale", text: "I pulled signals from our user-needs channel, customer-facing teams, recorded customer calls, PMs' conversations with customers, and senior engineers who had worked on the product for years. The same themes kept coming back: dashboards look outdated, it's not clear if you're editing or viewing, people want more control over the look, and exploring data feels like something might break.", image: { src: "", label: "Research synthesis", ratio: "4/3" } },
+        { type: "decision", heading: "Listen at scale", text: "I pulled signals from our user-needs channel, customer-facing teams, recorded customer calls, PMs' conversations with customers, and senior engineers who had worked on the product for years. The same themes kept coming back: dashboards look outdated, it's not clear if you're editing or viewing, people want more control over the look, and exploring data feels like something might break." },
         { type: "decision", heading: "Prototype the vision",
           text: "The prototype is our current vision for dashboards. It brings three things together: AI features built into the product, UX improvements to everyday tasks, and micro-interactions that add small moments of delight.",
           after: "It also surfaced a lot of smaller, low-hanging fruit. We're prioritizing those together as a team and validating them with customers, so we build what matters most first. Go ahead, click around.",
           prototype: { src: "prototypes/reporting-vision.html", label: "The dashboards vision: a clickable prototype made in Claude Design", w: 1440, h: 900 } },
-        { type: "decision", heading: "Frame the conversation", text: ["The prototype touched much more than AI. So before each session, I used a short presentation to align stakeholders on what it was about, and what we should focus on that day. When the work goes beyond the brief, framing the discussion is what keeps it useful.", "And going beyond the brief is often the point. People experience a product as a whole, so designing only the piece you were asked for rarely wins."], image: { src: "", label: "Alignment presentation", ratio: "4/3" } }
+        { type: "decision", heading: "Frame the conversation", text: ["The prototype touched much more than AI. So before each session, I used a short presentation to align stakeholders on what it was about, and what we should focus on that day. When the work goes beyond the brief, framing the discussion is what keeps it useful.", "And going beyond the brief is often the point. People experience a product as a whole, so designing only the piece you were asked for rarely wins."],
+          carouselRatio: "16/9",
+          carousel: [
+            { src: "images/reporting/deck-1-title.webp", label: "Clarity, not clutter: AI in dashboards" },
+            { src: "images/reporting/deck-2-context.webp", label: "Context: better, not just more" },
+            { src: "images/reporting/deck-3-reframe.webp", label: "Reframe: what if we redesigned how people interact with dashboards?" },
+            { src: "images/reporting/deck-4-shift.webp", label: "The shift: always know if you're viewing or editing" },
+            { src: "images/reporting/deck-5-key-moments.webp", label: "Key moments: same dashboards, three jobs to be done" },
+            { src: "images/reporting/deck-6-out-loud.webp", label: "Setting expectations: fidelity, scope, writing and edge cases" }
+          ] }
       ],
       learned: "Still in progress, but it's already changing how I think. AI isn't a feature, it's a mindset. It sets a different tone, and it's a different game."
     },

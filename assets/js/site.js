@@ -334,15 +334,16 @@
         if (s.prototype) {
           var pr = s.prototype;
           return '<section class="row stack">' + text +
-            '<div class="proto bleed">' +
+            '<div class="proto">' +
               '<div class="proto-box" style="aspect-ratio:' + (pr.w || 1440) + '/' + (pr.h || 900) + '"><iframe src="' + esc(pr.src) + '" title="' + esc(pr.label || 'Prototype') + '" loading="lazy" width="' + (pr.w || 1440) + '" height="' + (pr.h || 900) + '"></iframe></div>' +
-            '<div class="car-bar"><p class="car-cap">' + esc(pr.label || '') + '</p><a class="lnk marker" href="' + esc(pr.src) + '" target="_blank" rel="noopener">Open full screen ' + I.arrow + '</a></div></div>' +
+            '<div class="car-bar"><p class="car-cap">' + esc(pr.label || '') + '</p><a class="btn marker" href="' + esc(pr.src) + '" target="_blank" rel="noopener">Open full screen ' + I.arrow + '</a></div></div>' +
           '</section>';
         }
         if (s.carousel) {
           s.carousel.ratio = s.carouselRatio;
           return '<section class="row stack">' + text + carousel(s.carousel, s.heading) + '</section>';
         }
+        if (!s.image) return '<section class="row stack">' + text + '</section>';
         var img = '<div class="col-img">' + fig(s.image) + '</div>';
         return n % 2 ? '<section class="row">' + img + text + '</section>' : '<section class="row rev">' + text + img + '</section>';
       }).join('');
