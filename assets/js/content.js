@@ -137,7 +137,7 @@ window.SITE = {
       year: "2026",
       line: "Rethinking how people build dashboards, with AI and on their own",
       tags: ["AI", "Data visualization", "Redesign"],
-      thumb: { src: "", label: "Thumbnail · 4:3" },
+      thumb: { src: "images/reporting/thumb.webp", label: "Clarity, not clutter: AI in dashboards" },
       layout: "split",
       title: "Marketing Reporting.",
       subtitle: "Rethinking how people build dashboards, with AI and on their own.",
