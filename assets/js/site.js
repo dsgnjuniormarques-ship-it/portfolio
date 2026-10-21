@@ -52,6 +52,31 @@
   function fig(img, kind, cls) {
     return '<figure class="fig ' + (cls || '') + '">' + frame(kind || 'bold') + media(img, true) + '</figure>';
   }
+  function carousel(items, label) {
+    var n = items.length;
+    return '<div class="car" data-car>' +
+      '<figure class="fig">' + frame('bold') +
+        '<div class="car-vp" tabindex="0" role="region" aria-roledescription="carousel" aria-label="' + esc(label || 'Images') + '"><div class="car-track">' +
+          items.map(function (im, i) { return '<div class="car-slide" role="group" aria-roledescription="slide" aria-label="' + (i + 1) + ' of ' + n + ': ' + esc(im.label || '') + '" style="aspect-ratio:' + (items.ratio || '16/10') + '">' + media(im, true) + '</div>'; }).join('') +
+        '</div></div>' +
+      '</figure>' +
+      '<div class="car-bar"><p class="car-cap" aria-live="polite">' + esc(items[0].label || '') + '</p><span class="car-n">1 / ' + n + '</span>' +
+        '<button class="ibtn" type="button" data-car-go="-1" aria-label="Previous image">' + I.prev + '</button><button class="ibtn" type="button" data-car-go="1" aria-label="Next image">' + I.next + '</button></div>' +
+    '</div>';
+  }
+  function initCarousels(root) {
+    root.querySelectorAll('[data-car]').forEach(function (c) {
+      var vp = c.querySelector('.car-vp'), slides = c.querySelectorAll('.car-slide'), cap = c.querySelector('.car-cap'), num = c.querySelector('.car-n');
+      var labels = Array.prototype.map.call(slides, function (s) { return s.getAttribute('aria-label').replace(/^\d+ of \d+: /, ''); });
+      var cur = 0;
+      function at() { return Math.round(vp.scrollLeft / vp.clientWidth); }
+      function show(i) { cur = i; cap.textContent = labels[i]; num.textContent = (i + 1) + ' / ' + slides.length; }
+      function go(i) { i = (i + slides.length) % slides.length; vp.scrollTo({ left: i * vp.clientWidth, behavior: 'smooth' }); show(i); }
+      var t; vp.addEventListener('scroll', function () { clearTimeout(t); t = setTimeout(function () { var i = at(); if (i !== cur) show(i); }, 80); });
+      c.querySelectorAll('[data-car-go]').forEach(function (b) { b.addEventListener('click', function () { go(at() + +b.getAttribute('data-car-go')); }); });
+      vp.addEventListener('keydown', function (e) { if (e.key === 'ArrowRight') { e.preventDefault(); go(at() + 1); } if (e.key === 'ArrowLeft') { e.preventDefault(); go(at() - 1); } });
+    });
+  }
   function tags(list) {
     return '<div class="tags">' + (list || []).map(function (t) { return '<span class="tag">' + esc(t) + '</span>'; }).join('') + '</div>';
   }
@@ -299,9 +324,16 @@
       var n = 0;
       var body = c.sections.map(function (s) {
         if (s.type === 'image') return fig(s.image, 'wide');
+        function paras(t) { return t ? [].concat(t).map(function (x) { return '<p class="p">' + esc(x) + '</p>'; }).join('') : ''; }
         if (s.type === 'video') return '<figure class="fig">' + frame('wide') + '<div class="video"><iframe src="https://www.youtube-nocookie.com/embed/' + esc(s.youtube) + '" title="' + esc(s.label || 'Video') + '" loading="lazy" allow="encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe></div></figure>';
         n++;
-        var text = '<div class="col-text dec"><span class="num">' + ('0' + n).slice(-2) + '</span><h2>' + esc(s.heading) + '</h2><p class="p">' + esc(s.text) + '</p></div>';
+        var text = '<div class="col-text dec"><span class="num">' + ('0' + n).slice(-2) + '</span><h2>' + esc(s.heading) + '</h2>' + paras(s.text) +
+          (s.steps ? '<ol class="steps">' + s.steps.map(function (st) { return '<li><b>' + esc(st[0]) + '</b>' + (st[1] ? ' ' + esc(st[1]) : '') + '</li>'; }).join('') + '</ol>' : '') +
+          paras(s.after) + '</div>';
+        if (s.carousel) {
+          s.carousel.ratio = s.carouselRatio;
+          return '<section class="row stack">' + text + carousel(s.carousel, s.heading) + '</section>';
+        }
         var img = '<div class="col-img">' + fig(s.image) + '</div>';
         return n % 2 ? '<section class="row">' + img + text + '</section>' : '<section class="row rev">' + text + img + '</section>';
       }).join('');
@@ -320,6 +352,7 @@
         (c.quote ? '<blockquote class="pull">“' + esc(c.quote.text) + '”<cite>' + esc(c.quote.by) + '</cite></blockquote>' : '') +
         '<section class="learned"><span class="lbl">What I learned</span><p>' + esc(c.learned) + '</p></section>' +
         '<a class="next" href="case-study.html?p=' + nx.slug + '"><small>Next project</small><span>' + esc(nx.name) + ' ' + ARROW_R + '</span></a>';
+      initCarousels(main);
       drawOnScroll();
     }
     if (unlocked()) render(); else gate(main, function () { render(); window.scrollTo(0, 0); });

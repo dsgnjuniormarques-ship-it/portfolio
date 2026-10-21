@@ -85,8 +85,36 @@ window.SITE = {
         { n: "+10", label: "launch materials: video, sales materials, knowledge base articles and case studies" }
       ],
       sections: [
-        { type: "decision", heading: "Reframe the problem", text: "The team was focused on moving data from A to B. I ran a vision workshop with our PM and engineers to step back and ask a bigger question: how do we help marketers recover the signal they're losing? We left with new directions: showing data coverage, flagging missing fields, and connecting the data sent back to the conversions it helps attribute. The team left excited, because we were building something bigger.", image: { src: "", label: "Vision workshop", ratio: "4/3" } },
-        { type: "image", image: { src: "", label: "Full width · final UI flow", ratio: "21/9" } },
+        { type: "decision", heading: "Reframe the problem",
+          text: "We had 50 paying customers and a goal of 1,000 by next year. The team was focused on moving data from A to B, and incremental releases wouldn't get us there. So I designed and ran a vision workshop with our PM and engineers to step back and think bigger.",
+          steps: [
+            ["Ice breaker.", "It's 2040, and there's a museum exhibit called 'The Way We Worked in the 2020s'. What's in it?"],
+            ["Where we are now.", "50 customers, 1,000 to go. Setting the tone for what we could become."],
+            ["Reality map.", "What's holding us back, and where do we already shine?"],
+            ["Dreaming big.", "No constraints, no backlog."],
+            ["Inspiration wall.", "Patterns from other products worth stealing."],
+            ["A day in the life.", "A marketer's day once Activate is everything we believe it can be."],
+            ["One step closer.", "What can we do now to move toward 1,000 users?"]
+          ],
+          after: "Afterwards I used AI to turn the board into three artifacts: a list of feature gaps, a set of quotes from future users on how Activate changed their work, and a press release announcing our 1,000th customer. The team left excited, because we were building something bigger.",
+          carouselRatio: "16/10",
+          carousel: [
+            { src: "images/activate/ws-1-icebreaker.webp", label: "Ice breaker: Funnel in 2040" },
+            { src: "images/activate/ws-2-where-we-are.webp", label: "Where we are now: 50 customers, aiming for 1,000" },
+            { src: "images/activate/ws-3-reality-map.webp", label: "Reality map: what holds us back, and where we shine" },
+            { src: "images/activate/ws-4-inspiration.webp", label: "Inspiration wall: patterns from other products" },
+            { src: "images/activate/ws-5-day-in-life.webp", label: "A day in the life of a marketer using Activate" },
+            { src: "images/activate/ws-6-ai-artifacts.webp", label: "AI-made artifacts: feature gaps, future user quotes and a press release" }
+          ] },
+        { type: "decision", heading: "Design the vision, ship the slice",
+          text: ["From the workshop, I designed the vision for Activate: every offering in one place, from signals and audiences to customer journeys and data quality, with AI built into the flow instead of sitting beside it. Funnel AI opens next to the signal you're creating and already knows the context.",
+                 "What we released was a slimmed-down version. It kept the same design for the core elements but left AI out. Building it would have needed the whole company behind it, and it wasn't a company priority yet."],
+          carouselRatio: "2000/1271",
+          carousel: [
+            { src: "images/activate/vision-1-signal.webp", label: "Creating a signal: destination, field mapping and sensible defaults" },
+            { src: "images/activate/vision-2-ai.webp", label: "Funnel AI in context, right next to the setup" },
+            { src: "images/activate/vision-3-preview.webp", label: "Data preview: see exactly what gets sent before you send it" }
+          ] },
         { type: "decision", heading: "Design for the parts we didn't own", text: "Each of the 7 ad platforms has its own rules, and part of the job, tracking, happens outside Funnel. We couldn't build all of it. So I removed every bit of friction I could inside the product, and created guides that helped customers feel confident doing the rest.", image: { src: "", label: "Platform setup flow", ratio: "4/3" } },
         { type: "video", youtube: "J1AJcvoiaQQ", label: "Activate explained" },
         { type: "decision", heading: "Validate with every release", text: "We worked with design partners from the start. Every meaningful update went in front of 1 to 3 customers, about 15 conversations in total. I also explored how AI could live inside the workflow instead of beside it. That concept, Data Chats, went on to shape Funnel's wider AI offering.", image: { src: "", label: "Data Chats concept", ratio: "4/3" } }
