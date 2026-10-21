@@ -63,7 +63,7 @@ window.SITE = {
       year: "2025",
       line: "Building a 0 to 1 product to solve signal loss for marketers",
       tags: ["0 to 1", "B2B SaaS", "Integrations"],
-      thumb: { src: "images/activate/thumb.webp", label: "Creating a Google Ads signal in Activate" },
+      thumb: { src: "images/activate/thumb.webp", label: "Field mapping and advanced settings in Activate" },
       title: "Activate.",
       subtitle: "Building a 0 to 1 product to solve signal loss for marketers.",
       context: ["Funnel", "Launched 2025", "About a year", "Product Designer", "1 PM · 4 engineers"],
