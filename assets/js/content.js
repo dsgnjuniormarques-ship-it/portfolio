@@ -190,8 +190,8 @@ window.SITE = {
       summary: ["I started this because I wanted Funnel to feel more delightful to use. Our brand had a strong visual identity, but very little of it reached the product. Empty states and system messages felt like dead ends instead of next steps.",
         "I did it with my left hand, alongside other projects, and with a brand toolkit of little more than circles and squares. So motion became the way to tell the story."],
       outcomes: [
-        "17 animated illustrations: 7 for system feedback, 10 for empty states",
-        "Two empty state components and an empty states page in our design system",
+        "15 animated empty state illustrations: 6 for system feedback, 9 for feature introduction",
+        "An empty states page in our design system, built around 2 components",
         "PRs to every team, so the new components are live across the product",
         "Scaffolding that lets a future brand or illustration change roll out from one place"
       ],
@@ -199,10 +199,10 @@ window.SITE = {
         { src: "images/illustration/docs.mp4", poster: "images/illustration/docs.jpg", label: "The illustration system as it lives today in our design system documentation", ratio: "1600/1004" }
       ],
       stats: [
-        { n: "17", label: "animated illustrations" },
+        { n: "15", label: "animated empty state illustrations" },
         { n: "7", label: "products studied, from Stripe to Duolingo" },
         { n: "~7", label: "teams that adopted the components" },
-        { n: "4", label: "illustration types defined" }
+        { n: "2", label: "design system components: system feedback and feature introduction" }
       ],
       sections: [
         { type: "decision", heading: "Study who does it best",
