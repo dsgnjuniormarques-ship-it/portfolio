@@ -309,7 +309,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,[tabindex]:focus-visibl
 .car-bar{display:flex;align-items:center;gap:12px;padding:0 10px}
 .car-cap{flex:1;margin:0;font-family:var(--hand);font-size:17px;color:var(--ink-3);line-height:1.35}
 .car-n{font-family:var(--hand);font-size:17px;color:var(--ink-3);white-space:nowrap}
-.steps{margin:4px 0 0;padding:0;list-style:none;counter-reset:st;display:flex;flex-direction:column;gap:10px}
+.steps{margin:8px 0 6px;padding:0;list-style:none;counter-reset:st;display:flex;flex-direction:column;gap:18px}
 .steps li{counter-increment:st;position:relative;padding-left:40px;font-size:16px;line-height:1.5}
 .steps li::before{content:counter(st);position:absolute;left:0;top:-1px;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-family:var(--hand);font-size:16px;border:2px solid var(--ink);border-radius:50% 45% 52% 48%/48% 52% 46% 54%}
 @media (max-width:640px){.car-bar{flex-wrap:wrap}.car-cap{flex-basis:100%;order:3}}

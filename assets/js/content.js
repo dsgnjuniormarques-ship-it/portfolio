@@ -66,7 +66,7 @@ window.SITE = {
       thumb: { src: "images/activate/thumb.webp", label: "Field mapping and advanced settings in Activate" },
       title: "Activate.",
       subtitle: "Building a 0 to 1 product to solve signal loss for marketers.",
-      context: ["Funnel", "Launched 2025", "About a year", "Product Designer", "1 PM · 4 engineers"],
+      context: ["Funnel", "Launched 2025", "Product Designer", "1 PM · 4 engineers"],
       summary: "With cookies disappearing and privacy rules like GDPR, tracking a customer journey online has never been harder. Ad platforms lose sight of which campaigns actually drive conversions, so marketers spend without knowing what works. Activate sends conversion data back to platforms like Google, Meta and LinkedIn automatically, so they can attribute and optimize based on real business outcomes.",
       outcomes: [
         "Integrations with 7 platforms: Google Ads, Meta, LinkedIn, Microsoft, TikTok, Snapchat and Pinterest",
