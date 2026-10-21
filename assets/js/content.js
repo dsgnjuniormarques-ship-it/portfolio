@@ -389,6 +389,7 @@ window.SITE = {
 
   // ---------- ABOUT ----------
   about: {
+    photo: "images/about/me.webp",
     video: "",          // e.g. "images/about/me.mp4"
     videoPoster: "",    // e.g. "images/about/me.jpg"
     why: "I started designing before I knew the word for it. At 14, working in the same restaurant kitchen as my mom, I refused to just throw lettuce in a bowl. Every container was a canvas, and I loved watching people smile at their salads. Years later, a scholarship to study advertising showed me that what I loved was bigger than visuals: crafting a message that makes people feel something and see the world a little differently. That's still why I design.",

@@ -422,20 +422,12 @@
         '<section class="skills" aria-label="Skills"><div class="seg" role="group" aria-label="Skill type"><button type="button" aria-pressed="true" data-mode="hard">Hard skills</button><button type="button" aria-pressed="false" data-mode="soft">Soft skills</button></div>' +
           '<div class="radar" data-radar></div><p class="note">Rated by me, 0 to 5</p></section>' +
         '<figure class="fig portrait">' + frame('bold') +
-          (A.video ? '<video class="media" src="' + esc(A.video) + '"' + (A.videoPoster ? ' poster="' + esc(A.videoPoster) + '"' : '') + ' autoplay muted loop playsinline></video>' : '<div class="ph">Video · me, looking at the camera</div>') +
+          (A.photo && !A.video ? '<img class="media" src="' + esc(A.photo) + '" alt="Evaldo Marques">' : A.video ? '<video class="media" src="' + esc(A.video) + '"' + (A.videoPoster ? ' poster="' + esc(A.videoPoster) + '"' : '') + ' autoplay muted loop playsinline></video>' : '<div class="ph">Video · me, looking at the camera</div>') +
         '</figure>' +
         '<section class="why"><span class="lbl">Why I design</span><p class="body">' + esc(A.why) + '</p>' + tags(A.facts) +
           '<p class="note" style="font-size:16px;margin-top:10px">Tools I reach for</p>' +
           '<div class="tags">' + A.tools.map(function (t) { return '<span class="tag" style="font-family:var(--sans);font-size:14px;font-weight:500">' + esc(t) + '</span>'; }).join('') + '</div></section>' +
-      '</div>' +
-      '<section class="tl" aria-label="Timeline"><div class="head"><div style="display:flex;flex-direction:column;gap:8px"><span class="lbl" style="font-size:22px">Timeline</span><h2>' + esc(A.timelineTitle) + '</h2></div>' +
-        '<div class="ctl"><span class="note" style="font-size:15px">Scroll, drag or use the arrows</span><button class="ibtn" type="button" data-tl="-1" aria-label="Earlier moments">' + I.prev + '</button><button class="ibtn" type="button" data-tl="1" aria-label="Later moments">' + I.next + '</button></div></div>' +
-        '<div class="track" tabindex="0" role="region" aria-label="Life and career timeline"><div class="inner">' +
-          A.timeline.map(function (m) {
-            return '<article class="moment"><svg class="sk px ln" viewBox="0 0 290 20" preserveAspectRatio="none" aria-hidden="true"><path d="M0,10 C70,7 140,13 210,9 C240,8 265,11 290,10"/></svg><span class="pt" aria-hidden="true"></span>' +
-              '<span class="y">' + esc(m.year) + '</span><h3>' + esc(m.title) + '</h3><p>' + esc(m.text) + '</p></article>';
-          }).join('') +
-        '</div></div></section>';
+      '</div>';
 
     // radar
     var box = main.querySelector('[data-radar]');
@@ -462,23 +454,6 @@
     mobile.addEventListener && mobile.addEventListener('change', draw);
     draw();
 
-    // timeline: wheel scrolls sideways first, then the page; drag; arrows
-    var track = main.querySelector('.track');
-    track.addEventListener('wheel', function (e) {
-      if (mobile.matches || Math.abs(e.deltaX) > Math.abs(e.deltaY)) return;
-      var max = track.scrollWidth - track.clientWidth;
-      if ((e.deltaY > 0 && track.scrollLeft < max - 1) || (e.deltaY < 0 && track.scrollLeft > 0)) {
-        e.preventDefault();
-        track.scrollLeft += e.deltaY;
-      }
-    }, { passive: false });
-    var down = false, sx = 0, sl = 0;
-    track.addEventListener('pointerdown', function (e) { if (e.pointerType !== 'mouse' || mobile.matches) return; down = true; sx = e.clientX; sl = track.scrollLeft; track.classList.add('drag'); });
-    window.addEventListener('pointermove', function (e) { if (down) track.scrollLeft = sl - (e.clientX - sx); });
-    window.addEventListener('pointerup', function () { down = false; track.classList.remove('drag'); });
-    main.querySelectorAll('[data-tl]').forEach(function (b) {
-      b.addEventListener('click', function () { track.scrollBy({ left: +b.getAttribute('data-tl') * 600, behavior: 'smooth' }); });
-    });
   }
 
   /* ---------- boot ---------- */

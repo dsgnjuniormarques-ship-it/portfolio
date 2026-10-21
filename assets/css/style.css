@@ -100,7 +100,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,[tabindex]:focus-visibl
 .card{display:flex;flex-direction:column;gap:12px}
 .card .fig{position:relative;padding:10px;display:block}
 .card .fig .ph,.card .fig img{aspect-ratio:4/3}
-.lock{position:absolute;top:20px;right:20px;display:inline-flex;align-items:center;gap:6px;padding:4px 10px;background:var(--paper);border:1.5px solid var(--ink);border-radius:var(--wobble);font-family:var(--hand);font-size:14px}
+.lock{position:absolute;bottom:20px;right:20px;display:inline-flex;align-items:center;gap:6px;padding:4px 10px;background:var(--paper);border:1.5px solid var(--ink);border-radius:var(--wobble);font-family:var(--hand);font-size:14px}
 .card h3{margin:4px 0 0;font-size:22px;font-weight:600;line-height:1.2}
 .card .meta{margin:0;font-family:var(--hand);font-size:16px;color:var(--ink-3)}
 .card .line{margin:0;font-size:15px;line-height:1.5;color:var(--ink-2)}
@@ -344,3 +344,4 @@ a:focus-visible,button:focus-visible,input:focus-visible,[tabindex]:focus-visibl
 .fig.scrollfig,.clean .fig.scrollfig{max-height:min(640px,70vh);overflow-y:auto}
 /* home: borderless 'Check it out' */
 .card .btn{border:0;padding-left:4px;padding-right:4px;background:transparent}
+.portrait img.media{aspect-ratio:3/4;object-fit:cover;object-position:center 30%}
