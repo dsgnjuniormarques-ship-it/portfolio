@@ -140,28 +140,27 @@ window.SITE = {
       thumb: { src: "", label: "Thumbnail · 4:3" },
       title: "Marketing Reporting.",
       subtitle: "Rethinking how people build dashboards, with AI and on their own.",
-      context: ["Funnel", "2026, in progress", "Lead designer on Reporting", "2 PMs · 3 engineers"],
-      summary: "Funnel wants to become an AI-native company. For dashboards, used by around half of our customers, that meant AI couldn't be a band-aid on top of complex features. The whole experience of building a dashboard had to be reimagined, and my job was to lead that.",
+      context: ["Funnel", "2026, in progress", "Lead designer on Reporting", "1 PM · 3 engineers"],
+      summary: "Almost 50% of Funnel customers use dashboards, and they get real value from them. But building one hasn't kept up with what people expect today. Funnel wants to become AI-native, and on a small team with plenty of competing priorities, I'm leading an effort to rethink the experience, grounded in customer feedback and usability best practices.",
       outcomes: [
-        "A working prototype that aligned the team on one direction",
-        "First releases: a new right panel, a facelift for edit mode, and the first AI and human interactions",
-        "Gradual releases, so customers get value along the way",
-        "Next: a chart visualization library shared across dashboards, Funnel AI and Measurement"
+        "A working prototype of the vision: AI built into the product, UX improvements and small moments of delight",
+        "A presentation explaining the concept of AI in dashboards",
+        "Low-hanging improvements now prioritized with the team and validated with customers, to decide what to build first"
       ],
       heroImages: [
-        { src: "", label: "Hero · the new dashboard builder", ratio: "16/10" },
-        { src: "images/reporting/current.mp4", poster: "images/reporting/current.jpg", label: "Today's experience: building a dashboard in Funnel", ratio: "1600/1002" }
+        { src: "images/reporting/current.mp4", poster: "images/reporting/current.jpg", label: "The current experience: customers get real value from it, and now it's time to make it delightful", ratio: "1600/1002" }
       ],
       stats: [
         { n: "~50%", label: "of Funnel customers use dashboards" },
-        { n: "4", label: "pain points that kept coming back" },
-        { n: "3", label: "first releases, shipped gradually" }
+        { n: "5", label: "people on the team: 3 engineers, 1 PM and me" }
       ],
       sections: [
         { type: "decision", heading: "Listen at scale", text: "I pulled signals from our user-needs channel, customer-facing teams, recorded customer calls, PMs' conversations with customers, and senior engineers who had worked on the product for years. The same themes kept coming back: dashboards look outdated, it's not clear if you're editing or viewing, people want more control over the look, and exploring data feels like something might break.", image: { src: "", label: "Research synthesis", ratio: "4/3" } },
-        { type: "decision", heading: "Put AI inside the flow, not on top of it", text: "Users can change a dashboard with natural language, and see exactly what changed. The person stays in control, and AI does the heavy lifting.", image: { src: "", label: "AI and human interactions", ratio: "4/3" } },
-        { type: "image", image: { src: "", label: "Clip · the prototype (30 to 45 s)", ratio: "16/9" } },
-        { type: "decision", heading: "Prototype the future to align the present", text: "I built a working prototype in Claude Design to show today's experience next to where we're going. It turned a long list of complaints into one shared picture the team could rally around.", image: { src: "", label: "Prototype in Claude Design", ratio: "4/3" } }
+        { type: "decision", heading: "Prototype the vision",
+          text: "The prototype is our current vision for dashboards. It brings three things together: AI features built into the product, UX improvements to everyday tasks, and micro-interactions that add small moments of delight.",
+          after: "It also surfaced a lot of smaller, low-hanging fruit. We're prioritizing those together as a team and validating them with customers, so we build what matters most first. Go ahead, click around.",
+          prototype: { src: "prototypes/reporting-vision.html", label: "The dashboards vision: a clickable prototype made in Claude Design", w: 1440, h: 900 } },
+        { type: "decision", heading: "Put AI inside the flow, not on top of it", text: "Alongside the prototype, I made a presentation to explain the concept of AI in dashboards. Users change a dashboard with natural language and see exactly what changed. The person stays in control, and AI does the heavy lifting.", image: { src: "", label: "AI in dashboards presentation", ratio: "4/3" } }
       ],
       learned: "A prototype people can click ends debates faster than any slide."
     },

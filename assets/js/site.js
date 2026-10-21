@@ -331,6 +331,14 @@
         var text = '<div class="col-text dec"><span class="num">' + ('0' + n).slice(-2) + '</span><h2>' + esc(s.heading) + '</h2>' + paras(s.text) +
           (s.steps ? '<ol class="steps">' + s.steps.map(function (st) { return '<li><b>' + esc(st[0]) + '</b>' + (st[1] ? ' ' + esc(st[1]) : '') + '</li>'; }).join('') + '</ol>' : '') +
           paras(s.after) + '</div>';
+        if (s.prototype) {
+          var pr = s.prototype;
+          return '<section class="row stack">' + text +
+            '<div class="proto"><figure class="fig">' + frame('bold') +
+              '<div class="proto-box" style="aspect-ratio:' + (pr.w || 1440) + '/' + (pr.h || 900) + '"><iframe src="' + esc(pr.src) + '" title="' + esc(pr.label || 'Prototype') + '" loading="lazy" width="' + (pr.w || 1440) + '" height="' + (pr.h || 900) + '"></iframe></div>' +
+            '</figure><div class="car-bar"><p class="car-cap">' + esc(pr.label || '') + '</p><a class="lnk marker" href="' + esc(pr.src) + '" target="_blank" rel="noopener">Open full screen ' + I.arrow + '</a></div></div>' +
+          '</section>';
+        }
         if (s.carousel) {
           s.carousel.ratio = s.carouselRatio;
           return '<section class="row stack">' + text + carousel(s.carousel, s.heading) + '</section>';
@@ -354,6 +362,11 @@
         '<section class="learned"><span class="lbl">What I learned</span><p>' + esc(c.learned) + '</p></section>' +
         '<a class="next" href="case-study.html?p=' + nx.slug + '"><small>Next project</small><span>' + esc(nx.name) + ' ' + ARROW_R + '</span></a>';
       initCarousels(main);
+      main.querySelectorAll('.proto-box').forEach(function (box) {
+        var f = box.querySelector('iframe'), w = +f.getAttribute('width');
+        function fit() { f.style.transform = 'scale(' + (box.clientWidth / w) + ')'; }
+        fit(); if (window.ResizeObserver) new ResizeObserver(fit).observe(box); else window.addEventListener('resize', fit);
+      });
       drawOnScroll();
     }
     if (unlocked()) render(); else gate(main, function () { render(); window.scrollTo(0, 0); });
