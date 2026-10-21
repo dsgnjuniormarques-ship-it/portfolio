@@ -82,7 +82,7 @@ window.SITE = {
         { n: "7", label: "ad platforms connected, from Google to Pinterest" },
         { n: "~15", label: "design partner sessions, 1 to 3 per release" },
         { n: "2", label: "cities on the launch tour: Boston and Stockholm" },
-        { n: "1", label: "launch video, cut into ads for 3 channels" }
+        { n: "+10", label: "launch materials: video, sales materials, knowledge base articles and case studies" }
       ],
       sections: [
         { type: "decision", heading: "Reframe the problem", text: "The team was focused on moving data from A to B. I ran a vision workshop with our PM and engineers to step back and ask a bigger question: how do we help marketers recover the signal they're losing? We left with new directions: showing data coverage, flagging missing fields, and connecting the data sent back to the conversions it helps attribute. The team left excited, because we were building something bigger.", image: { src: "", label: "Vision workshop", ratio: "4/3" } },
