@@ -182,20 +182,21 @@ window.SITE = {
       year: "2026",
       line: "Bringing the brand into the product, one empty state at a time",
       tags: ["Design systems", "Brand", "Motion"],
-      thumb: { src: "", label: "Thumbnail · 4:3" },
+      thumb: { src: "images/illustration/thumb.webp", label: "The illustration set in Figma" },
+      layout: "split",
       title: "Funnel Illustration System.",
       subtitle: "Translating our brand into the product to create delightful experiences.",
       context: ["Funnel", "2026", "Self-initiated", "With Creative Director, visual designer, staff designer, VP of Product"],
-      summary: "I started this because I wanted Funnel to feel more delightful to use. Our brand had a strong visual identity, but very little of it reached the product. Empty states and system messages felt like dead ends instead of next steps.",
+      summary: ["I started this because I wanted Funnel to feel more delightful to use. Our brand had a strong visual identity, but very little of it reached the product. Empty states and system messages felt like dead ends instead of next steps.",
+        "I did it with my left hand, alongside other projects, and with a brand toolkit of little more than circles and squares. So motion became the way to tell the story."],
       outcomes: [
         "17 animated illustrations: 7 for system feedback, 10 for empty states",
-        "A reusable component for the pages where they live",
-        "Live in empty states across the product",
-        "Next: dashboard cards, onboarding flows and merchandise"
+        "Two empty state components and an empty states page in our design system",
+        "PRs to every team, so the new components are live across the product",
+        "Scaffolding that lets a future brand or illustration change roll out from one place"
       ],
       heroImages: [
-        { src: "", label: "Hero · illustrations in the product", ratio: "16/10" },
-        { src: "", label: "Research slide · benchmark", ratio: "16/9" }
+        { src: "images/illustration/docs.mp4", poster: "images/illustration/docs.jpg", label: "The illustration system as it lives today in our design system documentation", ratio: "1600/1004" }
       ],
       stats: [
         { n: "17", label: "animated illustrations" },
@@ -204,13 +205,31 @@ window.SITE = {
         { n: "4", label: "illustration types defined" }
       ],
       sections: [
-        { type: "decision", heading: "Study who does it best", text: "I broke down how 7 products use illustration: Stripe, Airtable, Mailchimp, Notion, Airbnb, Wise and Duolingo. The big lesson: in product, illustration isn't decoration. It needs a clear purpose, it shouldn't steal attention, and often a simple, muted illustration does more than the most beautiful piece.", image: { src: "", label: "Research slides", ratio: "4/3" } },
-        { type: "decision", heading: "Make illustrations tell the user something", text: "Every illustration should explain at a glance what's happening behind the scenes, carry the brand's feeling, and nudge people toward their next step. I defined four types: system feedback, feature introduction, empty state system feedback and empty state feature introduction.", image: { src: "", label: "Documentation · the four types", ratio: "4/3" } },
-        { type: "image", image: { src: "", label: "Full width · the illustration set", ratio: "21/9" } },
-        { type: "decision", heading: "Ship it as a system, not a set of pictures", text: "I designed and animated the illustrations in Figma and Claude Design. Then I built the components in our design system with Cursor, tested them on staging and published them. Finally, I worked with around 7 teams so they adopted the components in their own code.", image: { src: "", label: "Animated example (GIF or video)", ratio: "4/3" } }
+        { type: "decision", heading: "Study who does it best",
+          text: "I broke down how 7 products use illustration, from Stripe and Wise to Mailchimp and Duolingo, scoring each on onboarding, empty states, system feedback, conceptual and merchandising moments. I also audited what Funnel already had, and collected moments of delight from mobile apps. The big lesson: in product, illustration isn't decoration. It needs a clear purpose and shouldn't steal attention from the next step.",
+          carouselRatio: "16/9",
+          carousel: [
+            { src: "images/illustration/research-1-benchmark.webp", label: "Benchmark: 7 products scored across 5 types of illustration moments" },
+            { src: "images/illustration/research-2-wise.webp", label: "Wise: expressive visuals that never overpower the content" },
+            { src: "images/illustration/research-3-stripe.webp", label: "Stripe: illustration with restraint, but an unclear role at times" },
+            { src: "images/illustration/research-4-funnel-audit.webp", label: "Audit: how Funnel's brand already showed up in and around the product" },
+            { src: "images/illustration/research-5-delight.webp", label: "Moments of delight: celebrations and confirmations from mobile apps" }
+          ] },
+        { type: "decision", heading: "Tell the story with motion",
+          text: ["Our brand guidelines gave me circles and squares, and not much else. So instead of drawing more, I let movement carry the meaning. I used Claude Design to flesh out concepts and motion: Connect shows the data hub growing as more data flows in. Not found shows the system searching and coming back empty-handed. Empty tells you there's nothing here yet.",
+                 "Every illustration explains at a glance what's happening behind the scenes, carries the brand's feeling and nudges people toward their next step."],
+          image: { src: "images/illustration/figma-set.webp", label: "Success, Not found, Connect, Downloading data, Data share and No data", ratio: "2000/1267" } },
+        { type: "decision", heading: "Ship it as a system, not a set of pictures",
+          text: "I polished everything in Figma, took it back to Claude for cleaner design and motion, then used Cursor to build it into our design system. I created two components, empty state system feedback and empty state feature introduction, plus an empty states page where teams pick the one that fits their use case and the illustration that tells their story best. Then I opened the PRs and made sure every team updated their pages.",
+          carouselRatio: "2000/589",
+          carousel: [
+            { src: "images/illustration/product-dashboards.webp", label: "Feature introduction: dashboards" },
+            { src: "images/illustration/product-data-requests.webp", label: "Feature introduction: data requests" },
+            { src: "images/illustration/product-chat-history.webp", label: "System feedback: no chats yet" }
+          ] }
       ],
       quote: { text: "You did not only solve one empty state. You started thinking about how illustrations should work across Funnel as a system.", by: "My manager" },
-      learned: "Delight is a system decision. One beautiful screen is a moment, a shared component is a standard."
+      learned: "I learned to balance design excellence with the time I actually had, and that real value for users doesn't have to wait for perfect. Also: being designer, developer and PM at the same time is hard. Fun, but hard."
     },
     {
       slug: "solutions-hub",
