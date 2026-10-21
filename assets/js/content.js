@@ -138,10 +138,12 @@ window.SITE = {
       line: "Rethinking how people build dashboards, with AI and on their own",
       tags: ["AI", "Data visualization", "Redesign"],
       thumb: { src: "", label: "Thumbnail · 4:3" },
+      layout: "split",
       title: "Marketing Reporting.",
       subtitle: "Rethinking how people build dashboards, with AI and on their own.",
       context: ["Funnel", "2026, in progress", "Lead designer on Reporting", "1 PM · 3 engineers"],
-      summary: "Almost 50% of Funnel customers use dashboards, and they get real value from them. But building one hasn't kept up with what people expect today. Funnel wants to become AI-native, and on a small team with plenty of competing priorities, I'm leading an effort to rethink the experience, grounded in customer feedback and usability best practices.",
+      summary: ["Almost 50% of Funnel customers use dashboards, and they get real value from them. But building one hasn't kept up with what people expect today, and Funnel wants to become AI-native.",
+        "We're a small team with plenty of competing priorities. So I'm leading an effort to rethink the experience, grounded in customer feedback and usability best practices, and to show where it could go."],
       outcomes: [
         "A working prototype of the vision: AI built into the product, UX improvements and small moments of delight",
         "A presentation explaining the concept of AI in dashboards",
@@ -160,9 +162,9 @@ window.SITE = {
           text: "The prototype is our current vision for dashboards. It brings three things together: AI features built into the product, UX improvements to everyday tasks, and micro-interactions that add small moments of delight.",
           after: "It also surfaced a lot of smaller, low-hanging fruit. We're prioritizing those together as a team and validating them with customers, so we build what matters most first. Go ahead, click around.",
           prototype: { src: "prototypes/reporting-vision.html", label: "The dashboards vision: a clickable prototype made in Claude Design", w: 1440, h: 900 } },
-        { type: "decision", heading: "Put AI inside the flow, not on top of it", text: "Alongside the prototype, I made a presentation to explain the concept of AI in dashboards. Users change a dashboard with natural language and see exactly what changed. The person stays in control, and AI does the heavy lifting.", image: { src: "", label: "AI in dashboards presentation", ratio: "4/3" } }
+        { type: "decision", heading: "Frame the conversation", text: ["The prototype touched much more than AI. So before each session, I used a short presentation to align stakeholders on what it was about, and what we should focus on that day. When the work goes beyond the brief, framing the discussion is what keeps it useful.", "And going beyond the brief is often the point. People experience a product as a whole, so designing only the piece you were asked for rarely wins."], image: { src: "", label: "Alignment presentation", ratio: "4/3" } }
       ],
-      learned: "A prototype people can click ends debates faster than any slide."
+      learned: "Still in progress, but it's already changing how I think. AI isn't a feature, it's a mindset. It sets a different tone, and it's a different game."
     },
     {
       slug: "illustration-system",

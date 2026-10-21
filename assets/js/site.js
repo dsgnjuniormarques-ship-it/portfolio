@@ -334,9 +334,9 @@
         if (s.prototype) {
           var pr = s.prototype;
           return '<section class="row stack">' + text +
-            '<div class="proto"><figure class="fig">' + frame('bold') +
+            '<div class="proto bleed">' +
               '<div class="proto-box" style="aspect-ratio:' + (pr.w || 1440) + '/' + (pr.h || 900) + '"><iframe src="' + esc(pr.src) + '" title="' + esc(pr.label || 'Prototype') + '" loading="lazy" width="' + (pr.w || 1440) + '" height="' + (pr.h || 900) + '"></iframe></div>' +
-            '</figure><div class="car-bar"><p class="car-cap">' + esc(pr.label || '') + '</p><a class="lnk marker" href="' + esc(pr.src) + '" target="_blank" rel="noopener">Open full screen ' + I.arrow + '</a></div></div>' +
+            '<div class="car-bar"><p class="car-cap">' + esc(pr.label || '') + '</p><a class="lnk marker" href="' + esc(pr.src) + '" target="_blank" rel="noopener">Open full screen ' + I.arrow + '</a></div></div>' +
           '</section>';
         }
         if (s.carousel) {
@@ -348,6 +348,15 @@
       }).join('');
       main.innerHTML =
         '<div style="display:flex;flex-direction:column;gap:32px"><a class="lnk marker back" href="index.html#work">' + ARROW_L + 'Back to work</a>' +
+        (c.layout === 'split' ?
+        '<div class="row top split">' +
+          '<div class="col-text" style="gap:28px">' + tags(c.context) + '<h1 class="cs-title">' + esc(c.title) + '<small>' + esc(c.subtitle) + '</small></h1></div>' +
+          '<div class="col-text" style="gap:28px">' +
+            '<div style="display:flex;flex-direction:column;gap:10px"><span class="lbl">Summary</span>' + [].concat(c.summary).map(function (x) { return '<p class="p">' + esc(x) + '</p>'; }).join('') + '</div>' +
+            '<div style="display:flex;flex-direction:column;gap:12px"><span class="lbl">Outcomes</span><ul class="ol">' + c.outcomes.map(function (o) { return '<li>' + esc(o) + '</li>'; }).join('') + '</ul></div>' +
+          '</div>' +
+        '</div></div>' +
+        c.heroImages.map(function (im) { return '<div class="car">' + fig(im, 'wide') + '<div class="car-bar"><p class="car-cap">' + esc(im.label || '') + '</p></div></div>'; }).join('') :
         '<div class="row top">' +
           '<div class="col-text" style="gap:28px">' + tags(c.context) +
             '<h1 class="cs-title">' + esc(c.title) + '<small>' + esc(c.subtitle) + '</small></h1>' +
@@ -355,7 +364,7 @@
             '<div style="display:flex;flex-direction:column;gap:12px"><span class="lbl">Outcomes</span><ul class="ol">' + c.outcomes.map(function (o) { return '<li>' + esc(o) + '</li>'; }).join('') + '</ul></div>' +
           '</div>' +
           '<div class="col-img">' + c.heroImages.map(function (im, k) { return fig(im, 'bold', k ? 'offset' : ''); }).join('') + '</div>' +
-        '</div></div>' +
+        '</div></div>') +
         '<div class="stats">' + c.stats.map(function (s) { return '<div class="stat">' + frame('wide', 'draw thin') + '<span class="lbl">' + esc(s.n) + '</span><span>' + esc(s.label) + '</span></div>'; }).join('') + '</div>' +
         body +
         (c.quote ? '<blockquote class="pull">“' + esc(c.quote.text) + '”<cite>' + esc(c.quote.by) + '</cite></blockquote>' : '') +

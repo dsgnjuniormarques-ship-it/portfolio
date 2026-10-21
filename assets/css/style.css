@@ -319,3 +319,9 @@ a:focus-visible,button:focus-visible,input:focus-visible,[tabindex]:focus-visibl
 .proto-box{position:relative;overflow:hidden;background:#fff;width:100%}
 .proto-box iframe{position:absolute;top:0;left:0;border:0;transform-origin:0 0;background:#fff}
 .proto .lnk{white-space:nowrap}
+.proto.bleed{width:min(calc(100vw - 48px),1600px);margin-left:calc(50% - min(calc(50vw - 24px),800px))}
+.proto-box{border:1.5px solid #DADADA;border-radius:16px}
+.proto.bleed .car-bar{padding:0 4px}
+.row.top.split .col-text:first-child{flex:1 1 420px}
+.row.top.split .col-text:last-child{flex:1 1 460px;padding-top:6px}
+@media (max-width:640px){.proto.bleed{width:calc(100vw - 32px);margin-left:calc(50% - 50vw + 16px)}}
