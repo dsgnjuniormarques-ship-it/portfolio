@@ -63,7 +63,7 @@ window.SITE = {
       year: "2025",
       line: "Building a 0 to 1 product to solve signal loss for marketers",
       tags: ["0 to 1", "B2B SaaS", "Integrations"],
-      thumb: { src: "", label: "Thumbnail · 4:3" },
+      thumb: { src: "images/activate/thumb.webp", label: "Creating a Google Ads signal in Activate" },
       title: "Activate.",
       subtitle: "Building a 0 to 1 product to solve signal loss for marketers.",
       context: ["Funnel", "Launched 2025", "About a year", "Product Designer", "1 PM · 4 engineers"],
@@ -75,8 +75,8 @@ window.SITE = {
         "Featured in a YouTube video, later cut into ads for LinkedIn, Facebook and Instagram"
       ],
       heroImages: [
-        { src: "", label: "Hero image · final Activate UI", ratio: "16/10" },
-        { src: "", label: "Early 0 to 1 exploration", ratio: "16/9" }
+        { src: "images/activate/hero.webp", label: "Final UI: creating a Google Ads signal, with Funnel AI in context", ratio: "2000/1271" },
+        { src: "images/activate/sketch.webp", label: "Early exploration: the same screen as a sketch, questions and all", ratio: "2000/914" }
       ],
       stats: [
         { n: "7", label: "ad platforms connected, from Google to Pinterest" },
