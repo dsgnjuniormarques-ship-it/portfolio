@@ -321,7 +321,7 @@
     var c = list[idx], nx = list[(idx + 1) % list.length];
     document.title = c.name + ' · ' + S.name;
     function render() {
-      main.className = 'wrap';
+      main.className = 'wrap' + (c.frames === 'clean' ? ' clean' : '');
       var n = 0;
       var body = c.sections.map(function (s) {
         if (s.type === 'image') return fig(s.image, 'wide');

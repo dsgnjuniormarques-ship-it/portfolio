@@ -320,8 +320,12 @@ a:focus-visible,button:focus-visible,input:focus-visible,[tabindex]:focus-visibl
 .proto-box iframe{position:absolute;top:0;left:0;border:0;transform-origin:0 0;background:#fff}
 .proto .btn{white-space:nowrap;flex:none}
 .proto.bleed{width:min(calc(100vw - 48px),1600px);margin-left:calc(50% - min(calc(50vw - 24px),800px))}
-.proto-box{border:1.5px solid #DADADA;border-radius:16px}
+.proto-box{border:3px solid #E1E1E1;border-radius:16px}
 .proto.bleed .car-bar{padding:0 4px}
 .row.top.split .col-text:first-child{flex:1 1 420px}
 .row.top.split .col-text:last-child{flex:1 1 460px;padding-top:6px}
 @media (max-width:640px){.proto.bleed{width:calc(100vw - 32px);margin-left:calc(50% - 50vw + 16px)}}
+/* clean frames (opt-in per case study) */
+.clean .fig{padding:0;border:3px solid #E1E1E1;border-radius:16px;overflow:hidden;background:#fff}
+.clean .fig > .sk.frame{display:none}
+.clean .car .fig{border-radius:16px}
