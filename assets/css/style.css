@@ -329,3 +329,18 @@ a:focus-visible,button:focus-visible,input:focus-visible,[tabindex]:focus-visibl
 .clean .fig{padding:0;border:4px solid #E1E1E1;border-radius:16px;overflow:hidden;background:#fff}
 .clean .fig > .sk.frame{display:none}
 .clean .car .fig{border-radius:16px}
+
+/* prev / next */
+.pn{display:flex;justify-content:space-between;align-items:flex-end;gap:32px;flex-wrap:wrap;margin-top:40px;width:100%}
+.pn .prev{align-self:auto;align-items:flex-start}
+.pn .prev span{text-align:left}
+.pn .next span{font-size:clamp(22px,2.4vw,34px)}
+@media (max-width:640px){.pn{flex-direction:column;align-items:stretch}.pn .next{align-self:flex-end}.pn .prev{align-self:flex-start}}
+/* captions under images */
+.capfig{display:flex;flex-direction:column;gap:10px;min-width:0}
+.capfig .car-cap{padding:0 4px}
+.sp .capfig.narrow{width:72%;align-self:center}.sp .capfig.narrow .fig{width:100%}
+/* scrollable tall image */
+.fig.scrollfig,.clean .fig.scrollfig{max-height:min(640px,70vh);overflow-y:auto}
+/* home: borderless 'Check it out' */
+.card .btn{border:0;padding-left:4px;padding-right:4px;background:transparent}

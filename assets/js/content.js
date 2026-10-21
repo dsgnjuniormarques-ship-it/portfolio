@@ -218,7 +218,7 @@ window.SITE = {
         { type: "decision", heading: "Tell the story with motion",
           text: ["Our brand guidelines gave me circles and squares, and not much else. So instead of drawing more, I let movement carry the meaning. I used Claude Design to flesh out concepts and motion: Connect shows the data hub growing as more data flows in. Not found shows the system searching and coming back empty-handed. Empty tells you there's nothing here yet.",
                  "Every illustration explains at a glance what's happening behind the scenes, carries the brand's feeling and nudges people toward their next step."],
-          image: { src: "images/illustration/figma-set.webp", label: "Success, Not found, Connect, Downloading data, Data share and No data", ratio: "2000/1267" } },
+          image: { src: "images/illustration/motion.mp4", poster: "images/illustration/motion.jpg", label: "The illustrations in motion", ratio: "1400/878" } },
         { type: "decision", heading: "Ship it as a system, not a set of pictures",
           text: "I polished everything in Figma, took it back to Claude for cleaner design and motion, then used Cursor to build it into our design system. I created two components, empty state system feedback and empty state feature introduction, plus an empty states page where teams pick the one that fits their use case and the illustration that tells their story best. Then I opened the PRs and made sure every team updated their pages.",
           carouselRatio: "2000/589",
@@ -239,6 +239,7 @@ window.SITE = {
       line: "Helping new users find value on their own, from the first click",
       tags: ["Product-led growth", "Onboarding", "Research"],
       thumb: { src: "images/solutions-hub/thumb.webp", label: "Onboarding: what type of business are you?" },
+      layout: "split",
       title: "Solutions Hub.",
       subtitle: "Designing for product-led growth.",
       context: ["Funnel", "2023", "Product Designer", "Product-led growth team"],
@@ -258,10 +259,10 @@ window.SITE = {
         { n: "40+", label: "slides of research synthesis" }
       ],
       sections: [
-        { type: "decision", heading: "Connect the website and the product", text: "I designed Solutions Hub, a library of ready-made solutions that links the website to the app. New users pick a use case, self-serve their way to a free account and start from something useful instead of a blank page.", image: { src: "images/solutions-hub/hub-top.webp", label: "Solutions Hub: pick a way to start, or a dashboard template", ratio: "784/700" } },
+        { type: "decision", heading: "Build the case with research", text: "We spent weeks gathering insights from marketing, customer success, partners, past interviews with agencies and benchmarks of other tools. The result was a 40+ slide synthesis that shaped the work." },
+        { type: "decision", heading: "Connect the website and the product", text: "I designed Solutions Hub, a library of ready-made solutions that links the website to the app. New users pick a use case, self-serve their way to a free account and start from something useful instead of a blank page.", image: { src: "images/solutions-hub/hub-page.webp", label: "The full Solutions Hub page", caption: "The full Solutions Hub page. Scroll inside to see it all.", ratio: "784/2576", scroll: true } },
         { type: "decision", heading: "Onboard people by who they are", text: "Agencies see and use Funnel differently from in-house marketers, even without extra benefits. So we designed tailored onboarding paths, with several simple ways to start seeing value.", image: { src: "images/solutions-hub/agencies.webp", label: "Agencies get offered assisted onboarding, not a sales call", ratio: "2000/1422" } },
-        { type: "image", image: { src: "images/solutions-hub/workspace.webp", label: "Agency path: set up the first client workspace", ratio: "2000/1422" } },
-        { type: "decision", heading: "Build the case with research", text: "We spent weeks gathering insights from marketing, customer success, partners, past interviews with agencies and benchmarks of other tools. The result was a 40+ slide synthesis that shaped the work.", image: { src: "", label: "Research slides", ratio: "4/3" } }
+        { type: "image", image: { src: "images/solutions-hub/workspace.webp", label: "Agency path: set up the first client workspace", ratio: "2000/1422" } }
       ],
       learned: "Personalizing an experience doesn't need new features. Sometimes it just needs a different first step."
     }
@@ -272,7 +273,7 @@ window.SITE = {
     {
       slug: "advanced-measurement", name: "Advanced Measurement", company: "Funnel", year: "2026",
       thumb: { src: "images/advanced-measurement/thumb.webp", label: "Media Plans overview" },
-      description: "Two months with the Hamburg team, at 25% of my time, to make our most premium product easier to use. I dug into marketing mix modeling and multi-touch attribution, simplified the UI and rebuilt the Media Plan flow around how marketers actually think, replacing data science lingo with marketer language.",
+      description: "A short, focused collaboration with the Hamburg team, at 25% of my time, to improve the UX and UI of our most premium product with little to no time. I simplified the UI and rebuilt the Media Plan flow around how marketers actually think, replacing data science lingo with marketer language. The feedback was so good the team asked me to stay, but other priorities ended the collaboration. It was a great chance to go deep on data science and data visualization.",
       quote: "Oh, right, of course. It makes so much more sense. Let's just build it.",
       quoteBy: "The Hamburg team",
       stats: [],
@@ -294,12 +295,12 @@ window.SITE = {
         { n: "−30%", label: "data-mismatch support tickets" },
         { n: "All", label: "connectors now use the new flow" }
       ],
-      tags: ["Integrations", "Usability", "Design culture"],
+      tags: ["Integrations", "Usability"],
       images: [
-        { src: "images/ga-connector/after-default.webp", label: "After: visible steps, and report types you can compare at a glance", ratio: "1440/1024" },
-        { src: "images/ga-connector/before-default.webp", label: "Before: one dropdown and a hidden list of defaults", ratio: "1230/570" },
-        { src: "images/ga-connector/before-manual.webp", label: "Before: manual setup", ratio: "1440/2525", pair: true },
-        { src: "images/ga-connector/after-manual.webp", label: "After: manual setup, with selected fields counted per group", ratio: "1300/2576", pair: true }
+        { src: "images/ga-connector/before-default.webp", label: "Before: one dropdown and a hidden list of defaults", caption: "Before the redesign: one dropdown and a hidden list of defaults", ratio: "1230/570" },
+        { src: "images/ga-connector/after-default.webp", label: "After: visible steps, and report types you can compare at a glance", caption: "After: visible steps, and report types you can compare at a glance", ratio: "1440/1024" },
+        { src: "images/ga-connector/before-manual.webp", label: "Before: manual setup", caption: "Before: manual setup, one long list", ratio: "1440/2525", pair: true },
+        { src: "images/ga-connector/after-manual.webp", label: "After: manual setup, with selected fields counted per group", caption: "After: manual setup, with selected fields counted per group", ratio: "1300/2576", pair: true }
       ]
     },
     {
@@ -317,7 +318,7 @@ window.SITE = {
     {
       slug: "alelo-design-system", name: "Alelo Design System", company: "Insidelink for Alelo", year: "2020–21",
       thumb: { src: "images/alelo-design-system/thumb.webp", label: "Alelo components" },
-      description: "I led the creation of Alelo's Figma design system: 15+ libraries audited and merged into around 300 shared components, for 10 products and 12 designers, in the middle of a rebrand. It's built in three layers: Core styles, Web components and Mobile components.",
+      description: "I led the creation of Alelo's Figma design system: 15+ libraries audited and merged into around 300 shared components, for 10 products and 12 designers, in the middle of a rebrand. We used atomic design principles to keep the structure scalable and consistent across every component.",
       stats: [
         { n: "~300", label: "shared components" },
         { n: "15+", label: "libraries audited and merged" },
@@ -334,7 +335,7 @@ window.SITE = {
     {
       slug: "livelo-crm", name: "Livelo CRM", company: "Dextra for Livelo", year: "2016–17",
       thumb: { src: "images/livelo-crm/thumb.webp", label: "Clube Livelo" },
-      description: "Livelo is Brazil's biggest loyalty program. We designed communication journeys across email, SMS and push for 6 card tiers from 2 banks, covering expiring points, new points, point balances, travel, shopping and experiences, plus seasonal moments like Black Friday and Christmas.",
+      description: "Livelo is Brazil's biggest loyalty program. I designed its communication journeys across email, SMS and push for 6 card tiers from 2 banks, covering expiring points, new points, point balances, travel, shopping and experiences, plus seasonal moments like Black Friday and Christmas. All in, I designed and crafted over 500 emails, SMS and push notifications. Once the structure was set and running, I moved on to the next challenge: paid ads and social.",
       stats: [
         { n: "3M+", label: "customers activated" },
         { n: "10×", label: "the daily email goal: 10 a day, not 1" },
@@ -349,9 +350,9 @@ window.SITE = {
       ]
     },
     {
-      slug: "livelo-campaigns", name: "Livelo Campaigns", company: "Livelo", year: "2017–19",
+      slug: "livelo-campaigns", name: "Livelo On and Off Campaigns", company: "Livelo", year: "2017–19",
       thumb: { src: "images/livelo-campaigns/thumb.webp", label: "Junte + pontos com muito mais liberdade" },
-      description: "A full brand redesign, plus nationwide campaigns across OOH, print, events and paid social for Brazil's biggest loyalty program.",
+      description: "Livelo ran like an e-commerce business: new campaigns every month, some of them huge, on top of brand initiatives and always-on campaigns, online and offline. I led design through it, with designers reporting to me and 2 agencies alongside us. I took the most urgent work myself and routed the rest across the team and agencies. I lost count of how many ads I designed, and kept that pace month after month.",
       stats: [],
       tags: ["Brand", "Campaigns", "OOH · Print", "Paid social"],
       images: [

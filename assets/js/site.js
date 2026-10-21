@@ -50,7 +50,15 @@
     return el;
   }
   function fig(img, kind, cls) {
-    return '<figure class="fig ' + (cls || '') + '">' + frame(kind || 'bold') + media(img, true) + '</figure>';
+    var f = '<figure class="fig ' + (cls || '') + (img && img.scroll ? ' scrollfig' : '') + '">' + frame(kind || 'bold') + media(img, true) + '</figure>';
+    if (img && img.caption) return '<div class="capfig ' + (cls || '') + '">' + f + '<p class="car-cap">' + esc(img.caption) + '</p></div>';
+    return f;
+  }
+  function prevNext(page, list, idx) {
+    var pv = list[(idx - 1 + list.length) % list.length], nx = list[(idx + 1) % list.length];
+    return '<nav class="pn" aria-label="More projects">' +
+      '<a class="next prev" href="' + page + '?p=' + pv.slug + '"><small>Previous project</small><span>' + ARROW_L + ' ' + esc(pv.name) + '</span></a>' +
+      '<a class="next" href="' + page + '?p=' + nx.slug + '"><small>Next project</small><span>' + esc(nx.name) + ' ' + ARROW_R + '</span></a></nav>';
   }
   function carousel(items, label) {
     var n = items.length;
@@ -370,7 +378,7 @@
         body +
         (c.quote ? '<blockquote class="pull">“' + esc(c.quote.text) + '”<cite>' + esc(c.quote.by) + '</cite></blockquote>' : '') +
         '<section class="learned"><span class="lbl">What I learned</span><p>' + esc(c.learned) + '</p></section>' +
-        '<a class="next" href="case-study.html?p=' + nx.slug + '"><small>Next project</small><span>' + esc(nx.name) + ' ' + ARROW_R + '</span></a>';
+        prevNext('case-study.html', list, idx);
       initCarousels(main);
       main.querySelectorAll('.proto-box').forEach(function (box) {
         var f = box.querySelector('iframe'), w = +f.getAttribute('width');
@@ -404,7 +412,7 @@
         tags(p.tags) +
       '</aside>' +
       '<div class="gallery">' + imgs.join('') +
-        '<a class="next" style="margin-top:40px" href="project.html?p=' + nx.slug + '"><small>Next project</small><span>' + esc(nx.name) + ' ' + ARROW_R + '</span></a></div>';
+        prevNext('project.html', list, idx) + '</div>';
   }
 
   function about(main) {
