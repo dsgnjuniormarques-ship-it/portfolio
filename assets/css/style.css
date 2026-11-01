@@ -1,7 +1,7 @@
 /* ===== Evaldo M. portfolio · sketchbook style ===== */
 :root{
   --ink:#1A1A1A; --ink-2:#666666; --ink-3:#666666;
-  --paper:#FFFFFF; --ph:#F2F2F0; --pink:#FF5FAE;
+  --paper:#FCFCFB; --ph:#F2F2F0; --pink:#FF5FAE;
   --hand:'Kalam',cursive; --head:'Mansalva','Kalam',cursive; --sans:'Instrument Sans',system-ui,sans-serif;
   --gutter:clamp(16px,4vw,48px);
   --wobble:255px 15px 225px 15px/15px 225px 15px 255px;
@@ -9,7 +9,7 @@
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
-body{margin:0;position:relative;background:radial-gradient(130% 95% at 50% 45%,#FFFFFF 52%,#F1F1EF 100%) fixed,var(--paper);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.5;min-height:100vh;display:flex;flex-direction:column}
+body{margin:0;position:relative;background:radial-gradient(130% 95% at 50% 45%,#FCFCFB 52%,#EEEEEC 100%) fixed,var(--paper);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.5;min-height:100vh;display:flex;flex-direction:column}
 img,video{max-width:100%;display:block}
 a{color:var(--ink)}
 mark{background:linear-gradient(transparent 58%,var(--pink) 58%,var(--pink) 92%,transparent 92%);color:inherit;padding:0 2px}
@@ -18,7 +18,7 @@ mark{background:linear-gradient(transparent 58%,var(--pink) 58%,var(--pink) 92%,
 main{flex:1}
 
 /* grain */
-body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:100;opacity:.4;background:url('../../images/bg/grain.png') 0 0/240px 240px repeat}
+body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:100;opacity:.48;background:url('../../images/bg/grain.png') 0 0/240px 240px repeat}
 
 /* sketch lines */
 .sk{overflow:visible;filter:url(#pencil);pointer-events:none}
@@ -347,7 +347,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,[tabindex]:focus-visibl
 .portrait img.media{aspect-ratio:3/4;object-fit:cover;object-position:center 30%}
 
 /* ===== 2026-11 refresh ===== */
-.site-header,.site-footer{background:rgba(255,255,255,.94);backdrop-filter:blur(6px)}
+.site-header,.site-footer{background:rgba(252,252,251,.94);backdrop-filter:blur(6px)}
 .rule{filter:none}.rule path{stroke:#E2E2E2;stroke-width:1.4}
 .sec-title{padding-bottom:4px}
 /* featured band */
