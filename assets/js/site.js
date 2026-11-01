@@ -107,7 +107,6 @@
     '<path d="M26 2 l8 16 18 3 -13 12 3 18 -16 -8 -16 8 3 -18 -13 -12 18 -3z"/>'
   ];
   function doodles() {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     var layer = document.createElement('div');
     layer.className = 'doodles'; layer.setAttribute('aria-hidden', 'true');
     document.body.appendChild(layer);
@@ -116,33 +115,24 @@
     function build() {
       var h = document.documentElement.scrollHeight, w = window.innerWidth;
       layer.style.height = h + 'px';
-      var want = Math.ceil(h / 520);
+      var want = Math.ceil(h / 300);
       while (built < want) {
-        var front = built % 3 === 2, svg = DOODLES[Math.floor(rnd() * DOODLES.length)];
+        var front = built % 4 === 3, svg = DOODLES[Math.floor(rnd() * DOODLES.length)];
         var el = document.createElement('div');
         el.className = 'dd ' + (front ? 'front' : 'back');
         var size = front ? 70 + rnd() * 70 : 140 + rnd() * 160;
         var left = rnd() < .5 ? rnd() * 22 : 74 + rnd() * 22;
         if (front) left = 6 + rnd() * 88;
-        el.style.cssText = 'top:' + (built * 520 + rnd() * 400) + 'px;left:' + left + '%;width:' + size + 'px;transform:rotate(' + ((rnd() - .5) * 30).toFixed(1) + 'deg)';
+        el.style.cssText = 'top:' + (built * 300 + rnd() * 260) + 'px;left:' + left + '%;width:' + size + 'px;transform:rotate(' + ((rnd() - .5) * 30).toFixed(1) + 'deg)';
         el.innerHTML = '<svg viewBox="-6 -6 270 190" preserveAspectRatio="xMidYMid meet" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">' + svg + '</svg>';
         el._speed = front ? -0.22 - rnd() * .12 : 0.18 + rnd() * .14;
         el._rot = el.style.transform;
         layer.appendChild(el); items.push(el); built++;
       }
     }
-    function move() {
-      var y = window.scrollY, vh = window.innerHeight;
-      items.forEach(function (el) {
-        var top = el.offsetTop - y;
-        if (top < -vh * 1.5 || top > vh * 2.5) return;
-        el.style.transform = 'translate3d(0,' + ((top - vh / 2) * el._speed).toFixed(1) + 'px,0) ' + el._rot;
-      });
-    }
+    function move() {}
     build(); move();
-    var raf = 0;
-    window.addEventListener('scroll', function () { if (!raf) raf = requestAnimationFrame(function () { raf = 0; move(); }); }, { passive: true });
-    window.addEventListener('resize', function () { build(); move(); });
+    window.addEventListener('resize', build);
     if (window.ResizeObserver) new ResizeObserver(function () { build(); move(); }).observe(document.body);
   }
 
@@ -349,16 +339,6 @@
           }
         }
       });
-      if (!reduce && !mobile.matches) pars.forEach(function (el) {
-        var r = el.getBoundingClientRect();
-        if (r.bottom < -200 || r.top > window.innerHeight + 200) return;
-        var d = (r.top + r.height / 2 - window.innerHeight / 2) / window.innerHeight;
-        el.style.transform = 'translateY(' + Math.max(-14, Math.min(14, d * -22)).toFixed(1) + 'px)';
-      });
-    }
-    if ('IntersectionObserver' in window && !reduce) {
-      var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }); }, { rootMargin: '0px 0px -8% 0px' });
-      pars.forEach(function (el) { el.classList.add('rise'); io.observe(el); });
     }
     var raf = 0;
     window.addEventListener('scroll', function () { if (!raf) raf = requestAnimationFrame(function () { raf = 0; tick(); }); }, { passive: true });
