@@ -514,14 +514,8 @@
           (A.photo && !A.video ? '<img class="media" src="' + esc(A.photo) + '" alt="Evaldo Marques">' : A.video ? '<video class="media" src="' + esc(A.video) + '"' + (A.videoPoster ? ' poster="' + esc(A.videoPoster) + '"' : '') + ' autoplay muted loop playsinline></video>' : '<div class="ph">Video · me, looking at the camera</div>') +
         '</figure>' +
         '<section class="why"><span class="lbl">Why I design</span><p class="body">' + esc(A.why) + '</p>' + tags(A.facts) +
-          '<p class="note" style="font-size:16px;margin-top:10px">Tools I reach for</p>' +
-          '<div class="tags">' + A.tools.map(function (t) { return '<span class="tag" style="font-family:var(--sans);font-size:14px;font-weight:500">' + esc(t) + '</span>'; }).join('') + '</div></section>' +
+          '<span class="lbl" style="margin-top:22px">' + esc(A.howTitle) + '</span>' + A.how.map(function (t) { return '<p class="body">' + esc(t) + '</p>'; }).join('') + '</section>' +
       '</div>' +
-      '<section class="skillbars" aria-label="Skills">' + [['Hard skills', A.hardSkills], ['Soft skills', A.softSkills]].map(function (g) {
-        return '<div class="sb-col"><h2 class="sb-h">' + g[0] + '</h2><ul>' + g[1].map(function (sk) {
-          return '<li><span class="sb-l">' + esc(sk[0]) + '</span><span class="sb-t" role="meter" aria-valuemin="0" aria-valuemax="10" aria-valuenow="' + sk[1] + '" aria-label="' + esc(sk[0]) + '"><i style="--v:' + (sk[1] * 10) + '%"></i></span></li>';
-        }).join('') + '</ul></div>';
-      }).join('') + '</section>' +
       people(S.home);
     initPeople(main);
   }

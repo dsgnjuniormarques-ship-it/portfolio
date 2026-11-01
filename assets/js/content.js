@@ -502,6 +502,12 @@ window.SITE = {
     why: "I started designing before I knew the word for it. At 14, working in the same restaurant kitchen as my mom, I refused to just throw lettuce in a bowl. Every container was a canvas, and I loved watching people smile at their salads. Years later, a scholarship to study advertising showed me that what I loved was bigger than visuals: crafting a message that makes people feel something and see the world a little differently. That's still why I design.",
     facts: ["From Brazil, based in Stockholm", "Portuguese and English", "BA in Advertising and Marketing", "12 years in design"],
     tools: ["Figma", "Claude Design", "Cursor", "Adobe Creative Suite", "Miro"],
+    howTitle: "How I work now",
+    how: [
+      "These days I start with the numbers and the people behind them. I dig into product data, sit in on customer calls and run workshops that get PMs, engineers and stakeholders dreaming in the same direction.",
+      "Then I make ideas real, fast. I prototype in Figma, Claude Design and Cursor, often in code, because a prototype people can click ends debates faster than any slide. I care about the craft of every screen, and I build the systems that let a team keep that quality.",
+      "Along the way I own the outcome, not just the design file, and I love helping other designers grow. Curiosity is what keeps me going: there's always a better way to tell the story."
+    ],
     hardSkills: [["Discovery and research", 7], ["Interaction design", 8], ["UI and visual design", 9], ["Design systems", 7], ["Prototyping (AI and code)", 10], ["Data-informed design", 10], ["Workshop facilitation", 10], ["Brand, illustration and motion", 8]],
     softSkills: [["Communication and storytelling", 9], ["Cross-functional collaboration", 8], ["Comfort with ambiguity", 7], ["Empathy and listening", 8], ["Stakeholder management", 9], ["Curiosity", 10], ["Ownership", 10], ["Mentoring", 10]],
     timelineTitle: "From a farm in Brazil to the blue line",
