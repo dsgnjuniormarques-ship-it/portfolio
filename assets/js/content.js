@@ -39,6 +39,9 @@ window.SITE = {
     featuredTitle: "Featured work",
     featuredArt: "",          // e.g. "images/lettering/featured-work.svg"
     otherTitle: "Other projects",
+    otherTitleAlt: "Eye candy",
+    questsTitle: "Side quests",
+    questsIntro: "Hiring challenges, hackathons, school projects and things I made for fun. Too good to stay in a drawer.",
     otherArt: "",
     peopleTitle: "People that love working with me",
     peopleArt: ""
@@ -265,6 +268,110 @@ window.SITE = {
     }
   ],
 
+  // ---------- SIDE QUESTS (fun, challenges, school) ----------
+  sideQuests: [
+    {
+      slug: "ai-hackathon", name: "A new home for Funnel", company: "Funnel AI hackathon",
+      description: "Three days, two developers, one PM and me, in the year AI exploded. We ran it like a design sprint around one question: what if the first thing you saw in Funnel wasn't settings, but what's happening in your business? I designed a home page that turns data into insights you can follow, pin and dig into, like a news feed for your marketing. It stayed a concept, but it was a great excuse to imagine Funnel with AI at its core.",
+      tags: ["Hackathon", "Design sprint", "AI"],
+      images: [
+        { src: "images/sq/hackathon/wire-1.webp", label: "First pass: data summary, activity and insights", ratio: "1440/1415" },
+        { src: "images/sq/hackathon/wire-2.webp", label: "Insights you follow", ratio: "1440/1084", pair: true },
+        { src: "images/sq/hackathon/wire-3.webp", label: "Insights as a news feed", ratio: "1440/1084", pair: true },
+        { src: "images/sq/hackathon/final-1.webp", label: "The home page, with a feed of insights per data source", ratio: "1800/1881" },
+        { src: "images/sq/hackathon/final-2.webp", label: "Opening an insight: new customer countries found", ratio: "1800/1881" }
+      ]
+    },
+    {
+      slug: "froot-loops", name: "Froot Loops", company: "Photography course",
+      description: "The brief: set up a breakfast table, shoot it and build a campaign from the pictures. We shot the photos as a team, and my creative partner and I took on the visual design and the copy. A cereal that's all about color deserved an explosion of it. \"How about starting your day with more color?\" Honestly, one of the most fun projects I've ever done.",
+      tags: ["Photography", "Art direction", "Copywriting"],
+      images: [
+        { src: "images/sq/frootloops/banner-wide.webp", label: "\"How about starting your day with more color?\"", ratio: "2000/667" },
+        { src: "images/sq/frootloops/banner.webp", label: "\"Only those who've tried it know what it's like to start the day with more color.\"", ratio: "2000/900" },
+        { src: "images/sq/frootloops/poster.webp", label: "Poster", ratio: "1400/1980", narrow: true }
+      ]
+    },
+    {
+      slug: "itchy", name: "Itchy", company: "Hiring challenge",
+      description: "Itchy makes skincare for people with eczema, and some of its products need a prescription. Until Itchy has its own dermatologists, my idea was to help people find a good one who prescribes what their skin actually needs, not what helps our sales. Starting with care builds trust, and once that relationship exists, people are more open to trying the rest of the range. I sketched the flow first, then designed a short survey that connects people with a dermatologist.",
+      tags: ["Hiring challenge", "E-commerce", "Health"],
+      images: [
+        { src: "images/sq/itchy/sketch-1.webp", label: "Sketch: the shop, with a path for people without a prescription", ratio: "1200/1793", pair: true },
+        { src: "images/sq/itchy/sketch-2.webp", label: "Sketch: the questions, step by step", ratio: "1200/1793", pair: true },
+        { src: "images/sq/itchy/survey-start.webp", label: "\"To help you find a dermatologist, we need to ask you some questions\"", ratio: "1440/820" },
+        { src: "images/sq/itchy/survey.webp", label: "The survey, one question at a time", ratio: "1440/2007" },
+        { src: "images/sq/itchy/products.webp", label: "Shop: buy now, or find a dermatologist first", ratio: "1440/2800" },
+        { src: "images/sq/itchy/done.webp", label: "Done: the dermatologist details arrive by email", ratio: "1440/1930" }
+      ]
+    },
+    {
+      slug: "planet9", name: "Planet 9", company: "Hiring challenge · Early 2021",
+      description: "The brief was the brandbook itself: create an identity for Planet 9, \"The New Earth\". So I let the planet introduce itself. Modern, colorful, simple yet complex, and a bit cheeky: \"What would you expect from a new planet, am I right?\" Logo, color, type and graphic elements, all in its own voice.",
+      tags: ["Brand identity", "Hiring challenge"],
+      images: [
+        { src: "images/sq/planet9/hey-you.webp", label: "\"Hey you! Nice to meet you, I am Planet 9.\"", ratio: "1800/1012" },
+        { src: "images/sq/planet9/logo.webp", label: "Logo, horizontal and negative versions", ratio: "1800/1012" },
+        { src: "images/sq/planet9/colors.webp", label: "\"Colors never been so cool\"", ratio: "1800/1012" },
+        { src: "images/sq/planet9/type.webp", label: "Typography", ratio: "1800/1012" },
+        { src: "images/sq/planet9/elements.webp", label: "Graphic elements", ratio: "1800/1012" }
+      ]
+    },
+    {
+      slug: "gloot", name: "Casual gaming tournaments", company: "Hiring challenge for G-Loot",
+      description: "The challenge: design a platform where casual gamers can jump into free tournaments. I started on paper, then built a small style guide with color, type, icons and components, and designed the landing page, the start page and a tournament page.",
+      tags: ["Gaming", "Hiring challenge", "UI"],
+      images: [
+        { src: "images/sq/gloot/sketch.webp", label: "Sketches: the landing page", ratio: "1440/2069", pair: true },
+        { src: "images/sq/gloot/icons.webp", label: "Sketches: icons and components", ratio: "1440/1969", pair: true },
+        { src: "images/sq/gloot/landing.webp", label: "Landing page", ratio: "1440/3305" },
+        { src: "images/sq/gloot/start.webp", label: "Start page: tournaments and teams", ratio: "1440/2153" },
+        { src: "images/sq/gloot/tournament.webp", label: "Tournament page", ratio: "1440/1431" }
+      ]
+    },
+    {
+      slug: "pringles", name: "Pringles, 1920s edition", company: "Packaging design course",
+      description: "What if Pringles had launched in the 1920s? An Art Deco take on the can, the label and the lid, with an aged texture and a mustache that fits right in.",
+      tags: ["Packaging", "Illustration"],
+      images: [
+        { src: "images/sq/pringles/can.webp", label: "The can", ratio: "1/1", pair: true },
+        { src: "images/sq/pringles/lid.webp", label: "The lid", ratio: "1/1", pair: true },
+        { src: "images/sq/pringles/label.webp", label: "The label", ratio: "1800/1579" }
+      ]
+    },
+    {
+      slug: "furiend", name: "FURiend", company: "Hiring challenge",
+      description: "Millions of animals are waiting in shelters and foster homes. The challenge was to help people find a pet that matches their lifestyle, considering breed, gender, age and health. A quick, fun one: 6 to 8 hours, from research to a mobile home screen that feels happy, vibrant and reliable.",
+      tags: ["Mobile", "Hiring challenge"],
+      images: [
+        { src: "images/sq/furiend/screen-1.webp", label: "Start", ratio: "375/640", trio: true },
+        { src: "images/sq/furiend/screen-2.webp", label: "Search", ratio: "375/640", trio: true },
+        { src: "images/sq/furiend/screen-3.webp", label: "Meet your new furiend", ratio: "375/650", trio: true }
+      ]
+    },
+    {
+      slug: "la-boca", name: "La Boca", company: "Agex, our university agency",
+      description: "At university, our agency Agex worked with real clients. La Boca, an Argentinian restaurant, wanted digital marketing and branding inside the restaurant that made the most of being Argentinian. The concept: bring customers closer to Argentina, so they learn about its culture and feel immersed in it, from tango and Buenos Aires to bife de chorizo and dulce de leche.",
+      tags: ["Branding", "Social", "Real client"],
+      images: [
+        { src: "images/sq/laboca/cover.webp", label: "La Boca", ratio: "1353/703" },
+        { src: "images/sq/laboca/tango.webp", label: "Posters: tango", ratio: "1600/2270", pair: true },
+        { src: "images/sq/laboca/buenos-aires.webp", label: "Posters: Buenos Aires", ratio: "1600/2270", pair: true },
+        { src: "images/sq/laboca/bife.webp", label: "Bife de chorizo", ratio: "1600/2270", pair: true },
+        { src: "images/sq/laboca/postcard.webp", label: "A postcard from Argentina", ratio: "1600/2270", pair: true },
+        { src: "images/sq/laboca/posts.webp", label: "Social posts", ratio: "1353/703" }
+      ]
+    },
+    {
+      slug: "like", name: "Like", company: "Campaign concept",
+      description: "Like was an agency specialized in executive presentations. To sell the campaign idea, I made this key visual: the same steak, served two ways. \"The presentation is the main course.\" The full campaign would repeat it across different images, with the same content and a completely different presentation. Because that's exactly what Like does.",
+      tags: ["Campaign", "Art direction"],
+      images: [
+        { src: "images/sq/like/key-visual.webp", label: "\"The presentation is the main course\"", ratio: "1600/1200" }
+      ]
+    }
+  ],
+
   // ---------- OTHER PROJECTS (public, the wall) ----------
   projects: [
     {
@@ -395,8 +502,8 @@ window.SITE = {
     why: "I started designing before I knew the word for it. At 14, working in the same restaurant kitchen as my mom, I refused to just throw lettuce in a bowl. Every container was a canvas, and I loved watching people smile at their salads. Years later, a scholarship to study advertising showed me that what I loved was bigger than visuals: crafting a message that makes people feel something and see the world a little differently. That's still why I design.",
     facts: ["From Brazil, based in Stockholm", "Portuguese and English", "BA in Advertising and Marketing", "12 years in design"],
     tools: ["Figma", "Claude Design", "Cursor", "Adobe Creative Suite", "Miro"],
-    hardSkills: [["Discovery and research", 3], ["Interaction design", 4], ["UI and visual design", 5], ["Design systems", 3], ["Prototyping (AI and code)", 5], ["Data-informed design", 4], ["Workshop facilitation", 3], ["Brand, illustration and motion", 4]],
-    softSkills: [["Communication and storytelling", 5], ["Cross-functional collaboration", 4], ["Comfort with ambiguity", 3], ["Empathy and listening", 5], ["Stakeholder management", 4], ["Curiosity", 5], ["Ownership", 5], ["Mentoring", 4]],
+    hardSkills: [["Discovery and research", 7], ["Interaction design", 8], ["UI and visual design", 9], ["Design systems", 7], ["Prototyping (AI and code)", 10], ["Data-informed design", 10], ["Workshop facilitation", 10], ["Brand, illustration and motion", 8]],
+    softSkills: [["Communication and storytelling", 9], ["Cross-functional collaboration", 8], ["Comfort with ambiguity", 7], ["Empathy and listening", 8], ["Stakeholder management", 9], ["Curiosity", 10], ["Ownership", 10], ["Mentoring", 10]],
     timelineTitle: "From a farm in Brazil to the blue line",
     timeline: [
       { year: "1994", title: "Born on a farm", text: "In rural southern Brazil." },

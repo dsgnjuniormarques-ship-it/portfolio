@@ -201,7 +201,7 @@
   function sectionTitle(text, art, id) {
     return '<div class="sec-title"' + (id ? ' id="' + id + '"' : '') + '>' +
       (art ? '<h2><img src="' + esc(art) + '" alt="' + esc(text) + '"></h2>' : '<h2>' + esc(text) + '</h2>') +
-      '<svg class="sk acc draw ul" viewBox="0 0 200 20" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M4,12 C40,6 90,15 130,9 C160,5 185,12 196,8"/></svg></div>';
+      '</div>';
   }
 
   /* Hero: write the first lettering in, then wipe it and write the next one. */
@@ -242,46 +242,81 @@
     write(0).then(schedule);
   }
 
-  function home(main) {
-    var H = S.home;
-    var arts = H.heroArt || [];
-    var hero = '<h1><span class="sr-only" data-hero-text>' + esc(arts[0] ? arts[0].text : '') + '</span>' +
-      '<span class="letter" data-letter aria-hidden="true"></span>' +
-      '<svg class="eraser" data-eraser viewBox="0 0 1800 700" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M-40,690 L1840,600 L-40,520 L1840,430 L-40,350 L1840,260 L-40,180 L1840,90 L-40,10 L1840,-40"/></svg></h1>';
-    var cards = S.caseStudies.map(function (c) {
-      return '<article class="card"><a class="fig" href="case-study.html?p=' + c.slug + '" tabindex="-1" aria-hidden="true">' + frame('bold') + media(c.thumb) +
-        '<span class="lock">' + I.lock + 'Locked</span></a>' +
-        '<h3>' + esc(c.name) + '</h3><p class="meta">' + esc(c.company) + ' · ' + esc(c.year) + '</p>' +
-        '<p class="line">' + esc(c.line) + '</p>' + tags(c.tags) +
-        '<a class="btn marker" href="case-study.html?p=' + c.slug + '">Check it out ' + I.arrow + '</a></article>';
-    }).join('');
-    var n = S.projects.length;
-    var tiles = S.projects.map(function (p, i) {
-      var cls = (i % 7) < 4 ? '' : ' w4';
-      if (i === n - 1 && n % 2 === 1) cls += ' last-odd';
-      return '<a class="tile' + cls + '" href="project.html?p=' + p.slug + '" aria-label="Check out ' + esc(p.name) + ', ' + esc(p.year) + '">' + media(p.thumb) +
-        frame('tile', 'thin') +
-        '<span class="name"><b>' + esc(p.name) + '</b><span>' + esc(p.year) + '</span></span>' +
-        '<span class="ov"><span class="btn">Check it out ' + I.arrow + '</span></span></a>';
-    }).join('');
+  /* ---------- feed: sticky text on the left, images scrolling on the right ---------- */
+  function feedImgs(list) {
+    var out = [], buf = [], kind = '';
+    function flush() {
+      if (!buf.length) return;
+      out.push(buf.length > 1 ? '<div class="' + kind + '">' + buf.join('') + '</div>' : buf[0]);
+      buf = []; kind = '';
+    }
+    list.forEach(function (im) {
+      var k = im.trio ? 'trio' : im.pair ? 'pair' : '';
+      if (k !== kind) flush();
+      var r = (im.ratio || '4/3').split('/'), tall = k !== 'trio' && (+r[1] / +r[0]) > (k ? 1.6 : 1.2);
+      var f = '<figure class="fig' + (tall ? ' peek' : '') + (im.narrow ? ' narrow' : '') + '" data-par>' + media(im, true) + '</figure>';
+      if (k) { kind = k; buf.push(f); } else out.push(f);
+    });
+    flush();
+    return out.join('');
+  }
+  function feedText(p) {
+    return '<h3>' + esc(p.name) + '</h3><p class="meta">' + esc(p.company) + (p.year ? ' · ' + esc(p.year) : '') + '</p>' +
+      '<p class="p">' + esc(p.description) + '</p>' +
+      (p.quote ? '<p class="fq">“' + esc(p.quote) + '”<span>' + esc(p.quoteBy || '') + '</span></p>' : '') +
+      (p.stats && p.stats.length ? '<div class="fstats">' + p.stats.map(function (st) { return '<div><b>' + esc(st.n) + '</b><span>' + esc(st.label) + '</span></div>'; }).join('') + '</div>' : '') +
+      tags(p.tags);
+  }
+  function feed(list, title, alt, intro, id) {
+    return '<section class="feed" id="' + id + '"' + (alt ? ' data-alt="' + esc(alt) + '"' : '') + ' data-title="' + esc(title) + '">' +
+      '<aside class="feed-side"><div class="feed-sticky"><h2 class="feed-title">' + esc(title) + '</h2>' + (intro ? '<p class="feed-intro">' + esc(intro) + '</p>' : '') +
+        '<div class="feed-texts">' + list.map(function (p, k) { return '<div class="ft' + (k ? '' : ' on') + '" aria-hidden="' + (k ? 'true' : 'false') + '">' + feedText(p) + '</div>'; }).join('') + '</div></div></aside>' +
+      '<div class="feed-main">' + list.map(function (p, k) {
+        return '<article class="fp" id="' + esc(p.slug) + '" data-k="' + k + '"><div class="fp-text">' + feedText(p) + '</div><div class="fp-imgs">' + feedImgs(p.images) + '</div></article>';
+      }).join('') + '</div></section>';
+  }
+  function initFeeds(root) {
+    var feeds = root.querySelectorAll('.feed');
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var pars = root.querySelectorAll('[data-par]');
+    function tick() {
+      var mid = window.innerHeight * 0.45;
+      feeds.forEach(function (f) {
+        var arts = f.querySelectorAll('.fp'), cur = 0;
+        arts.forEach(function (a, k) { if (a.getBoundingClientRect().top < mid) cur = k; });
+        if (f._cur !== cur) {
+          f._cur = cur;
+          f.querySelectorAll('.ft').forEach(function (t, k) { t.classList.toggle('on', k === cur); t.setAttribute('aria-hidden', String(k !== cur)); });
+          var alt = f.getAttribute('data-alt');
+          if (alt) {
+            var h = f.querySelector('.feed-title'), want = cur > 0 ? alt : f.getAttribute('data-title');
+            if (h.textContent !== want) { h.classList.add('swap'); setTimeout(function () { h.textContent = want; h.classList.remove('swap'); }, 220); }
+          }
+        }
+      });
+      if (!reduce && !mobile.matches) pars.forEach(function (el) {
+        var r = el.getBoundingClientRect();
+        if (r.bottom < -200 || r.top > window.innerHeight + 200) return;
+        var d = (r.top + r.height / 2 - window.innerHeight / 2) / window.innerHeight;
+        el.style.transform = 'translateY(' + Math.max(-14, Math.min(14, d * -22)).toFixed(1) + 'px)';
+      });
+    }
+    var raf = 0;
+    window.addEventListener('scroll', function () { if (!raf) raf = requestAnimationFrame(function () { raf = 0; tick(); }); }, { passive: true });
+    window.addEventListener('resize', tick);
+    tick();
+  }
 
-    main.innerHTML =
-      '<section class="hero">' +
-        '<div class="hero-art">' + hero + '</div>' +
-        '<p class="intro">' + H.intro + '</p>' +
-        '<a class="down" href="#work" aria-label="Scroll to featured work"><svg viewBox="0 0 34 52" aria-hidden="true"><path d="M17 3 C15.5 15 18.5 28 16.5 47"/><path d="M5 35 C9 39 13 44 16.5 48 C20 43 24.5 38 29 34"/><path d="M18.5 6 C17 20 19.5 30 17.5 44" style="stroke-width:1.6;opacity:.7"/></svg></a>' +
-      '</section>' +
-      sectionTitle(H.featuredTitle, H.featuredArt, 'work') +
-      '<div class="cards">' + cards + '</div>' +
-      '<div style="padding-top:140px">' + sectionTitle(H.otherTitle, H.otherArt) + '</div>' +
-      '<div class="wall">' + tiles + '</div>' +
-      '<section class="people" aria-label="Testimonials"><div class="t">' +
+  /* ---------- testimonials (About) ---------- */
+  function people(H) {
+    return '<section class="people" aria-label="Testimonials"><div class="t">' +
         (H.peopleArt ? '<h2><img src="' + esc(H.peopleArt) + '" alt="' + esc(H.peopleTitle) + '"></h2>' : '<h2>' + esc(H.peopleTitle) + '</h2>') +
       '</div><div class="q"><figure class="bubble">' + frame('bubble', 'draw thin') +
         '<span class="open" aria-hidden="true">“</span><div class="qstack" data-qstack></div></figure>' +
         '<div class="qctl"><button class="ibtn" type="button" data-prev aria-label="Previous quote">' + I.prev + '</button><span data-dots style="display:flex"></span><button class="ibtn" type="button" data-next aria-label="Next quote">' + I.next + '</button></div>' +
       '</div></section>';
-
+  }
+  function initPeople(main) {
     // testimonials
     var qs = S.testimonials, i = 0, timer;
     var dots = main.querySelector('[data-dots]');
@@ -308,19 +343,35 @@
     main.querySelector('[data-next]').addEventListener('click', function () { show(i + 1); auto(); });
     dots.addEventListener('click', function (e) { var d = e.target.closest('.dot'); if (d) { show(+d.getAttribute('data-k')); auto(); } });
     show(0); auto();
-    heroLettering(main.querySelector('[data-letter]'), main.querySelector('[data-hero-text]'), main.querySelector('[data-eraser]'), arts, (H.heroHoldSeconds || 6) * 1000);
+  }
 
-    // wall: on touch, first tap shows the overlay, second tap opens
-    main.querySelectorAll('.tile').forEach(function (t) {
-      t.addEventListener('click', function (e) {
-        if (window.matchMedia('(hover: hover)').matches) return;
-        if (!t.classList.contains('tapped')) {
-          e.preventDefault();
-          main.querySelectorAll('.tile.tapped').forEach(function (o) { o.classList.remove('tapped'); });
-          t.classList.add('tapped');
-        }
-      });
-    });
+  function home(main) {
+    var H = S.home;
+    var arts = H.heroArt || [];
+    var hero = '<h1><span class="sr-only" data-hero-text>' + esc(arts[0] ? arts[0].text : '') + '</span>' +
+      '<span class="letter" data-letter aria-hidden="true"></span>' +
+      '<svg class="eraser" data-eraser viewBox="0 0 1800 700" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M-40,690 L1840,600 L-40,520 L1840,430 L-40,350 L1840,260 L-40,180 L1840,90 L-40,10 L1840,-40"/></svg></h1>';
+    var cards = S.caseStudies.map(function (c) {
+      return '<article class="card"><a class="fig" href="case-study.html?p=' + c.slug + '" tabindex="-1" aria-hidden="true">' + frame('bold') + media(c.thumb) +
+        '<span class="lock">' + I.lock + 'Locked</span></a>' +
+        '<p class="meta">' + esc(c.name) + ' · ' + esc(c.company) + ' · ' + esc(c.year) + '</p>' +
+        '<h3><a href="case-study.html?p=' + c.slug + '">' + esc(c.line) + '</a></h3>' + tags(c.tags) +
+        '<a class="btn marker" href="case-study.html?p=' + c.slug + '">Check it out ' + I.arrow + '</a></article>';
+    }).join('');
+
+    main.innerHTML =
+      '<section class="hero">' +
+        '<div class="hero-art">' + hero + '</div>' +
+        '<p class="intro">' + H.intro + '</p>' +
+        '<a class="down" href="#work" aria-label="Scroll to featured work"><svg viewBox="0 0 34 52" aria-hidden="true"><path d="M17 3 C15.5 15 18.5 28 16.5 47"/><path d="M5 35 C9 39 13 44 16.5 48 C20 43 24.5 38 29 34"/><path d="M18.5 6 C17 20 19.5 30 17.5 44" style="stroke-width:1.6;opacity:.7"/></svg></a>' +
+      '</section>' +
+      '<section class="band" id="work">' + sectionTitle(H.featuredTitle, H.featuredArt) +
+        '<div class="cards">' + cards + '</div></section>' +
+      feed(S.projects, H.otherTitle, H.otherTitleAlt, '', 'projects') +
+      feed(S.sideQuests || [], H.questsTitle, '', H.questsIntro, 'side-quests');
+
+    heroLettering(main.querySelector('[data-letter]'), main.querySelector('[data-hero-text]'), main.querySelector('[data-eraser]'), arts, (H.heroHoldSeconds || 6) * 1000);
+    initFeeds(main);
   }
 
   function caseStudy(main) {
@@ -419,41 +470,21 @@
     var A = S.about;
     main.innerHTML =
       '<div class="about-top">' +
-        '<section class="skills" aria-label="Skills"><div class="seg" role="group" aria-label="Skill type"><button type="button" aria-pressed="true" data-mode="hard">Hard skills</button><button type="button" aria-pressed="false" data-mode="soft">Soft skills</button></div>' +
-          '<div class="radar" data-radar></div><p class="note">Rated by me, 0 to 5</p></section>' +
+
         '<figure class="fig portrait">' + frame('bold') +
           (A.photo && !A.video ? '<img class="media" src="' + esc(A.photo) + '" alt="Evaldo Marques">' : A.video ? '<video class="media" src="' + esc(A.video) + '"' + (A.videoPoster ? ' poster="' + esc(A.videoPoster) + '"' : '') + ' autoplay muted loop playsinline></video>' : '<div class="ph">Video · me, looking at the camera</div>') +
         '</figure>' +
         '<section class="why"><span class="lbl">Why I design</span><p class="body">' + esc(A.why) + '</p>' + tags(A.facts) +
           '<p class="note" style="font-size:16px;margin-top:10px">Tools I reach for</p>' +
           '<div class="tags">' + A.tools.map(function (t) { return '<span class="tag" style="font-family:var(--sans);font-size:14px;font-weight:500">' + esc(t) + '</span>'; }).join('') + '</div></section>' +
-      '</div>';
-
-    // radar
-    var box = main.querySelector('[data-radar]');
-    function radar(list, mode) {
-      var W = 440, H = 400, cx = 220, cy = 200, R = mobile.matches ? 112 : 120, n = list.length;
-      function pt(i, r) { var a = -Math.PI / 2 + i * 2 * Math.PI / n; return [cx + r * Math.cos(a), cy + r * Math.sin(a)]; }
-      function poly(f) { return list.map(function (s, i) { return f(s, i).map(function (v) { return v.toFixed(1); }).join(','); }).join(' '); }
-      var rings = [1, 2, 3, 4, 5].map(function (k) { return '<polygon class="ring" points="' + poly(function (s, i) { return pt(i, R * k / 5); }) + '"/>'; }).join('');
-      var axes = list.map(function (s, i) { var p = pt(i, R); return 'M' + cx + ',' + cy + ' L' + p[0].toFixed(1) + ',' + p[1].toFixed(1); }).join(' ');
-      var dots = list.map(function (s, i) { var p = pt(i, R * s[1] / 5); return '<circle class="vdot" cx="' + p[0].toFixed(1) + '" cy="' + p[1].toFixed(1) + '" r="4.5"/>'; }).join('');
-      var label = (mode === 'hard' ? 'Hard skills: ' : 'Soft skills: ') + list.map(function (s) { return s[0] + ' ' + s[1] + ' of 5'; }).join(', ');
-      box.innerHTML = '<svg viewBox="0 0 440 400" role="img" aria-label="' + esc(label) + '">' + rings + '<path class="axis" d="' + axes + '"/><polygon class="val" points="' + poly(function (s, i) { return pt(i, R * s[1] / 5); }) + '"/>' + dots + '</svg>' +
-        list.map(function (s, i) { var p = pt(i, R + (mobile.matches ? 54 : 46)); return '<div class="l" aria-hidden="true" style="left:' + (p[0] / W * 100).toFixed(2) + '%;top:' + (p[1] / H * 100).toFixed(2) + '%">' + esc(s[0]) + ' <b>' + s[1] + '</b></div>'; }).join('');
-    }
-    var mode = 'hard';
-    function draw() { radar(mode === 'hard' ? A.hardSkills : A.softSkills, mode); }
-    main.querySelectorAll('[data-mode]').forEach(function (b) {
-      b.addEventListener('click', function () {
-        mode = b.getAttribute('data-mode');
-        main.querySelectorAll('[data-mode]').forEach(function (o) { o.setAttribute('aria-pressed', String(o === b)); });
-        draw();
-      });
-    });
-    mobile.addEventListener && mobile.addEventListener('change', draw);
-    draw();
-
+      '</div>' +
+      '<section class="skillbars" aria-label="Skills">' + [['Hard skills', A.hardSkills], ['Soft skills', A.softSkills]].map(function (g) {
+        return '<div class="sb-col"><h2 class="sb-h">' + g[0] + '</h2><ul>' + g[1].map(function (sk) {
+          return '<li><span class="sb-l">' + esc(sk[0]) + '</span><span class="sb-t" role="meter" aria-valuemin="0" aria-valuemax="10" aria-valuenow="' + sk[1] + '" aria-label="' + esc(sk[0]) + '"><i style="--v:' + (sk[1] * 10) + '%"></i></span></li>';
+        }).join('') + '</ul></div>';
+      }).join('') + '</section>' +
+      people(S.home);
+    initPeople(main);
   }
 
   /* ---------- boot ---------- */

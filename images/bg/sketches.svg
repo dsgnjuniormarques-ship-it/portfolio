@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="1100" viewBox="0 0 1400 1100" fill="none" stroke="#1A1A1A" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round" stroke-opacity=".09">
+  <!-- cursor -->
+  <path d="M120 140 L120 196 L134 182 L144 204 L152 200 L142 179 L162 178 Z"/>
+  <!-- bezier with handles -->
+  <path d="M300 260 C360 170 470 330 540 230"/>
+  <path d="M300 260 L330 190 M540 230 L505 300" stroke-dasharray="3 5"/>
+  <circle cx="330" cy="190" r="4"/><circle cx="505" cy="300" r="4"/>
+  <rect x="296" y="256" width="8" height="8"/><rect x="536" y="226" width="8" height="8"/>
+  <!-- browser window -->
+  <rect x="880" y="110" width="240" height="160" rx="10"/>
+  <path d="M880 140 H1120"/><circle cx="898" cy="125" r="3.5"/><circle cx="911" cy="125" r="3.5"/><circle cx="924" cy="125" r="3.5"/>
+  <path d="M902 170 H990 M902 186 H1050 M902 202 H1020"/><rect x="1000" y="160" width="96" height="70" rx="6"/>
+  <!-- sparkle -->
+  <path d="M1260 330 C1264 352 1270 358 1292 362 C1270 366 1264 372 1260 394 C1256 372 1250 366 1228 362 C1250 358 1256 352 1260 330 Z"/>
+  <!-- crosshair circle -->
+  <circle cx="640" cy="560" r="44"/><path d="M640 500 V620 M580 560 H700"/>
+  <!-- pen nib -->
+  <path d="M170 600 L210 520 L250 600 L210 690 Z"/><path d="M210 520 V610"/><circle cx="210" cy="618" r="5"/>
+  <!-- dotted grid -->
+  <g stroke-width="2.4"><path d="M1000 560h.01M1030 560h.01M1060 560h.01M1090 560h.01M1000 590h.01M1030 590h.01M1060 590h.01M1090 590h.01M1000 620h.01M1030 620h.01M1060 620h.01M1090 620h.01"/></g>
+  <!-- chart -->
+  <path d="M380 940 V820 M380 940 H560"/><path d="M392 920 L432 880 L470 900 L520 840 L552 850"/>
+  <!-- cube -->
+  <path d="M900 860 L960 828 L1020 860 L1020 930 L960 962 L900 930 Z M900 860 L960 892 L1020 860 M960 892 V962"/>
+  <!-- squiggle -->
+  <path d="M1180 760 C1200 730 1220 790 1240 760 C1260 730 1280 790 1300 760"/>
+  <!-- color swatches -->
+  <circle cx="90" cy="900" r="16"/><circle cx="118" cy="900" r="16"/><circle cx="146" cy="900" r="16"/>
+  <!-- type -->
+  <path d="M700 300 L730 220 L760 300 M712 270 H748"/><path d="M780 300 V220 M780 260 C800 240 820 250 820 280 C820 300 800 305 780 290"/>
+  <!-- star -->
+  <path d="M1320 1000 l8 16 18 3 -13 12 3 18 -16 -8 -16 8 3 -18 -13 -12 18 -3z"/>
+</svg>
