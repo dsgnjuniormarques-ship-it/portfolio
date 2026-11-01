@@ -91,6 +91,61 @@
   }
 
   /* ---------- shared chrome ---------- */
+  /* ---------- depth doodles: some float over the content, some blur in the back ---------- */
+  var DOODLES = [
+    '<path d="M4 4 L4 60 L18 46 L28 68 L36 64 L26 43 L46 42 Z"/>',
+    '<path d="M4 70 C64 -20 174 140 244 40"/><path d="M4 70 L34 0 M244 40 L209 110" stroke-dasharray="3 6"/><circle cx="34" cy="0" r="4"/><circle cx="209" cy="110" r="4"/>',
+    '<rect x="2" y="2" width="200" height="132" rx="10"/><path d="M2 30 H202"/><circle cx="18" cy="16" r="3.5"/><circle cx="31" cy="16" r="3.5"/><circle cx="44" cy="16" r="3.5"/><path d="M22 60 H110 M22 76 H150 M22 92 H120"/>',
+    '<path d="M34 2 C38 24 44 30 66 34 C44 38 38 44 34 66 C30 44 24 38 2 34 C24 30 30 24 34 2 Z"/>',
+    '<circle cx="62" cy="62" r="44"/><path d="M62 2 V122 M2 62 H122"/>',
+    '<path d="M2 82 L42 2 L82 82 L42 172 Z"/><path d="M42 2 V92"/><circle cx="42" cy="100" r="5"/>',
+    '<path d="M2 62 L62 30 L122 62 L122 132 L62 164 L2 132 Z M2 62 L62 94 L122 62 M62 94 V164"/>',
+    '<path d="M2 32 C22 2 42 62 62 32 C82 2 102 62 122 32"/>',
+    '<path d="M2 122 V2 M2 122 H182"/><path d="M14 102 L54 62 L92 82 L142 22 L174 32"/>',
+    '<path d="M2 82 L32 2 L62 82 M14 52 H50"/><path d="M82 82 V2 M82 42 C102 22 122 32 122 62 C122 82 102 87 82 72"/>',
+    '<circle cx="18" cy="18" r="16"/><circle cx="46" cy="18" r="16"/><circle cx="74" cy="18" r="16"/>',
+    '<path d="M26 2 l8 16 18 3 -13 12 3 18 -16 -8 -16 8 3 -18 -13 -12 18 -3z"/>'
+  ];
+  function doodles() {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var layer = document.createElement('div');
+    layer.className = 'doodles'; layer.setAttribute('aria-hidden', 'true');
+    document.body.appendChild(layer);
+    var seed = 7; function rnd() { seed = (seed * 9301 + 49297) % 233280; return seed / 233280; }
+    var items = [], built = 0;
+    function build() {
+      var h = document.documentElement.scrollHeight, w = window.innerWidth;
+      layer.style.height = h + 'px';
+      var want = Math.ceil(h / 520);
+      while (built < want) {
+        var front = built % 3 === 2, svg = DOODLES[Math.floor(rnd() * DOODLES.length)];
+        var el = document.createElement('div');
+        el.className = 'dd ' + (front ? 'front' : 'back');
+        var size = front ? 70 + rnd() * 70 : 140 + rnd() * 160;
+        var left = rnd() < .5 ? rnd() * 22 : 74 + rnd() * 22;
+        if (front) left = 6 + rnd() * 88;
+        el.style.cssText = 'top:' + (built * 520 + rnd() * 400) + 'px;left:' + left + '%;width:' + size + 'px;transform:rotate(' + ((rnd() - .5) * 30).toFixed(1) + 'deg)';
+        el.innerHTML = '<svg viewBox="-6 -6 270 190" preserveAspectRatio="xMidYMid meet" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">' + svg + '</svg>';
+        el._speed = front ? -0.22 - rnd() * .12 : 0.18 + rnd() * .14;
+        el._rot = el.style.transform;
+        layer.appendChild(el); items.push(el); built++;
+      }
+    }
+    function move() {
+      var y = window.scrollY, vh = window.innerHeight;
+      items.forEach(function (el) {
+        var top = el.offsetTop - y;
+        if (top < -vh * 1.5 || top > vh * 2.5) return;
+        el.style.transform = 'translate3d(0,' + ((top - vh / 2) * el._speed).toFixed(1) + 'px,0) ' + el._rot;
+      });
+    }
+    build(); move();
+    var raf = 0;
+    window.addEventListener('scroll', function () { if (!raf) raf = requestAnimationFrame(function () { raf = 0; move(); }); }, { passive: true });
+    window.addEventListener('resize', function () { build(); move(); });
+    if (window.ResizeObserver) new ResizeObserver(function () { build(); move(); }).observe(document.body);
+  }
+
   function chrome() {
     var defs = document.createElement('div');
     defs.innerHTML = '<svg width="0" height="0" aria-hidden="true" style="position:absolute"><defs><filter id="pencil" x="-10%" y="-60%" width="120%" height="220%"><feTurbulence type="fractalNoise" baseFrequency="0.03" numOctaves="2" seed="7" result="warp"/><feDisplacementMap in="SourceGraphic" in2="warp" scale="4" xChannelSelector="R" yChannelSelector="G" result="wob"/><feTurbulence type="fractalNoise" baseFrequency="1.2" numOctaves="1" seed="3" result="grit"/><feColorMatrix in="grit" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  2.6 0 0 0 -0.55" result="mask"/><feComposite in="wob" in2="mask" operator="in"/></filter></defs></svg>';
@@ -280,13 +335,13 @@
     var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     var pars = root.querySelectorAll('[data-par]');
     function tick() {
-      var mid = window.innerHeight * 0.45;
+      var mid = window.innerHeight * 0.6;
       feeds.forEach(function (f) {
         var arts = f.querySelectorAll('.fp'), cur = 0;
         arts.forEach(function (a, k) { if (a.getBoundingClientRect().top < mid) cur = k; });
         if (f._cur !== cur) {
           f._cur = cur;
-          f.querySelectorAll('.ft').forEach(function (t, k) { t.classList.toggle('on', k === cur); t.setAttribute('aria-hidden', String(k !== cur)); });
+          f.querySelectorAll('.ft').forEach(function (t, k) { t.classList.toggle('on', k === cur); t.classList.toggle('past', k < cur); t.setAttribute('aria-hidden', String(k !== cur)); });
           var alt = f.getAttribute('data-alt');
           if (alt) {
             var h = f.querySelector('.feed-title'), want = cur > 0 ? alt : f.getAttribute('data-title');
@@ -300,6 +355,10 @@
         var d = (r.top + r.height / 2 - window.innerHeight / 2) / window.innerHeight;
         el.style.transform = 'translateY(' + Math.max(-14, Math.min(14, d * -22)).toFixed(1) + 'px)';
       });
+    }
+    if ('IntersectionObserver' in window && !reduce) {
+      var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }); }, { rootMargin: '0px 0px -8% 0px' });
+      pars.forEach(function (el) { el.classList.add('rise'); io.observe(el); });
     }
     var raf = 0;
     window.addEventListener('scroll', function () { if (!raf) raf = requestAnimationFrame(function () { raf = 0; tick(); }); }, { passive: true });
@@ -367,7 +426,7 @@
       '</section>' +
       '<section class="band" id="work">' + sectionTitle(H.featuredTitle, H.featuredArt) +
         '<div class="cards">' + cards + '</div></section>' +
-      feed(S.projects, H.otherTitle, H.otherTitleAlt, '', 'projects') +
+      feed(S.projects, H.otherTitle, '', '', 'projects') +
       feed(S.sideQuests || [], H.questsTitle, '', H.questsIntro, 'side-quests');
 
     heroLettering(main.querySelector('[data-letter]'), main.querySelector('[data-hero-text]'), main.querySelector('[data-eraser]'), arts, (H.heroHoldSeconds || 6) * 1000);
@@ -493,4 +552,5 @@
   ({ home: home, case: caseStudy, project: project, about: about }[page] || home)(main);
   drawOnScroll();
   lightbox();
+  doodles();
 })();

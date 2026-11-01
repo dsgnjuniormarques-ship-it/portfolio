@@ -391,69 +391,6 @@ window.SITE = {
       ]
     },
     {
-      slug: "google-analytics-connector", name: "Google Analytics connector", company: "Funnel", year: "2022",
-      thumb: { src: "images/ga-connector/thumb.webp", label: "Connect Google Analytics: choose a report type" },
-      description: "My first project at Funnel, on a design team less than 6 months old. Google Analytics was one of our top 10 connectors, and customers kept picking the wrong settings, then wondering why their data didn't match. I moved the flow inside the app, made the steps visible and let users compare report types at a glance.",
-      stats: [
-        { n: "4.5/5", label: "user rating in tests" },
-        { n: "−30%", label: "data-mismatch support tickets" },
-        { n: "All", label: "connectors now use the new flow" }
-      ],
-      tags: ["Integrations", "Usability"],
-      images: [
-        { src: "images/ga-connector/before-default.webp", label: "Before: one dropdown and a hidden list of defaults", caption: "Before the redesign: one dropdown and a hidden list of defaults", ratio: "1230/570" },
-        { src: "images/ga-connector/after-default.webp", label: "After: visible steps, and report types you can compare at a glance", caption: "After: visible steps, and report types you can compare at a glance", ratio: "1440/1024" },
-        { src: "images/ga-connector/before-manual.webp", label: "Before: manual setup", caption: "Before: manual setup, one long list", ratio: "1440/2525", pair: true },
-        { src: "images/ga-connector/after-manual.webp", label: "After: manual setup, with selected fields counted per group", caption: "After: manual setup, with selected fields counted per group", ratio: "1300/2576", pair: true }
-      ]
-    },
-    {
-      slug: "alelo-loyalty", name: "Alelo B2B Loyalty Program", company: "Insidelink for Alelo", year: "2020",
-      thumb: { src: "images/alelo-loyalty/thumb.webp", label: "Alelo Recompensas account" },
-      description: "Alelo is a Brazilian financial services company handling benefits, incentives and corporate expenses, with cards for meals, groceries, mobility, culture and more. I designed the concept for their B2B loyalty program, letting corporate clients earn and redeem rewards while discovering products suited to their needs.",
-      stats: [],
-      tags: ["Loyalty", "B2B", "Concept"],
-      images: [
-        { src: "images/alelo-loyalty/home.webp", label: "Home: trade points for Alelo products or partner benefits", ratio: "1229/2576", narrow: true },
-        { src: "images/alelo-loyalty/my-account.webp", label: "My account: points balance, history and wish list", ratio: "1440/1576" },
-        { src: "images/alelo-loyalty/redeem-product.webp", label: "Redeeming points for a product, customized for the company", ratio: "1440/1641" }
-      ]
-    },
-    {
-      slug: "alelo-design-system", name: "Alelo Design System", company: "Insidelink for Alelo", year: "2020–21",
-      thumb: { src: "images/alelo-design-system/thumb.webp", label: "Alelo components" },
-      description: "I led the creation of Alelo's Figma design system: 15+ libraries audited and merged into around 300 shared components, for 10 products and 12 designers, in the middle of a rebrand. We used atomic design principles to keep the structure scalable and consistent across every component.",
-      stats: [
-        { n: "~300", label: "shared components" },
-        { n: "15+", label: "libraries audited and merged" },
-        { n: "10", label: "products · 12 designers" }
-      ],
-      tags: ["Design systems", "Figma", "Consulting"],
-      images: [
-        { src: "images/alelo-design-system/components.webp", label: "Components: cards, alerts, inputs, tabs, pagination and steppers", ratio: "1920/1080" },
-        { src: "images/alelo-design-system/color-scheme.webp", label: "Color scheme: primaries, secondaries, neutrals, status and product colors", ratio: "1532/945" },
-        { src: "images/alelo-design-system/brand-icons.webp", label: "Brand icons for illustrating the customer journey", ratio: "876/951", pair: true },
-        { src: "images/alelo-design-system/interface-icons.webp", label: "Interface icons at 32, 24 and 16 px", ratio: "911/952", pair: true }
-      ]
-    },
-    {
-      slug: "livelo-crm", name: "Livelo CRM", company: "Dextra for Livelo", year: "2016–17",
-      thumb: { src: "images/livelo-crm/thumb.webp", label: "Clube Livelo" },
-      description: "Livelo is Brazil's biggest loyalty program. I designed its communication journeys across email, SMS and push for 6 card tiers from 2 banks, covering expiring points, new points, point balances, travel, shopping and experiences, plus seasonal moments like Black Friday and Christmas. All in, I designed and crafted over 500 emails, SMS and push notifications. Once the structure was set and running, I moved on to the next challenge: paid ads and social.",
-      stats: [
-        { n: "3M+", label: "customers activated" },
-        { n: "10×", label: "the daily email goal: 10 a day, not 1" },
-        { n: "6", label: "card tiers across 2 banks" }
-      ],
-      tags: ["CRM", "Lifecycle", "Email · SMS · Push", "Loyalty"],
-      images: [
-        { src: "images/livelo-crm/clube-livelo.webp", label: "Clube Livelo key visual", ratio: "1/1" },
-        { src: "images/livelo-crm/email-points-expiring.webp", label: "Email: points about to expire", ratio: "600/1689", pair: true },
-        { src: "images/livelo-crm/email-clube-livelo.webp", label: "Email: Clube Livelo subscription offer", ratio: "600/1209", pair: true },
-        { src: "images/livelo-crm/email-childrens-day.webp", label: "Email: Children's Day seasonal campaign", ratio: "600/2178", narrow: true }
-      ]
-    },
-    {
       slug: "livelo-campaigns", name: "Livelo On and Off Campaigns", company: "Livelo", year: "2017–19",
       thumb: { src: "images/livelo-campaigns/thumb.webp", label: "Junte + pontos com muito mais liberdade" },
       description: "Livelo ran like an e-commerce business: new campaigns every month, some of them huge, on top of brand initiatives and always-on campaigns, online and offline. I led design through it, with designers reporting to me and 2 agencies alongside us. I took the most urgent work myself and routed the rest across the team and agencies. I lost count of how many ads I designed, and kept that pace month after month.",
@@ -470,6 +407,18 @@ window.SITE = {
         { src: "images/livelo-campaigns/ad-kitchen.webp", label: "Paid social ad: kitchen", ratio: "1200/628", pair: true },
         { src: "images/livelo-campaigns/ad-sports.webp", label: "Paid social ad: sports", ratio: "1200/628", pair: true },
         { src: "images/livelo-campaigns/ad-fashion.webp", label: "Paid social ad: fashion", ratio: "1200/628" }
+      ]
+    },
+    {
+      slug: "alelo-loyalty", name: "Alelo B2B Loyalty Program", company: "Insidelink for Alelo", year: "2020",
+      thumb: { src: "images/alelo-loyalty/thumb.webp", label: "Alelo Recompensas account" },
+      description: "Alelo is a Brazilian financial services company handling benefits, incentives and corporate expenses, with cards for meals, groceries, mobility, culture and more. I designed the concept for their B2B loyalty program, letting corporate clients earn and redeem rewards while discovering products suited to their needs.",
+      stats: [],
+      tags: ["Loyalty", "B2B", "Concept"],
+      images: [
+        { src: "images/alelo-loyalty/home.webp", label: "Home: trade points for Alelo products or partner benefits", ratio: "1229/2576", narrow: true },
+        { src: "images/alelo-loyalty/my-account.webp", label: "My account: points balance, history and wish list", ratio: "1440/1576" },
+        { src: "images/alelo-loyalty/redeem-product.webp", label: "Redeeming points for a product, customized for the company", ratio: "1440/1641" }
       ]
     },
     {
@@ -490,6 +439,57 @@ window.SITE = {
         { src: "images/livelo-social/os-da-top.mp4", poster: "images/livelo-social/os-da-top.jpg", label: "Animated post: Os da Top Livelo", ratio: "1/1", pair: true },
         { src: "images/livelo-social/sportsday.mp4", poster: "images/livelo-social/sportsday.jpg", label: "Animated post: Dia do Esportista", ratio: "1/1", pair: true },
         { src: "images/livelo-social/kindle.webp", label: "Post: Kindle reward", ratio: "1/1", pair: true }
+      ]
+    },
+    {
+      slug: "google-analytics-connector", name: "Google Analytics connector", company: "Funnel", year: "2022",
+      thumb: { src: "images/ga-connector/thumb.webp", label: "Connect Google Analytics: choose a report type" },
+      description: "My first project at Funnel, on a design team less than 6 months old. Google Analytics was one of our top 10 connectors, and customers kept picking the wrong settings, then wondering why their data didn't match. I moved the flow inside the app, made the steps visible and let users compare report types at a glance.",
+      stats: [
+        { n: "4.5/5", label: "user rating in tests" },
+        { n: "−30%", label: "data-mismatch support tickets" },
+        { n: "All", label: "connectors now use the new flow" }
+      ],
+      tags: ["Integrations", "Usability"],
+      images: [
+        { src: "images/ga-connector/before-default.webp", label: "Before: one dropdown and a hidden list of defaults", caption: "Before the redesign: one dropdown and a hidden list of defaults", ratio: "1230/570" },
+        { src: "images/ga-connector/after-default.webp", label: "After: visible steps, and report types you can compare at a glance", caption: "After: visible steps, and report types you can compare at a glance", ratio: "1440/1024" },
+        { src: "images/ga-connector/before-manual.webp", label: "Before: manual setup", caption: "Before: manual setup, one long list", ratio: "1440/2525", pair: true },
+        { src: "images/ga-connector/after-manual.webp", label: "After: manual setup, with selected fields counted per group", caption: "After: manual setup, with selected fields counted per group", ratio: "1300/2576", pair: true }
+      ]
+    },
+    {
+      slug: "livelo-crm", name: "Livelo CRM", company: "Dextra for Livelo", year: "2016–17",
+      thumb: { src: "images/livelo-crm/thumb.webp", label: "Clube Livelo" },
+      description: "Livelo is Brazil's biggest loyalty program. I designed its communication journeys across email, SMS and push for 6 card tiers from 2 banks, covering expiring points, new points, point balances, travel, shopping and experiences, plus seasonal moments like Black Friday and Christmas. All in, I designed and crafted over 500 emails, SMS and push notifications. Once the structure was set and running, I moved on to the next challenge: paid ads and social.",
+      stats: [
+        { n: "3M+", label: "customers activated" },
+        { n: "10×", label: "the daily email goal: 10 a day, not 1" },
+        { n: "6", label: "card tiers across 2 banks" }
+      ],
+      tags: ["CRM", "Lifecycle", "Email · SMS · Push", "Loyalty"],
+      images: [
+        { src: "images/livelo-crm/clube-livelo.webp", label: "Clube Livelo key visual", ratio: "1/1" },
+        { src: "images/livelo-crm/email-points-expiring.webp", label: "Email: points about to expire", ratio: "600/1689", pair: true },
+        { src: "images/livelo-crm/email-clube-livelo.webp", label: "Email: Clube Livelo subscription offer", ratio: "600/1209", pair: true },
+        { src: "images/livelo-crm/email-childrens-day.webp", label: "Email: Children's Day seasonal campaign", ratio: "600/2178", narrow: true }
+      ]
+    },
+    {
+      slug: "alelo-design-system", name: "Alelo Design System", company: "Insidelink for Alelo", year: "2020–21",
+      thumb: { src: "images/alelo-design-system/thumb.webp", label: "Alelo components" },
+      description: "I led the creation of Alelo's Figma design system: 15+ libraries audited and merged into around 300 shared components, for 10 products and 12 designers, in the middle of a rebrand. We used atomic design principles to keep the structure scalable and consistent across every component.",
+      stats: [
+        { n: "~300", label: "shared components" },
+        { n: "15+", label: "libraries audited and merged" },
+        { n: "10", label: "products · 12 designers" }
+      ],
+      tags: ["Design systems", "Figma", "Consulting"],
+      images: [
+        { src: "images/alelo-design-system/components.webp", label: "Components: cards, alerts, inputs, tabs, pagination and steppers", ratio: "1920/1080" },
+        { src: "images/alelo-design-system/color-scheme.webp", label: "Color scheme: primaries, secondaries, neutrals, status and product colors", ratio: "1532/945" },
+        { src: "images/alelo-design-system/brand-icons.webp", label: "Brand icons for illustrating the customer journey", ratio: "876/951", pair: true },
+        { src: "images/alelo-design-system/interface-icons.webp", label: "Interface icons at 32, 24 and 16 px", ratio: "911/952", pair: true }
       ]
     }
   ],

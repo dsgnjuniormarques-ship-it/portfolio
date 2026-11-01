@@ -9,7 +9,7 @@
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
-body{margin:0;background:var(--paper) url('../../images/bg/sketches.svg') 0 0/1400px auto repeat fixed;color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.5;min-height:100vh;display:flex;flex-direction:column}
+body{margin:0;position:relative;background:radial-gradient(130% 95% at 50% 45%,#FFFFFF 52%,#F1F1EF 100%) fixed,var(--paper);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.5;min-height:100vh;display:flex;flex-direction:column}
 img,video{max-width:100%;display:block}
 a{color:var(--ink)}
 mark{background:linear-gradient(transparent 58%,var(--pink) 58%,var(--pink) 92%,transparent 92%);color:inherit;padding:0 2px}
@@ -18,7 +18,7 @@ mark{background:linear-gradient(transparent 58%,var(--pink) 58%,var(--pink) 92%,
 main{flex:1}
 
 /* grain */
-body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:100;opacity:.13;mix-blend-mode:multiply;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='g'><feTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/></filter><rect width='100%' height='100%' filter='url(%23g)'/></svg>")}
+body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:100;opacity:.11;mix-blend-mode:multiply;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='g'><feTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/></filter><rect width='100%' height='100%' filter='url(%23g)'/></svg>")}
 
 /* sketch lines */
 .sk{overflow:visible;filter:url(#pencil);pointer-events:none}
@@ -411,3 +411,24 @@ a:focus-visible,button:focus-visible,input:focus-visible,[tabindex]:focus-visibl
 @keyframes grow{from{transform:scaleX(0)}to{transform:scaleX(1)}}
 @media (max-width:760px){.skillbars{grid-template-columns:1fr;margin-top:72px}.about-top{grid-template-columns:1fr}}
 @media (prefers-reduced-motion:reduce){.sb-t i{animation:none}.ft,.feed-title{transition:none}}
+
+/* feed v2: small label, bigger names, clearer project change */
+.feed-title{font-family:var(--hand);font-weight:700;font-size:16px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);line-height:1.2}
+#side-quests .feed-title{font-family:var(--head);font-weight:400;font-size:clamp(40px,4.2vw,56px);letter-spacing:0;text-transform:none;color:var(--ink)}
+.feed h3{font-size:clamp(30px,3vw,44px);line-height:1.05;letter-spacing:-.02em}
+.ft{opacity:0;transform:translateY(64px);transition:opacity .45s ease,transform .6s cubic-bezier(.2,.7,.2,1),visibility 0s .6s}
+.ft.past{transform:translateY(-64px)}
+.ft.on{opacity:1;transform:none;visibility:visible;transition:opacity .5s ease .15s,transform .7s cubic-bezier(.2,.7,.2,1) .1s,visibility 0s}
+.feed .fig.rise{opacity:0;translate:0 90px;transition:opacity .7s ease,translate .9s cubic-bezier(.2,.7,.2,1)}
+.feed .fig.rise.in{opacity:1;translate:0 0}
+/* depth doodles */
+.doodles{position:absolute;left:0;top:0;width:100%;pointer-events:none;overflow:hidden;z-index:auto}
+.dd.back{z-index:0}
+.dd{position:absolute;color:var(--ink);will-change:transform}
+.dd svg{width:100%;height:auto;display:block;overflow:visible}
+.dd.back{opacity:.22;filter:blur(2.5px)}
+.dd.back svg{stroke-width:2}
+.dd.front{opacity:.55;z-index:45}
+.dd.front svg{stroke-width:1.8}
+main{position:relative;z-index:1}
+@media (max-width:760px){.dd.front{opacity:.4}.dd.back{opacity:.16}}
