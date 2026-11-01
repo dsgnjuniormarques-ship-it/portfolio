@@ -18,7 +18,7 @@ mark{background:linear-gradient(transparent 58%,var(--pink) 58%,var(--pink) 92%,
 main{flex:1}
 
 /* grain */
-body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:100;opacity:.48;background:url('../../images/bg/grain.png') 0 0/240px 240px repeat}
+body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:100;opacity:.456;background:url('../../images/bg/grain.png') 0 0/240px 240px repeat}
 
 /* sketch lines */
 .sk{overflow:visible;filter:url(#pencil);pointer-events:none}
