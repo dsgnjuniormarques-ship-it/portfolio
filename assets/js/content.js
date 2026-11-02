@@ -35,7 +35,7 @@ window.SITE = {
       { src: "images/lettering/hero-5.svg", text: "Great design makes you feel something", split: 52 }
     ],
     heroHoldSeconds: 8,       // how long each one stays before the next is written
-    intro: "Hello, I'm Evaldo! A product designer from Brazil, happily based in Stockholm. For 12 years I've designed everything from nationwide marketing campaigns to B2B products built from zero.",
+    intro: "Hello, I'm Evaldo! A product designer from Brazil, happily based in Stockholm. For 12 years I've designed everything from nationwide marketing campaigns to B2B products built from zero. Have a look at some of my favorite work below!",
     featuredTitle: "Case studies",
     featuredArt: "",          // e.g. "images/lettering/featured-work.svg"
     otherTitle: "Projects",
