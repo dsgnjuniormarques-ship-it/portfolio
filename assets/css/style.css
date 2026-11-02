@@ -480,3 +480,12 @@ main{position:relative;z-index:1}
   .views{flex:none;padding:3px}.vbtn{width:34px;height:34px}
   .projects::before{content:'Projects';display:block;font-family:var(--head);font-size:40px;line-height:1;margin-bottom:14px}
 }
+/* full-bleed filter bar, filters right-aligned next to the view toggle */
+.pbar{box-shadow:0 0 0 100vmax rgba(252,252,251,.92);clip-path:inset(0 -100vmax)}
+.pbar.stuck{box-shadow:0 0 0 100vmax rgba(252,252,251,.92),0 1px 0 100vmax #E6E6E4}
+.pills{justify-content:flex-end}
+.views{margin-left:0}
+@media (max-width:760px){.pills{justify-content:flex-start}}
+.pbar,.pbar.stuck{border-bottom:0;box-shadow:0 0 0 100vmax rgba(252,252,251,.92)}
+.pbar::after{content:'';position:absolute;left:-100vmax;right:-100vmax;bottom:0;height:1px;background:#E6E6E4;opacity:0;transition:opacity .2s}
+.pbar.stuck::after{opacity:1}
