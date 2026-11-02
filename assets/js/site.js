@@ -323,7 +323,6 @@
   /* ---------- projects: category filters + list / grid ---------- */
   var ALL = S.projects.concat((S.sideQuests || []).map(function (q) {
     var o = {}; for (var k in q) o[k] = q[k];
-    o.category = o.category || 'Side quests';
     o.thumb = { src: q.thumb || q.images[0].src, label: q.name };
     return o;
   }));
