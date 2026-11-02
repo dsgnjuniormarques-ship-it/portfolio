@@ -271,7 +271,7 @@ window.SITE = {
   // ---------- SIDE QUESTS (fun, challenges, school) ----------
   sideQuests: [
     {
-      slug: "ai-hackathon", name: "A new home for Funnel", company: "Funnel AI hackathon",
+      slug: "ai-hackathon", thumb: "images/sq/hackathon/final-1.webp", name: "A new home for Funnel", company: "Funnel AI hackathon",
       description: "Three days, two developers, one PM and me, in the year AI exploded. We ran it like a design sprint around one question: what if the first thing you saw in Funnel wasn't settings, but what's happening in your business? I designed a home page that turns data into insights you can follow, pin and dig into, like a news feed for your marketing. It stayed a concept, but it was a great excuse to imagine Funnel with AI at its core.",
       tags: ["Hackathon", "Design sprint", "AI"],
       images: [
@@ -283,7 +283,7 @@ window.SITE = {
       ]
     },
     {
-      slug: "froot-loops", name: "Froot Loops", company: "Photography course",
+      slug: "froot-loops", thumb: "images/sq/frootloops/poster.webp", name: "Froot Loops", company: "Photography course",
       description: "The brief: set up a breakfast table, shoot it and build a campaign from the pictures. We shot the photos as a team, and my creative partner and I took on the visual design and the copy. A cereal that's all about color deserved an explosion of it. \"How about starting your day with more color?\" Honestly, one of the most fun projects I've ever done.",
       tags: ["Photography", "Art direction", "Copywriting"],
       images: [
@@ -293,7 +293,7 @@ window.SITE = {
       ]
     },
     {
-      slug: "itchy", name: "Itchy", company: "Hiring challenge",
+      slug: "itchy", thumb: "images/sq/itchy/survey-start.webp", name: "Itchy", company: "Hiring challenge",
       description: "Itchy makes skincare for people with eczema, and some of its products need a prescription. Until Itchy has its own dermatologists, my idea was to help people find a good one who prescribes what their skin actually needs, not what helps our sales. Starting with care builds trust, and once that relationship exists, people are more open to trying the rest of the range. I sketched the flow first, then designed a short survey that connects people with a dermatologist.",
       tags: ["Hiring challenge", "E-commerce", "Health"],
       images: [
@@ -306,7 +306,7 @@ window.SITE = {
       ]
     },
     {
-      slug: "planet9", name: "Planet 9", company: "Hiring challenge · Early 2021",
+      slug: "planet9", thumb: "images/sq/planet9/logo.webp", name: "Planet 9", company: "Hiring challenge · Early 2021",
       description: "The brief was the brandbook itself: create an identity for Planet 9, \"The New Earth\". So I let the planet introduce itself. Modern, colorful, simple yet complex, and a bit cheeky: \"What would you expect from a new planet, am I right?\" Logo, color, type and graphic elements, all in its own voice.",
       tags: ["Brand identity", "Hiring challenge"],
       images: [
@@ -318,7 +318,7 @@ window.SITE = {
       ]
     },
     {
-      slug: "gloot", name: "Casual gaming tournaments", company: "Hiring challenge for G-Loot",
+      slug: "gloot", thumb: "images/sq/gloot/tournament.webp", name: "Casual gaming tournaments", company: "Hiring challenge for G-Loot",
       description: "The challenge: design a platform where casual gamers can jump into free tournaments. I started on paper, then built a small style guide with color, type, icons and components, and designed the landing page, the start page and a tournament page.",
       tags: ["Gaming", "Hiring challenge", "UI"],
       images: [
@@ -350,7 +350,7 @@ window.SITE = {
       ]
     },
     {
-      slug: "la-boca", name: "La Boca", company: "Agex, our university agency",
+      slug: "la-boca", thumb: "images/sq/laboca/tango.webp", name: "La Boca", company: "Agex, our university agency",
       description: "At university, our agency Agex worked with real clients. La Boca, an Argentinian restaurant, wanted digital marketing and branding inside the restaurant that made the most of being Argentinian. The concept: bring customers closer to Argentina, so they learn about its culture and feel immersed in it, from tango and Buenos Aires to bife de chorizo and dulce de leche.",
       tags: ["Branding", "Social", "Real client"],
       images: [

@@ -321,13 +321,19 @@
       }).join('') + '</div></section>';
   }
   /* ---------- projects: category filters + list / grid ---------- */
+  var ALL = S.projects.concat((S.sideQuests || []).map(function (q) {
+    var o = {}; for (var k in q) o[k] = q[k];
+    o.category = o.category || 'Side quests';
+    o.thumb = { src: q.thumb || q.images[0].src, label: q.name };
+    return o;
+  }));
   var VIEW_ICONS = {
     list: '<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="7" height="7" rx="1.5"/><path d="M13 6h8M13 9h5"/><rect x="3" y="13" width="7" height="7" rx="1.5"/><path d="M13 15h8M13 18h5"/></svg>',
     grid: '<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="8" height="8" rx="1.5"/><rect x="13" y="3" width="8" height="8" rx="1.5"/><rect x="3" y="13" width="8" height="8" rx="1.5"/><rect x="13" y="13" width="8" height="8" rx="1.5"/></svg>'
   };
   function projectsSection(H) {
     var cats = [];
-    S.projects.forEach(function (p) { if (p.category && cats.indexOf(p.category) < 0) cats.push(p.category); });
+    ALL.forEach(function (p) { if (p.category && cats.indexOf(p.category) < 0) cats.push(p.category); });
     var bar = '<div class="pbar" id="projects"><h2 class="pbar-title">' + esc(H.otherTitle) + '</h2>' +
       '<div class="pills" role="group" aria-label="Filter projects by category">' + cats.map(function (c) {
         return '<button class="pill" type="button" aria-pressed="false" data-cat="' + esc(c) + '"><span>' + esc(c) + '</span><span class="x" aria-hidden="true">' + I.x + '</span></button>';
@@ -335,11 +341,11 @@
       '<div class="views" role="group" aria-label="View">' +
         '<button class="vbtn" type="button" data-view="list" aria-pressed="true" aria-label="List view">' + VIEW_ICONS.list + '</button>' +
         '<button class="vbtn" type="button" data-view="grid" aria-pressed="false" aria-label="Grid view">' + VIEW_ICONS.grid + '</button></div></div>';
-    var grid = '<div class="pgrid" hidden>' + S.projects.map(function (p) {
-      return '<a class="pcard" href="project.html?p=' + p.slug + '" data-cat="' + esc(p.category || '') + '"><figure class="fig">' + media(p.thumb) + '</figure>' +
-        '<span class="pc-cat">' + esc(p.category || '') + '</span><h3>' + esc(p.name) + '</h3><span class="pc-meta">' + esc(p.company) + ' · ' + esc(p.year) + '</span></a>';
+    var grid = '<div class="pgrid" hidden>' + ALL.map(function (p) {
+      return '<a class="pcard" href="project.html?p=' + p.slug + '" data-cat="' + esc(p.category || '') + '">' + media(p.thumb) +
+        '<span class="pc-info"><span class="pc-cat">' + esc(p.category || '') + '</span><b>' + esc(p.name) + '</b><span class="pc-meta">' + esc(p.company) + (p.year ? ' · ' + esc(p.year) : '') + '</span></span></a>';
     }).join('') + '</div>';
-    var list = feed(S.projects, '', '', '', 'projects-list');
+    var list = feed(ALL, '', '', '', 'projects-list');
     return '<section class="projects">' + bar + grid + list + '</section>';
   }
   function initProjects(main) {
@@ -350,7 +356,7 @@
       sec.querySelectorAll('.pill').forEach(function (b) { b.setAttribute('aria-pressed', String(on.indexOf(b.getAttribute('data-cat')) > -1)); });
       var ok = function (cat) { return !on.length || on.indexOf(cat) > -1; };
       sec.querySelectorAll('.pcard').forEach(function (c) { c.hidden = !ok(c.getAttribute('data-cat')); });
-      sec.querySelectorAll('.fp').forEach(function (a) { a.hidden = !ok(S.projects[+a.getAttribute('data-k')].category); });
+      sec.querySelectorAll('.fp').forEach(function (a) { a.hidden = !ok(ALL[+a.getAttribute('data-k')].category); });
       sec.querySelector('.pgrid').hidden = view !== 'grid';
       sec.querySelector('.feed').hidden = view !== 'list';
       sec.querySelectorAll('.vbtn').forEach(function (b) { b.setAttribute('aria-pressed', String(b.getAttribute('data-view') === view)); });
@@ -459,8 +465,7 @@
       '</section>' +
       '<section class="band" id="work">' + sectionTitle(H.featuredTitle, H.featuredArt) +
         '<div class="cards">' + cards + '</div></section>' +
-      projectsSection(H) +
-      feed(S.sideQuests || [], H.questsTitle, '', H.questsIntro, 'side-quests');
+      projectsSection(H);
 
     heroLettering(main.querySelector('[data-letter]'), main.querySelector('[data-hero-text]'), main.querySelector('[data-eraser]'), arts, (H.heroHoldSeconds || 6) * 1000);
     initFeeds(main);
@@ -535,21 +540,21 @@
   }
 
   function project(main) {
-    var list = S.projects;
+    var list = ALL;
     var idx = Math.max(0, list.findIndex(function (p) { return p.slug === param('p'); }));
     var p = list[idx], nx = list[(idx + 1) % list.length];
     document.title = p.name + ' · ' + S.name;
     main.className = 'sp clean';
     var imgs = [], pairs = [];
     p.images.forEach(function (im) {
-      if (im.pair) { pairs.push(im); if (pairs.length === 2) { imgs.push('<div class="pair">' + pairs.map(function (x) { return fig(x); }).join('') + '</div>'); pairs = []; } return; }
+      if (im.pair || im.trio) { pairs.push(im); var want = im.trio ? 3 : 2; if (pairs.length === want) { imgs.push('<div class="' + (im.trio ? 'pair trio' : 'pair') + '">' + pairs.map(function (x) { return fig(x); }).join('') + '</div>'); pairs = []; } return; }
       if (pairs.length) { imgs.push(fig(pairs[0])); pairs = []; }
       imgs.push(fig(im, im.ratio && im.ratio.indexOf('21/') === 0 ? 'wide' : 'bold', im.narrow ? 'narrow' : ''));
     });
     if (pairs.length) imgs.push(fig(pairs[0]));
     main.innerHTML =
       '<aside><a class="lnk marker back" href="index.html#projects">' + ARROW_L + 'Back to projects</a>' +
-        '<div><h1>' + esc(p.name) + '</h1><p class="meta">' + esc(p.company) + ' · ' + esc(p.year) + '</p></div>' +
+        '<div><h1>' + esc(p.name) + '</h1><p class="meta">' + esc(p.company) + (p.year ? ' · ' + esc(p.year) : '') + '</p></div>' +
         '<p class="p" style="font-size:16px">' + esc(p.description) + '</p>' +
         (p.quote ? '<p class="hand" style="margin:0;font-size:22px;line-height:1.3">“' + esc(p.quote) + '”<br><span style="font-size:15px;color:var(--ink-3)">' + esc(p.quoteBy || '') + '</span></p>' : '') +
         (p.stats && p.stats.length ? '<div class="mini">' + p.stats.map(function (s) { return '<div><span class="lbl">' + esc(s.n) + '</span><span style="font-size:15px;line-height:1.4">' + esc(s.label) + '</span></div>'; }).join('') + '</div>' : '') +
