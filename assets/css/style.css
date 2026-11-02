@@ -430,3 +430,33 @@ a:focus-visible,button:focus-visible,input:focus-visible,[tabindex]:focus-visibl
 .dd.front svg{stroke-width:2.6}
 main{position:relative;z-index:1}
 @media (max-width:760px){.dd.front{opacity:.4}.dd.back{opacity:.16}}
+/* ===== projects: filters + views ===== */
+[hidden]{display:none!important}
+.projects{max-width:1440px;margin:0 auto;padding:130px var(--gutter) 0}
+.projects .feed{padding:56px 0 20px;max-width:none}
+.pbar{display:flex;flex-wrap:wrap;align-items:center;gap:16px 20px;scroll-margin-top:96px}
+.pbar-title{margin:0 12px 0 0;font-family:var(--head);font-weight:400;font-size:clamp(40px,4.2vw,56px);line-height:1}
+.pills{display:flex;flex-wrap:wrap;gap:8px;flex:1 1 auto}
+.pill{display:inline-flex;align-items:center;gap:6px;min-height:40px;padding:6px 16px;border:1.5px solid #CFCFCC;border-radius:999px;background:#fff;color:var(--ink);font:500 15px var(--sans);cursor:pointer;transition:background .15s,border-color .15s}
+.pill:hover{border-color:var(--ink)}
+.pill .x{display:none;width:16px;height:16px;margin-right:-4px}
+.pill .x .ic{width:16px;height:16px;stroke-width:2.2}
+.pill[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:#fff}
+.pill[aria-pressed="true"] .x{display:inline-flex}
+.views{display:flex;gap:4px;margin-left:auto;padding:4px;border:1.5px solid #E1E1E1;border-radius:12px;background:#fff}
+.vbtn{width:40px;height:40px;display:inline-flex;align-items:center;justify-content:center;border:0;border-radius:8px;background:transparent;color:var(--ink-3);cursor:pointer}
+.vbtn .ic{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8}
+.vbtn[aria-pressed="true"]{background:var(--ink);color:#fff}
+.pgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:56px 32px;padding:56px 0 40px}
+.pcard{display:flex;flex-direction:column;gap:8px;text-decoration:none;color:var(--ink)}
+.pcard .fig{margin:0 0 8px;border:4px solid #E1E1E1;border-radius:16px;overflow:hidden;background:#fff;transition:border-color .2s}
+.pcard .fig .media,.pcard .fig .ph{aspect-ratio:4/3;width:100%;object-fit:cover;transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.pcard:hover .fig{border-color:#CFCFCC}.pcard:hover .media{transform:scale(1.03)}
+.pc-cat{font-family:var(--hand);font-size:15px;color:var(--ink-3)}
+.pcard h3{margin:0;font-size:22px;font-weight:600;line-height:1.2;letter-spacing:-.01em}
+.pc-meta{font-size:14px;color:var(--ink-2)}
+.sp .back{white-space:nowrap}
+@media (max-width:1000px){.pgrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:640px){.pgrid{grid-template-columns:1fr;gap:40px}.views{margin-left:0}.projects{padding-top:96px}}
+.sp h1{font-size:clamp(32px,3vw,42px);line-height:1.08}
+.car-narrow{max-width:720px;width:100%;margin:0 auto}

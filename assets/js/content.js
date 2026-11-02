@@ -35,10 +35,10 @@ window.SITE = {
       { src: "images/lettering/hero-5.svg", text: "Great design makes you feel something", split: 52 }
     ],
     heroHoldSeconds: 8,       // how long each one stays before the next is written
-    intro: "Product designer in Stockholm, born and raised in Brazil. For 12 years I've designed everything from nationwide marketing campaigns to B2B products built from zero. The last five years at Funnel taught me to design with <mark>hard data</mark>, and to anchor every idea in <mark>real customer feedback</mark>.",
-    featuredTitle: "Featured work",
+    intro: "Hello, I'm Evaldo! A product designer from Brazil, happily based in Stockholm. For 12 years I've designed everything from nationwide marketing campaigns to B2B products built from zero. My years at Funnel taught me to work with <mark>extremely complex data</mark>, to turn abstract concepts into experiences people actually get, and to value what <mark>numbers and real conversations</mark> tell us about what users find valuable.",
+    featuredTitle: "Case studies",
     featuredArt: "",          // e.g. "images/lettering/featured-work.svg"
-    otherTitle: "Other projects",
+    otherTitle: "Projects",
     otherTitleAlt: "Eye candy",
     questsTitle: "Side quests",
     questsIntro: "Hiring challenges, hackathons, school projects and things I made for fun. Too good to stay in a drawer.",
@@ -60,11 +60,45 @@ window.SITE = {
   // ---------- FEATURED CASE STUDIES (password protected) ----------
   caseStudies: [
     {
+      slug: "solutions-hub",
+      name: "Solutions Hub",
+      company: "Funnel",
+      year: "2023",
+      line: "Helping new users find value on their own, from the first click",
+      tags: ["Product-led growth", "Onboarding", "Research"],
+      thumb: { src: "images/solutions-hub/thumb.webp", label: "Onboarding: what type of business are you?" },
+      title: "Solutions Hub.",
+      subtitle: "Designing for product-led growth.",
+      context: ["Funnel", "2023", "Product Designer", "Product-led growth team"],
+      summary: "In 2023 Funnel opened free sign-ups for everyone. That meant new users had to find value on their own, quickly, without a sales call. Our team owned acquisition, activation, monetisation and onboarding.",
+      outcomes: [
+        "37% increase in adoption of our dashboard feature",
+        "34% more sales-qualified leads, because users could try the product and see its value first",
+        "Designed components that were reused in other parts of the product"
+      ],
+      heroImages: [
+        { src: "images/solutions-hub/welcome.webp", label: "Onboarding starts by asking who you are", ratio: "2000/1422" },
+        { src: "images/solutions-hub/custom-fields.webp", label: "Ready-made custom fields map cross-channel data", ratio: "2000/1422" }
+      ],
+      stats: [
+        { n: "+37%", label: "dashboard feature adoption" },
+        { n: "+34%", label: "sales-qualified leads" },
+        { n: "40+", label: "slides of research synthesis" }
+      ],
+      sections: [
+        { type: "decision", heading: "Build the case with research", text: "We spent weeks gathering insights from marketing, customer success, partners, past interviews with agencies and benchmarks of other tools. The result was a 40+ slide synthesis that shaped the work." },
+        { type: "decision", heading: "Connect the website and the product", text: "I designed Solutions Hub, a library of ready-made solutions that links the website to the app. New users pick a use case, self-serve their way to a free account and start from something useful instead of a blank page.", image: { src: "images/solutions-hub/hub-page.webp", label: "The full Solutions Hub page", caption: "The full Solutions Hub page. Scroll inside to see it all.", ratio: "784/2576", scroll: true } },
+        { type: "decision", heading: "Onboard people by who they are", text: "Agencies see and use Funnel differently from in-house marketers, even without extra benefits. So we designed tailored onboarding paths, with several simple ways to start seeing value.", image: { src: "images/solutions-hub/agencies.webp", label: "Agencies get offered assisted onboarding, not a sales call", ratio: "2000/1422" } },
+        { type: "image", image: { src: "images/solutions-hub/workspace.webp", label: "Agency path: set up the first client workspace", ratio: "2000/1422" } }
+      ],
+      learned: "Personalizing an experience doesn't need new features. Sometimes it just needs a different first step."
+    },
+    {
       slug: "activate",
       name: "Activate",
       company: "Funnel",
       year: "2025",
-      line: "Building a 0 to 1 product to solve signal loss for marketers",
+      line: "Building a 0 to 1 product",
       tags: ["0 to 1", "B2B SaaS", "Integrations"],
       thumb: { src: "images/activate/thumb.webp", label: "Field mapping and advanced settings in Activate" },
       title: "Activate.",
@@ -78,7 +112,7 @@ window.SITE = {
         "Featured in a YouTube video, later cut into ads for LinkedIn, Facebook and Instagram"
       ],
       heroImages: [
-        { src: "images/activate/hero.webp", label: "Final UI: creating a Google Ads signal, with Funnel AI in context", ratio: "2000/1271" },
+        { src: "images/activate/nav.webp", label: "Activate in Funnel's navigation: signals, enhanced signals, audiences, customer journeys, data quality and coverage", ratio: "1/1", narrow: true },
         { src: "images/activate/sketch.webp", label: "Early exploration: the same screen as a sketch, questions and all", ratio: "2000/914" }
       ],
       stats: [
@@ -132,50 +166,6 @@ window.SITE = {
         { type: "decision", heading: "Validate with every release", text: "We worked with design partners from the start. Every meaningful update went in front of 1 to 3 customers, about 15 conversations in total. I also mined Gong sales calls to hear how prospects described the problem in their own words, which kept every release grounded in real needs.", image: { src: "images/activate/gong-insights.webp", label: "Gong calls: what prospects said about conversions", ratio: "1350/1084" } }
       ],
       learned: "A product can be great and still depend on things it doesn't control. Designing the knowledge around it mattered as much as the screens."
-    },
-    {
-      slug: "marketing-reporting",
-      name: "Marketing Reporting",
-      company: "Funnel",
-      year: "2026",
-      line: "Rethinking how people build dashboards, with AI and on their own",
-      tags: ["AI", "Data visualization", "Redesign"],
-      thumb: { src: "images/reporting/thumb.webp", label: "Clarity, not clutter: AI in dashboards" },
-      title: "Marketing Reporting.",
-      subtitle: "Rethinking how people build dashboards, with AI and on their own.",
-      context: ["Funnel", "2026, in progress", "Lead designer on Reporting", "1 PM · 3 engineers"],
-      summary: ["Almost 50% of Funnel customers use dashboards, and they get real value from them. But building one hasn't kept up with what people expect today, and Funnel wants to become AI-native.",
-        "We're a small team with plenty of competing priorities. So I'm leading an effort to rethink the experience, grounded in customer feedback and usability best practices, and to show where it could go."],
-      outcomes: [
-        "A working prototype of the vision: AI built into the product, UX improvements and small moments of delight",
-        "A presentation explaining the concept of AI in dashboards",
-        "Low-hanging improvements now prioritized with the team and validated with customers, to decide what to build first"
-      ],
-      heroImages: [
-        { src: "images/reporting/current.mp4", poster: "images/reporting/current.jpg", label: "The current experience: customers get real value from it, and now it's time to make it delightful", ratio: "1600/1002" }
-      ],
-      stats: [
-        { n: "~50%", label: "of Funnel customers use dashboards" },
-        { n: "5", label: "people on the team: 3 engineers, 1 PM and me" }
-      ],
-      sections: [
-        { type: "decision", heading: "Listen at scale", text: "I pulled signals from our user-needs channel, customer-facing teams, recorded customer calls, PMs' conversations with customers, and senior engineers who had worked on the product for years. The same themes kept coming back: dashboards look outdated, it's not clear if you're editing or viewing, people want more control over the look, and exploring data feels like something might break." },
-        { type: "decision", heading: "Prototype the vision",
-          text: "The prototype is our current vision for dashboards. It brings three things together: AI features built into the product, UX improvements to everyday tasks, and micro-interactions that add small moments of delight.",
-          after: "It also surfaced a lot of smaller, low-hanging fruit. We're prioritizing those together as a team and validating them with customers, so we build what matters most first. Go ahead, click around.",
-          prototype: { src: "prototypes/reporting-vision.html", label: "The dashboards vision: a clickable prototype made in Claude Design", w: 1440, h: 900 } },
-        { type: "decision", heading: "Frame the conversation", text: ["The prototype touched much more than AI. So before each session, I used a short presentation to align stakeholders on what it was about, and what we should focus on that day. When the work goes beyond the brief, framing the discussion is what keeps it useful.", "And going beyond the brief is often the point. People experience a product as a whole, so designing only the piece you were asked for rarely wins."],
-          carouselRatio: "16/9",
-          carousel: [
-            { src: "images/reporting/deck-1-title.webp", label: "Clarity, not clutter: AI in dashboards" },
-            { src: "images/reporting/deck-2-context.webp", label: "Context: better, not just more" },
-            { src: "images/reporting/deck-3-reframe.webp", label: "Reframe: what if we redesigned how people interact with dashboards?" },
-            { src: "images/reporting/deck-4-shift.webp", label: "The shift: always know if you're viewing or editing" },
-            { src: "images/reporting/deck-5-key-moments.webp", label: "Key moments: same dashboards, three jobs to be done" },
-            { src: "images/reporting/deck-6-out-loud.webp", label: "Setting expectations: fidelity, scope, writing and edge cases" }
-          ] }
-      ],
-      learned: "Still in progress, but it's already changing how I think. AI isn't a feature, it's a mindset. It sets a different tone, and it's a different game."
     },
     {
       slug: "illustration-system",
@@ -233,38 +223,48 @@ window.SITE = {
       learned: "I learned to balance design excellence with the time I actually had, and that real value for users doesn't have to wait for perfect. Also: being designer, developer and PM at the same time is hard. Fun, but hard."
     },
     {
-      slug: "solutions-hub",
-      name: "Solutions Hub",
+      slug: "marketing-reporting",
+      name: "Marketing Reporting",
       company: "Funnel",
-      year: "2023",
-      line: "Helping new users find value on their own, from the first click",
-      tags: ["Product-led growth", "Onboarding", "Research"],
-      thumb: { src: "images/solutions-hub/thumb.webp", label: "Onboarding: what type of business are you?" },
-      title: "Solutions Hub.",
-      subtitle: "Designing for product-led growth.",
-      context: ["Funnel", "2023", "Product Designer", "Product-led growth team"],
-      summary: "In 2023 Funnel opened free sign-ups for everyone. That meant new users had to find value on their own, quickly, without a sales call. Our team owned acquisition, activation, monetisation and onboarding.",
+      year: "2026",
+      line: "Rethinking how people build dashboards, with AI and on their own",
+      tags: ["AI", "Data visualization", "Redesign"],
+      thumb: { src: "images/reporting/thumb.webp", label: "Clarity, not clutter: AI in dashboards" },
+      title: "Marketing Reporting.",
+      subtitle: "Rethinking how people build dashboards, with AI and on their own.",
+      context: ["Funnel", "2026, in progress", "Lead designer on Reporting", "1 PM · 3 engineers"],
+      summary: ["Almost 50% of Funnel customers use dashboards, and they get real value from them. But building one hasn't kept up with what people expect today, and Funnel wants to become AI-native.",
+        "We're a small team with plenty of competing priorities. So I'm leading an effort to rethink the experience, grounded in customer feedback and usability best practices, and to show where it could go."],
       outcomes: [
-        "37% increase in adoption of our dashboard feature",
-        "34% more sales-qualified leads, because users could try the product and see its value first",
-        "Designed components that were reused in other parts of the product"
+        "A working prototype of the vision: AI built into the product, UX improvements and small moments of delight",
+        "A presentation explaining the concept of AI in dashboards",
+        "Low-hanging improvements now prioritized with the team and validated with customers, to decide what to build first"
       ],
       heroImages: [
-        { src: "images/solutions-hub/welcome.webp", label: "Onboarding starts by asking who you are", ratio: "2000/1422" },
-        { src: "images/solutions-hub/custom-fields.webp", label: "Ready-made custom fields map cross-channel data", ratio: "2000/1422" }
+        { src: "images/reporting/current.mp4", poster: "images/reporting/current.jpg", label: "The current experience: customers get real value from it, and now it's time to make it delightful", ratio: "1600/1002" }
       ],
       stats: [
-        { n: "+37%", label: "dashboard feature adoption" },
-        { n: "+34%", label: "sales-qualified leads" },
-        { n: "40+", label: "slides of research synthesis" }
+        { n: "~50%", label: "of Funnel customers use dashboards" },
+        { n: "5", label: "people on the team: 3 engineers, 1 PM and me" }
       ],
       sections: [
-        { type: "decision", heading: "Build the case with research", text: "We spent weeks gathering insights from marketing, customer success, partners, past interviews with agencies and benchmarks of other tools. The result was a 40+ slide synthesis that shaped the work." },
-        { type: "decision", heading: "Connect the website and the product", text: "I designed Solutions Hub, a library of ready-made solutions that links the website to the app. New users pick a use case, self-serve their way to a free account and start from something useful instead of a blank page.", image: { src: "images/solutions-hub/hub-page.webp", label: "The full Solutions Hub page", caption: "The full Solutions Hub page. Scroll inside to see it all.", ratio: "784/2576", scroll: true } },
-        { type: "decision", heading: "Onboard people by who they are", text: "Agencies see and use Funnel differently from in-house marketers, even without extra benefits. So we designed tailored onboarding paths, with several simple ways to start seeing value.", image: { src: "images/solutions-hub/agencies.webp", label: "Agencies get offered assisted onboarding, not a sales call", ratio: "2000/1422" } },
-        { type: "image", image: { src: "images/solutions-hub/workspace.webp", label: "Agency path: set up the first client workspace", ratio: "2000/1422" } }
+        { type: "decision", heading: "Listen at scale", text: "I pulled signals from our user-needs channel, customer-facing teams, recorded customer calls, PMs' conversations with customers, and senior engineers who had worked on the product for years. The same themes kept coming back: dashboards look outdated, it's not clear if you're editing or viewing, people want more control over the look, and exploring data feels like something might break." },
+        { type: "decision", heading: "Prototype the vision",
+          text: "The prototype is our current vision for dashboards. It brings three things together: AI features built into the product, UX improvements to everyday tasks, and micro-interactions that add small moments of delight.",
+          after: "It also surfaced a lot of smaller, low-hanging fruit. We're prioritizing those together as a team and validating them with customers, so we build what matters most first. Go ahead, click around.",
+          prototype: { src: "prototypes/reporting-vision.html", label: "The dashboards vision: a clickable prototype made in Claude Design", w: 1440, h: 900 } },
+        { type: "decision", heading: "Frame the conversation", text: ["The prototype touched much more than AI. So before each session, I used a short presentation to align stakeholders on what it was about, and what we should focus on that day. When the work goes beyond the brief, framing the discussion is what keeps it useful.", "And going beyond the brief is often the point. People experience a product as a whole, so designing only the piece you were asked for rarely wins."],
+          carouselRatio: "16/9",
+          carousel: [
+            { src: "images/reporting/deck-1-title.webp", label: "Clarity, not clutter: AI in dashboards" },
+            { src: "images/reporting/deck-2-context.webp", label: "Context: better, not just more" },
+            { src: "images/reporting/deck-3-reframe.webp", label: "Reframe: what if we redesigned how people interact with dashboards?" },
+            { src: "images/reporting/deck-4-shift.webp", label: "The shift: always know if you're viewing or editing" },
+            { src: "images/reporting/deck-5-key-moments.webp", label: "Key moments: same dashboards, three jobs to be done" },
+            { src: "images/reporting/deck-6-out-loud.webp", label: "Setting expectations: fidelity, scope, writing and edge cases" }
+          ] }
       ],
-      learned: "Personalizing an experience doesn't need new features. Sometimes it just needs a different first step."
+      learned: "Still in progress, but it's already changing how I think. AI isn't a feature, it's a mindset. It sets a different tone, and it's a different game."
     }
   ],
 
@@ -375,13 +375,13 @@ window.SITE = {
   // ---------- OTHER PROJECTS (public, the wall) ----------
   projects: [
     {
-      slug: "advanced-measurement", name: "Advanced Measurement", company: "Funnel", year: "2026",
+      slug: "advanced-measurement", name: "Making data science accessible to marketers", company: "Advanced Measurement, Funnel", year: "2026", category: "Product design",
       thumb: { src: "images/advanced-measurement/thumb.webp", label: "Media Plans overview" },
-      description: "A short, focused collaboration with the Hamburg team, at 25% of my time, to improve the UX and UI of our most premium product with little to no time. I simplified the UI and rebuilt the Media Plan flow around how marketers actually think, replacing data science lingo with marketer language. The feedback was so good the team asked me to stay, but other priorities ended the collaboration. It was a great chance to go deep on data science and data visualization.",
+      description: "Advanced Measurement is Funnel's most premium product, built by a team of data scientists in Hamburg. In a short, focused collaboration, I simplified the UI and rebuilt the Media Plan flow around how marketers actually think, replacing data science lingo with marketer language. A big part of the work was also helping the team rebrand the platform to follow Funnel's design system and guidelines. The feedback was so good the team asked me to stay, but other priorities ended the collaboration. It was a great chance to go deep on data science and data visualization.",
       quote: "Oh, right, of course. It makes so much more sense. Let's just build it.",
       quoteBy: "The Hamburg team",
       stats: [],
-      tags: ["Measurement", "MMM", "Simplification"],
+      tags: ["UX design", "Data visualization", "Redesign"],
       images: [
         { src: "images/advanced-measurement/media-plans.webp", label: "Media Plans: every plan and its goal at a glance", ratio: "4/3" },
         { src: "images/advanced-measurement/create-media-plan.webp", label: "Creating a media plan in marketer language", ratio: "1/1", narrow: true },
@@ -391,11 +391,11 @@ window.SITE = {
       ]
     },
     {
-      slug: "livelo-campaigns", name: "Livelo On and Off Campaigns", company: "Livelo", year: "2017–19",
+      slug: "livelo-campaigns", name: "Livelo On and Off Campaigns", company: "Livelo", year: "2017–19", category: "Brand & campaigns",
       thumb: { src: "images/livelo-campaigns/thumb.webp", label: "Junte + pontos com muito mais liberdade" },
       description: "Livelo ran like an e-commerce business: new campaigns every month, some of them huge, on top of brand initiatives and always-on campaigns, online and offline. I led design through it, with designers reporting to me and 2 agencies alongside us. I took the most urgent work myself and routed the rest across the team and agencies. I lost count of how many ads I designed, and kept that pace month after month.",
       stats: [],
-      tags: ["Brand", "Campaigns", "OOH · Print", "Paid social"],
+      tags: ["Art direction", "Campaigns", "Print · OOH"],
       images: [
         { src: "images/livelo-campaigns/liberdade.webp", label: "Print: Junte + pontos com muito mais liberdade", ratio: "1800/1576" },
         { src: "images/livelo-campaigns/shop-and-earn.webp", label: "Print: earn points with partner stores", ratio: "1800/1583" },
@@ -410,11 +410,11 @@ window.SITE = {
       ]
     },
     {
-      slug: "alelo-loyalty", name: "Alelo B2B Loyalty Program", company: "Insidelink for Alelo", year: "2020",
+      slug: "alelo-loyalty", name: "Alelo B2B Loyalty Program", company: "Insidelink for Alelo", year: "2020", category: "Product design",
       thumb: { src: "images/alelo-loyalty/thumb.webp", label: "Alelo Recompensas account" },
       description: "Alelo is a Brazilian financial services company handling benefits, incentives and corporate expenses, with cards for meals, groceries, mobility, culture and more. I designed the concept for their B2B loyalty program, letting corporate clients earn and redeem rewards while discovering products suited to their needs.",
       stats: [],
-      tags: ["Loyalty", "B2B", "Concept"],
+      tags: ["UI design", "Concept design", "Web app"],
       images: [
         { src: "images/alelo-loyalty/home.webp", label: "Home: trade points for Alelo products or partner benefits", ratio: "1229/2576", narrow: true },
         { src: "images/alelo-loyalty/my-account.webp", label: "My account: points balance, history and wish list", ratio: "1440/1576" },
@@ -422,11 +422,11 @@ window.SITE = {
       ]
     },
     {
-      slug: "livelo-social", name: "Livelo Social", company: "Livelo", year: "2017–19",
+      slug: "livelo-social", name: "Livelo Social", company: "Livelo", year: "2017–19", category: "Brand & campaigns",
       thumb: { src: "images/livelo-social/thumb.webp", label: "Deck Social Dezembro 2018" },
       description: "For over a year, between agency partners, I ran Livelo's social channels end to end: the content strategy, monthly editorial calendars with goals and KPIs, the copy and every post's design, including animated pieces.",
       stats: [],
-      tags: ["Social", "Content strategy", "Copywriting", "Motion"],
+      tags: ["Social media design", "Copywriting", "Motion"],
       images: [
         { src: "images/livelo-social/deck-cover.webp", label: "Monthly social deck, December 2018", ratio: "2000/1125" },
         { src: "images/livelo-social/deck-calendar.webp", label: "Editorial calendar for Facebook and Instagram, with goals and KPIs", ratio: "2000/1125" },
@@ -442,7 +442,7 @@ window.SITE = {
       ]
     },
     {
-      slug: "google-analytics-connector", name: "Google Analytics connector", company: "Funnel", year: "2022",
+      slug: "google-analytics-connector", name: "Google Analytics connector", company: "Funnel", year: "2022", category: "Product design",
       thumb: { src: "images/ga-connector/thumb.webp", label: "Connect Google Analytics: choose a report type" },
       description: "My first project at Funnel, on a design team less than 6 months old. Google Analytics was one of our top 10 connectors, and customers kept picking the wrong settings, then wondering why their data didn't match. I moved the flow inside the app, made the steps visible and let users compare report types at a glance.",
       stats: [
@@ -450,7 +450,7 @@ window.SITE = {
         { n: "−30%", label: "data-mismatch support tickets" },
         { n: "All", label: "connectors now use the new flow" }
       ],
-      tags: ["Integrations", "Usability"],
+      tags: ["UX design", "Flow design", "Usability testing"],
       images: [
         { src: "images/ga-connector/before-default.webp", label: "Before: one dropdown and a hidden list of defaults", caption: "Before the redesign: one dropdown and a hidden list of defaults", ratio: "1230/570" },
         { src: "images/ga-connector/after-default.webp", label: "After: visible steps, and report types you can compare at a glance", caption: "After: visible steps, and report types you can compare at a glance", ratio: "1440/1024" },
@@ -459,7 +459,7 @@ window.SITE = {
       ]
     },
     {
-      slug: "livelo-crm", name: "Livelo CRM", company: "Dextra for Livelo", year: "2016–17",
+      slug: "livelo-crm", name: "Livelo CRM", company: "Dextra for Livelo", year: "2016–17", category: "Lifecycle design",
       thumb: { src: "images/livelo-crm/thumb.webp", label: "Clube Livelo" },
       description: "Livelo is Brazil's biggest loyalty program. I designed its communication journeys across email, SMS and push for 6 card tiers from 2 banks, covering expiring points, new points, point balances, travel, shopping and experiences, plus seasonal moments like Black Friday and Christmas. All in, I designed and crafted over 500 emails, SMS and push notifications. Once the structure was set and running, I moved on to the next challenge: paid ads and social.",
       stats: [
@@ -467,7 +467,7 @@ window.SITE = {
         { n: "10×", label: "the daily email goal: 10 a day, not 1" },
         { n: "6", label: "card tiers across 2 banks" }
       ],
-      tags: ["CRM", "Lifecycle", "Email · SMS · Push", "Loyalty"],
+      tags: ["Email design", "Journey mapping", "SMS · Push"],
       images: [
         { src: "images/livelo-crm/clube-livelo.webp", label: "Clube Livelo key visual", ratio: "1/1" },
         { src: "images/livelo-crm/email-points-expiring.webp", label: "Email: points about to expire", ratio: "600/1689", pair: true },
@@ -476,7 +476,7 @@ window.SITE = {
       ]
     },
     {
-      slug: "alelo-design-system", name: "Alelo Design System", company: "Insidelink for Alelo", year: "2020–21",
+      slug: "alelo-design-system", name: "Alelo Design System", company: "Insidelink for Alelo", year: "2020–21", category: "Design systems",
       thumb: { src: "images/alelo-design-system/thumb.webp", label: "Alelo components" },
       description: "I led the creation of Alelo's Figma design system: 15+ libraries audited and merged into around 300 shared components, for 10 products and 12 designers, in the middle of a rebrand. We used atomic design principles to keep the structure scalable and consistent across every component.",
       stats: [
@@ -484,7 +484,7 @@ window.SITE = {
         { n: "15+", label: "libraries audited and merged" },
         { n: "10", label: "products · 12 designers" }
       ],
-      tags: ["Design systems", "Figma", "Consulting"],
+      tags: ["Design systems", "Atomic design", "Figma"],
       images: [
         { src: "images/alelo-design-system/components.webp", label: "Components: cards, alerts, inputs, tabs, pagination and steppers", ratio: "1920/1080" },
         { src: "images/alelo-design-system/color-scheme.webp", label: "Color scheme: primaries, secondaries, neutrals, status and product colors", ratio: "1532/945" },
@@ -504,9 +504,8 @@ window.SITE = {
     tools: ["Figma", "Claude Design", "Cursor", "Adobe Creative Suite", "Miro"],
     howTitle: "How I work now",
     how: [
-      "These days I start with the numbers and the people behind them. I dig into product data, sit in on customer calls and run workshops that get PMs, engineers and stakeholders dreaming in the same direction.",
-      "Then I make ideas real, fast. I prototype in Figma, Claude Design and Cursor, often in code, because a prototype people can click ends debates faster than any slide. I care about the craft of every screen, and I build the systems that let a team keep that quality.",
-      "Along the way I own the outcome, not just the design file, and I love helping other designers grow. Curiosity is what keeps me going: there's always a better way to tell the story."
+      "These days I anchor my designs in real customer data. I dig into product analytics, sit in on customer calls and run workshops that get PMs, engineers and stakeholders dreaming in the same direction.",
+      "Then I make ideas real, fast. I prototype in Figma, Claude Design and Cursor, often in code, because a prototype people can click ends debates faster than any slide. I care about the craft of every screen, and I build the systems that let a team keep that quality."
     ],
     hardSkills: [["Discovery and research", 7], ["Interaction design", 8], ["UI and visual design", 9], ["Design systems", 7], ["Prototyping (AI and code)", 10], ["Data-informed design", 10], ["Workshop facilitation", 10], ["Brand, illustration and motion", 8]],
     softSkills: [["Communication and storytelling", 9], ["Cross-functional collaboration", 8], ["Comfort with ambiguity", 7], ["Empathy and listening", 8], ["Stakeholder management", 9], ["Curiosity", 10], ["Ownership", 10], ["Mentoring", 10]],

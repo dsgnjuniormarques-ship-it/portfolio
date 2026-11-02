@@ -153,7 +153,7 @@
     f.className = 'site-footer';
     f.innerHTML = '<svg class="sk thin rule" viewBox="0 0 1000 6" preserveAspectRatio="none" aria-hidden="true"><path d="M0,3 C150,5 400,1 600,3.5 C800,5 900,1.5 1000,3"/></svg>' +
       '<div class="bar"><div class="grp"><span class="mail">' + esc(S.email) + '</span>' +
-      '<button class="lnk marker" type="button" data-copy aria-label="Copy email">' + I.copy + '<span class="only-d" data-copy-label>Copy</span><span class="only-m" data-copy-done></span></button></div>' +
+      '<button class="lnk marker" type="button" data-copy aria-label="Copy email">' + I.copy + '<span class="only-d" data-copy-label></span><span class="only-m" data-copy-done></span></button></div>' +
       '<div class="grp"><a class="lnk marker" href="' + esc(S.linkedin) + '" target="_blank" rel="noopener"><span class="only-d">LinkedIn</span><span class="only-m hand" style="font-weight:700;font-size:16px">in</span>' + '<span class="only-d">' + I.out + '</span></a>' +
       '<a class="lnk marker" href="' + esc(S.cv) + '" download>' + I.dl + '<span class="only-d">Download CV</span><span class="only-m">CV</span></a></div></div>';
     document.body.appendChild(f);
@@ -167,7 +167,7 @@
         copyBtn.setAttribute('aria-label', 'Email copied');
         clearTimeout(t);
         t = setTimeout(function () {
-          f.querySelector('[data-copy-label]').textContent = 'Copy';
+          f.querySelector('[data-copy-label]').textContent = '';
           f.querySelector('[data-copy-done]').textContent = '';
           copyBtn.setAttribute('aria-label', 'Copy email');
         }, 1800);
@@ -314,12 +314,66 @@
   }
   function feed(list, title, alt, intro, id) {
     return '<section class="feed" id="' + id + '"' + (alt ? ' data-alt="' + esc(alt) + '"' : '') + ' data-title="' + esc(title) + '">' +
-      '<aside class="feed-side"><div class="feed-sticky"><h2 class="feed-title">' + esc(title) + '</h2>' + (intro ? '<p class="feed-intro">' + esc(intro) + '</p>' : '') +
+      '<aside class="feed-side"><div class="feed-sticky">' + (title ? '<h2 class="feed-title">' + esc(title) + '</h2>' : '') + (intro ? '<p class="feed-intro">' + esc(intro) + '</p>' : '') +
         '<div class="feed-texts">' + list.map(function (p, k) { return '<div class="ft' + (k ? '' : ' on') + '" aria-hidden="' + (k ? 'true' : 'false') + '">' + feedText(p) + '</div>'; }).join('') + '</div></div></aside>' +
       '<div class="feed-main">' + list.map(function (p, k) {
         return '<article class="fp" id="' + esc(p.slug) + '" data-k="' + k + '"><div class="fp-text">' + feedText(p) + '</div><div class="fp-imgs">' + feedImgs(p.images) + '</div></article>';
       }).join('') + '</div></section>';
   }
+  /* ---------- projects: category filters + list / grid ---------- */
+  var VIEW_ICONS = {
+    list: '<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="7" height="7" rx="1.5"/><path d="M13 6h8M13 9h5"/><rect x="3" y="13" width="7" height="7" rx="1.5"/><path d="M13 15h8M13 18h5"/></svg>',
+    grid: '<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="8" height="8" rx="1.5"/><rect x="13" y="3" width="8" height="8" rx="1.5"/><rect x="3" y="13" width="8" height="8" rx="1.5"/><rect x="13" y="13" width="8" height="8" rx="1.5"/></svg>'
+  };
+  function projectsSection(H) {
+    var cats = [];
+    S.projects.forEach(function (p) { if (p.category && cats.indexOf(p.category) < 0) cats.push(p.category); });
+    var bar = '<div class="pbar" id="projects"><h2 class="pbar-title">' + esc(H.otherTitle) + '</h2>' +
+      '<div class="pills" role="group" aria-label="Filter projects by category">' + cats.map(function (c) {
+        return '<button class="pill" type="button" aria-pressed="false" data-cat="' + esc(c) + '"><span>' + esc(c) + '</span><span class="x" aria-hidden="true">' + I.x + '</span></button>';
+      }).join('') + '</div>' +
+      '<div class="views" role="group" aria-label="View">' +
+        '<button class="vbtn" type="button" data-view="list" aria-pressed="true" aria-label="List view">' + VIEW_ICONS.list + '</button>' +
+        '<button class="vbtn" type="button" data-view="grid" aria-pressed="false" aria-label="Grid view">' + VIEW_ICONS.grid + '</button></div></div>';
+    var grid = '<div class="pgrid" hidden>' + S.projects.map(function (p) {
+      return '<a class="pcard" href="project.html?p=' + p.slug + '" data-cat="' + esc(p.category || '') + '"><figure class="fig">' + media(p.thumb) + '</figure>' +
+        '<span class="pc-cat">' + esc(p.category || '') + '</span><h3>' + esc(p.name) + '</h3><span class="pc-meta">' + esc(p.company) + ' · ' + esc(p.year) + '</span></a>';
+    }).join('') + '</div>';
+    var list = feed(S.projects, '', '', '', 'projects-list');
+    return '<section class="projects">' + bar + grid + list + '</section>';
+  }
+  function initProjects(main) {
+    var sec = main.querySelector('.projects'); if (!sec) return;
+    var on = [], view = 'list';
+    try { view = localStorage.getItem('pf-view') === 'grid' ? 'grid' : 'list'; } catch (e) {}
+    function apply() {
+      sec.querySelectorAll('.pill').forEach(function (b) { b.setAttribute('aria-pressed', String(on.indexOf(b.getAttribute('data-cat')) > -1)); });
+      var ok = function (cat) { return !on.length || on.indexOf(cat) > -1; };
+      sec.querySelectorAll('.pcard').forEach(function (c) { c.hidden = !ok(c.getAttribute('data-cat')); });
+      sec.querySelectorAll('.fp').forEach(function (a) { a.hidden = !ok(S.projects[+a.getAttribute('data-k')].category); });
+      sec.querySelector('.pgrid').hidden = view !== 'grid';
+      sec.querySelector('.feed').hidden = view !== 'list';
+      sec.querySelectorAll('.vbtn').forEach(function (b) { b.setAttribute('aria-pressed', String(b.getAttribute('data-view') === view)); });
+      var f = sec.querySelector('.feed'); f._cur = -1;
+      window.dispatchEvent(new Event('scroll'));
+    }
+    sec.querySelectorAll('.pill').forEach(function (b) {
+      b.addEventListener('click', function () {
+        var c = b.getAttribute('data-cat'), i = on.indexOf(c);
+        if (i > -1) on.splice(i, 1); else on.push(c);
+        apply();
+      });
+    });
+    sec.querySelectorAll('.vbtn').forEach(function (b) {
+      b.addEventListener('click', function () {
+        view = b.getAttribute('data-view');
+        try { localStorage.setItem('pf-view', view); } catch (e) {}
+        apply();
+      });
+    });
+    apply();
+  }
+
   function initFeeds(root) {
     var feeds = root.querySelectorAll('.feed');
     var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -327,8 +381,8 @@
     function tick() {
       var mid = window.innerHeight * 0.6;
       feeds.forEach(function (f) {
-        var arts = f.querySelectorAll('.fp'), cur = 0;
-        arts.forEach(function (a, k) { if (a.getBoundingClientRect().top < mid) cur = k; });
+        var arts = f.querySelectorAll('.fp:not([hidden])'), cur = arts.length ? +arts[0].getAttribute('data-k') : 0;
+        arts.forEach(function (a) { if (a.getBoundingClientRect().top < mid) cur = +a.getAttribute('data-k'); });
         if (f._cur !== cur) {
           f._cur = cur;
           f.querySelectorAll('.ft').forEach(function (t, k) { t.classList.toggle('on', k === cur); t.classList.toggle('past', k < cur); t.setAttribute('aria-hidden', String(k !== cur)); });
@@ -393,7 +447,6 @@
     var cards = S.caseStudies.map(function (c) {
       return '<article class="card"><a class="fig" href="case-study.html?p=' + c.slug + '" tabindex="-1" aria-hidden="true">' + frame('bold') + media(c.thumb) +
         '<span class="lock">' + I.lock + 'Locked</span></a>' +
-        '<p class="meta">' + esc(c.name) + ' · ' + esc(c.company) + ' · ' + esc(c.year) + '</p>' +
         '<h3><a href="case-study.html?p=' + c.slug + '">' + esc(c.line) + '</a></h3>' + tags(c.tags) +
         '<a class="btn marker" href="case-study.html?p=' + c.slug + '">Check it out ' + I.arrow + '</a></article>';
     }).join('');
@@ -406,11 +459,12 @@
       '</section>' +
       '<section class="band" id="work">' + sectionTitle(H.featuredTitle, H.featuredArt) +
         '<div class="cards">' + cards + '</div></section>' +
-      feed(S.projects, H.otherTitle, '', '', 'projects') +
+      projectsSection(H) +
       feed(S.sideQuests || [], H.questsTitle, '', H.questsIntro, 'side-quests');
 
     heroLettering(main.querySelector('[data-letter]'), main.querySelector('[data-hero-text]'), main.querySelector('[data-eraser]'), arts, (H.heroHoldSeconds || 6) * 1000);
     initFeeds(main);
+    initProjects(main);
   }
 
   function caseStudy(main) {
@@ -455,7 +509,7 @@
             '<div style="display:flex;flex-direction:column;gap:12px"><span class="lbl">Outcomes</span><ul class="ol">' + c.outcomes.map(function (o) { return '<li>' + esc(o) + '</li>'; }).join('') + '</ul></div>' +
           '</div>' +
         '</div></div>' +
-        c.heroImages.map(function (im) { return '<div class="car">' + fig(im, 'wide') + '<div class="car-bar"><p class="car-cap">' + esc(im.label || '') + '</p></div></div>'; }).join('') :
+        c.heroImages.map(function (im) { return '<div class="car' + (im.narrow ? ' car-narrow' : '') + '">' + fig(im, 'wide') + '<div class="car-bar"><p class="car-cap">' + esc(im.label || '') + '</p></div></div>'; }).join('') :
         '<div class="row top">' +
           '<div class="col-text" style="gap:28px">' + tags(c.context) +
             '<h1 class="cs-title">' + esc(c.title) + '<small>' + esc(c.subtitle) + '</small></h1>' +
@@ -494,7 +548,7 @@
     });
     if (pairs.length) imgs.push(fig(pairs[0]));
     main.innerHTML =
-      '<aside><a class="lnk marker back" href="index.html#work">' + ARROW_L + 'Back to work</a>' +
+      '<aside><a class="lnk marker back" href="index.html#projects">' + ARROW_L + 'Back to projects</a>' +
         '<div><h1>' + esc(p.name) + '</h1><p class="meta">' + esc(p.company) + ' · ' + esc(p.year) + '</p></div>' +
         '<p class="p" style="font-size:16px">' + esc(p.description) + '</p>' +
         (p.quote ? '<p class="hand" style="margin:0;font-size:22px;line-height:1.3">“' + esc(p.quote) + '”<br><span style="font-size:15px;color:var(--ink-3)">' + esc(p.quoteBy || '') + '</span></p>' : '') +
