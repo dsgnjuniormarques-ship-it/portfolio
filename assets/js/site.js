@@ -581,7 +581,7 @@
         '<figure class="fig portrait">' + frame('bold') +
           (A.photo && !A.video ? '<img class="media" src="' + esc(A.photo) + '" alt="Evaldo Marques">' : A.video ? '<video class="media" src="' + esc(A.video) + '"' + (A.videoPoster ? ' poster="' + esc(A.videoPoster) + '"' : '') + ' autoplay muted loop playsinline></video>' : '<div class="ph">Video · me, looking at the camera</div>') +
         '</figure>' +
-        '<section class="why"><span class="lbl">Why I design</span><p class="body">' + esc(A.why) + '</p>' + tags(A.facts) +
+        '<section class="why"><span class="lbl">Why I design</span><p class="body">' + esc(A.why) + '</p>' +
           '<span class="lbl" style="margin-top:22px">' + esc(A.howTitle) + '</span>' + A.how.map(function (t) { return '<p class="body">' + esc(t) + '</p>'; }).join('') + '</section>' +
       '</div>' +
       people(S.home);
