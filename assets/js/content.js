@@ -35,7 +35,7 @@ window.SITE = {
       { src: "images/lettering/hero-5.svg", text: "Great design makes you feel something", split: 52 }
     ],
     heroHoldSeconds: 8,       // how long each one stays before the next is written
-    intro: "Hello, I'm Evaldo! A product designer from Brazil, happily based in Stockholm. For 12 years I've designed everything from nationwide marketing campaigns to B2B products built from zero. My years at Funnel taught me to work with <mark>extremely complex data</mark>, to turn abstract concepts into experiences people actually get, and to value what <mark>numbers and real conversations</mark> tell us about what users find valuable.",
+    intro: "Hello, I'm Evaldo! A product designer from Brazil, happily based in Stockholm. For 12 years I've designed everything from nationwide marketing campaigns to B2B products built from zero.",
     featuredTitle: "Case studies",
     featuredArt: "",          // e.g. "images/lettering/featured-work.svg"
     otherTitle: "Projects",
