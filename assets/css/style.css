@@ -489,3 +489,6 @@ main{position:relative;z-index:1}
 .pbar,.pbar.stuck{border-bottom:0;box-shadow:0 0 0 100vmax rgba(252,252,251,.92)}
 .pbar::after{content:'';position:absolute;left:-100vmax;right:-100vmax;bottom:0;height:1px;background:#E6E6E4;opacity:0;transition:opacity .2s}
 .pbar.stuck::after{opacity:1}
+html,body{overflow-x:clip}
+.projects{overflow-x:clip;overflow-y:visible}
+.pbar::after{left:calc(50% - 50vw);right:calc(50% - 50vw)}
