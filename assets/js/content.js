@@ -293,7 +293,7 @@ window.SITE = {
       ]
     },
     {
-      slug: "itchy", category: "UX design", thumb: "images/sq/itchy/survey-start.webp", name: "Itchy", company: "Hiring challenge",
+      slug: "itchy", category: "Product design", thumb: "images/sq/itchy/survey-start.webp", name: "Itchy", company: "Hiring challenge",
       description: "Itchy makes skincare for people with eczema, and some of its products need a prescription. Until Itchy has its own dermatologists, my idea was to help people find a good one who prescribes what their skin actually needs, not what helps our sales. Starting with care builds trust, and once that relationship exists, people are more open to trying the rest of the range. I sketched the flow first, then designed a short survey that connects people with a dermatologist.",
       tags: ["Hiring challenge", "E-commerce", "Health"],
       images: [
@@ -318,7 +318,7 @@ window.SITE = {
       ]
     },
     {
-      slug: "gloot", category: "UI design", thumb: "images/sq/gloot/tournament.webp", name: "Casual gaming tournaments", company: "Hiring challenge for G-Loot",
+      slug: "gloot", category: "Product design", thumb: "images/sq/gloot/tournament.webp", name: "Casual gaming tournaments", company: "Hiring challenge for G-Loot",
       description: "The challenge: design a platform where casual gamers can jump into free tournaments. I started on paper, then built a small style guide with color, type, icons and components, and designed the landing page, the start page and a tournament page.",
       tags: ["Gaming", "Hiring challenge", "UI"],
       images: [
@@ -340,7 +340,7 @@ window.SITE = {
       ]
     },
     {
-      slug: "furiend", category: "Mobile", name: "FURiend", company: "Hiring challenge",
+      slug: "furiend", category: "Product design", name: "FURiend", company: "Hiring challenge",
       description: "Millions of animals are waiting in shelters and foster homes. The challenge was to help people find a pet that matches their lifestyle, considering breed, gender, age and health. A quick, fun one: 6 to 8 hours, from research to a mobile home screen that feels happy, vibrant and reliable.",
       tags: ["Mobile", "Hiring challenge"],
       images: [

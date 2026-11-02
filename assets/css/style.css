@@ -464,3 +464,19 @@ main{position:relative;z-index:1}
 @media (max-width:640px){.views{margin-left:0}.projects{padding-top:96px}}
 .sp h1{font-size:clamp(32px,3vw,42px);line-height:1.08}
 .car-narrow{max-width:720px;width:100%;margin:0 auto}
+/* sticky projects bar */
+.pbar{position:sticky;top:var(--hh,75px);z-index:30;padding:14px var(--gutter);margin:0 calc(-1 * var(--gutter));background:rgba(252,252,251,.92);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid transparent;transition:border-color .2s}
+.pbar.stuck{border-bottom-color:#E6E6E4}
+.pbar.stuck .pbar-title{font-size:clamp(28px,2.6vw,36px)}
+.pbar-title{transition:font-size .2s}
+.projects .feed-sticky{top:calc(var(--hh,75px) + var(--pb,80px) + 24px);max-height:calc(100vh - var(--hh,75px) - var(--pb,80px) - 110px)}
+.projects .pgrid{margin-top:0}
+@media (max-width:760px){
+  .pbar{flex-wrap:nowrap;gap:10px;padding:10px 16px;margin:0 -16px}
+  .pbar-title{display:none}
+  .pills{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;min-width:0}
+  .pills::-webkit-scrollbar{display:none}
+  .pill{white-space:nowrap;min-height:36px;padding:4px 14px;font-size:14px}
+  .views{flex:none;padding:3px}.vbtn{width:34px;height:34px}
+  .projects::before{content:'Projects';display:block;font-family:var(--head);font-size:40px;line-height:1;margin-bottom:14px}
+}
