@@ -478,9 +478,9 @@ window.SITE = {
     {
       slug: "alelo-design-system", name: "Alelo Design System", company: "Insidelink for Alelo", year: "2020–21", category: "Design systems",
       thumb: { src: "images/alelo-design-system/thumb.webp", label: "Alelo components" },
-      description: "I led the creation of Alelo's Figma design system: 15+ libraries audited and merged into around 300 shared components, for 10 products and 12 designers, in the middle of a rebrand. We used atomic design principles to keep the structure scalable and consistent across every component.",
+      description: "I led the creation of Alelo's Figma design system: 15+ libraries audited and merged into around 500 shared components, for 10 products and 12 designers, in the middle of a rebrand. We used atomic design principles to keep the structure scalable and consistent across every component.",
       stats: [
-        { n: "~300", label: "shared components" },
+        { n: "~500", label: "shared components" },
         { n: "15+", label: "libraries audited and merged" },
         { n: "10", label: "products · 12 designers" }
       ],
