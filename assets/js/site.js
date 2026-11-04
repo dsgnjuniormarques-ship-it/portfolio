@@ -432,12 +432,12 @@
     // every quote sits in the same grid cell, so the bubble always fits the longest one
     var stack = main.querySelector('[data-qstack]');
     stack.innerHTML = qs.map(function (q) {
-      return '<div class="qitem" aria-hidden="true"><blockquote>' + esc(q.text) + '</blockquote><figcaption><b>' + esc(q.name) + '</b><span>' + esc(q.role) + '</span></figcaption></div>';
+      return '<div class="qitem" aria-hidden="true"><blockquote>' + esc(q.text) + '</blockquote><figcaption><b>' + (q.url ? '<a class="qname" href="' + esc(q.url) + '" target="_blank" rel="noopener">' + esc(q.name) + '</a>' : esc(q.name)) + '</b><span>' + esc(q.role) + '</span></figcaption></div>';
     }).join('');
     var items = stack.querySelectorAll('.qitem');
     function show(k) {
       i = (k + qs.length) % qs.length;
-      items.forEach(function (el, j) { el.classList.toggle('on', j === i); el.setAttribute('aria-hidden', String(j !== i)); });
+      items.forEach(function (el, j) { el.classList.toggle('on', j === i); el.setAttribute('aria-hidden', String(j !== i)); el.querySelectorAll('a').forEach(function (a) { a.tabIndex = j === i ? 0 : -1; }); });
       dots.querySelectorAll('.dot').forEach(function (d, j) { if (j === i) d.setAttribute('aria-current', 'true'); else d.removeAttribute('aria-current'); });
     }
     // reading time: about 5 s plus 55 ms per character, never under 8 s

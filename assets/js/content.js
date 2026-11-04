@@ -50,11 +50,11 @@ window.SITE = {
   // Replace with real quotes, names and roles.
   // Real words from colleagues (lightly trimmed). Add surnames if they want them.
   testimonials: [
-    { text: "I don't think I've ever seen a higher degree of \u201cfirst draft excellence\u201d from a designer during my career. You are GOOD and FAST. When you speak, others listen.", name: "Emilie Ljungdal", role: "Product Manager, Funnel" },
-    { text: "Simply one of the best colleagues I've ever worked with. If we ever feel stuck, he has a remarkable ability to help us break free, think outside the box, and bring fresh perspectives.", name: "Elena Gjeroska", role: "Staff Designer, Funnel" },
-    { text: "He doesn't just want to design a B2B app, he designs delightful experiences that make the user enjoy using the app, not just make it through.", name: "Alex", role: "Product Manager, Funnel" },
-    { text: "A real mood raiser, and a significant factor in bringing the team together. He takes feedback very well, with an open mind, while explaining the train of thought behind his design.", name: "Bj\u00f6rn", role: "Senior Engineer, Funnel" },
-    { text: "Really good at making people feel comfortable. Willing to help out, and doesn't only look at his own team.", name: "Nina", role: "Head of Product, Funnel" }
+    { text: "I don't think I've ever seen a higher degree of \u201cfirst draft excellence\u201d from a designer during my career. You are GOOD and FAST. When you speak, others listen.", name: "Emilie Ljungdal", role: "Product Manager", url: "https://www.linkedin.com/in/emilie-ljungdal/" },
+    { text: "Simply one of the best colleagues I've ever worked with. If we ever feel stuck, he has a remarkable ability to help us break free, think outside the box, and bring fresh perspectives.", name: "Elena Gjeroska", role: "Staff Designer", url: "https://www.linkedin.com/in/elena-geroska/" },
+    { text: "He doesn't just want to design a B2B app, he designs delightful experiences that make the user enjoy using the app, not just make it through.", name: "Alexander Ross Billington", role: "Product Manager", url: "https://www.linkedin.com/in/alexander-ross-billington-0a2a1090/" },
+    { text: "A real mood raiser, and a significant factor in bringing the team together. He takes feedback very well, with an open mind, while explaining the train of thought behind his design.", name: "Bj\u00f6rn Ekengren", role: "Senior Engineer", url: "https://www.linkedin.com/in/bj%C3%B6rn-ekengren-12a734/" },
+    { text: "Really good at making people feel comfortable. Willing to help out, and doesn't only look at his own team.", name: "Nina Holtz", role: "Head of Product", url: "https://www.linkedin.com/in/nina-holtz-0002a330/" }
   ],
 
   // ---------- FEATURED CASE STUDIES (password protected) ----------

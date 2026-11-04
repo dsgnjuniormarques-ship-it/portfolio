@@ -494,3 +494,4 @@ html,body{overflow-x:clip}
 .projects .pgrid{margin-top:48px}
 .projects .feed{padding-top:72px}
 @media (max-width:760px){.projects .pgrid{margin-top:24px}.projects .feed{padding-top:40px}}
+.qname{color:inherit;text-decoration:underline;text-decoration-color:#C9C9C6;text-underline-offset:3px;text-decoration-thickness:1.5px}.qname:hover{text-decoration-color:currentColor}
