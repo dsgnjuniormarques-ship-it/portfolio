@@ -495,3 +495,13 @@ html,body{overflow-x:clip}
 .projects .feed{padding-top:72px}
 @media (max-width:760px){.projects .pgrid{margin-top:24px}.projects .feed{padding-top:40px}}
 .qname{color:inherit;text-decoration:underline;text-decoration-color:#C9C9C6;text-underline-offset:3px;text-decoration-thickness:1.5px}.qname:hover{text-decoration-color:currentColor}
+
+/* hidden numbers */
+.nlock{filter:blur(5px);user-select:none;display:inline-block;padding:0 1px}
+.nbar{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;padding:14px 18px;border:1.5px solid #E1E1E1;border-radius:14px;background:#fff;font-size:15px}
+.nbar>span{display:inline-flex;align-items:center;gap:8px;color:var(--ink-2)}
+.nform{display:flex;flex-wrap:wrap;align-items:center;gap:10px}
+.nform .pw{min-height:44px;padding:8px 14px;border:2px solid var(--ink);border-radius:10px;font:inherit;width:200px}
+.nform a{font-size:14px;color:var(--ink-2)}
+.nbar .msg{flex-basis:100%;margin:0;font-size:14px;color:#B00040}
+.nbar .msg:empty{display:none}

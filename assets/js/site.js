@@ -461,7 +461,7 @@
       '<svg class="eraser" data-eraser viewBox="0 0 1800 700" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M-40,690 L1840,600 L-40,520 L1840,430 L-40,350 L1840,260 L-40,180 L1840,90 L-40,10 L1840,-40"/></svg></h1>';
     var cards = S.caseStudies.map(function (c) {
       return '<article class="card"><a class="fig" href="case-study.html?p=' + c.slug + '" tabindex="-1" aria-hidden="true">' + frame('bold') + media(c.thumb) +
-        '<span class="lock">' + I.lock + 'Locked</span></a>' +
+        '</a>' +
         '<h3><a href="case-study.html?p=' + c.slug + '">' + esc(c.line) + '</a></h3>' + tags(c.tags) +
         '<a class="btn marker" href="case-study.html?p=' + c.slug + '">Check it out ' + I.arrow + '</a></article>';
     }).join('');
@@ -486,23 +486,51 @@
     var idx = Math.max(0, list.findIndex(function (c) { return c.slug === param('p'); }));
     var c = list[idx], nx = list[(idx + 1) % list.length];
     document.title = c.name + ' · ' + S.name;
+    var locked = !unlocked();
+    // numbers stay hidden until the password is entered; the real digits never reach the page
+    function mask(t) {
+      return t.replace(/[~+\u2212-]?\d[\d.,]*(?:\s?(?:%|\u00d7|x\b|M\b|k\b|\+))?\+?/g, function (m) {
+        var d = m.replace(/[^\d]/g, '');
+        if (/^(19|20)\d\d$/.test(d) && m.length === 4) return m;
+        if (d.length === 1 && !/[%\u00d7+]/.test(m)) return m;
+        return '<span class="nlock" aria-label="hidden number">' + m.replace(/\d/g, '0') + '</span>';
+      });
+    }
+    function E(t) { return locked ? mask(esc(t)) : esc(t); }
+    function unlockBar() {
+      if (!locked) return '';
+      return '<div class="nbar" data-nbar><span>' + I.lock + ' Numbers are hidden.</span><button class="btn marker" type="button" data-nopen>Unlock with password</button>' +
+        '<form class="nform" hidden novalidate><input class="pw" type="password" aria-label="Password" autocomplete="current-password" required><button class="btn" type="submit">Unlock</button><a href="mailto:' + esc(S.email) + '?subject=Portfolio%20password">Ask me for it</a></form><p class="msg" aria-live="polite"></p></div>';
+    }
+    function wireBar() {
+      var bar = main.querySelector('[data-nbar]'); if (!bar) return;
+      var f = bar.querySelector('form'), inp = f.querySelector('input'), msg = bar.querySelector('.msg');
+      bar.querySelector('[data-nopen]').addEventListener('click', function () { f.hidden = false; this.hidden = true; inp.focus(); });
+      f.addEventListener('submit', function (e) {
+        e.preventDefault();
+        sha256(inp.value.trim().toLowerCase()).then(function (h) {
+          if (h === S.passwordHash) { try { sessionStorage.setItem('pf-unlocked', h); } catch (er) {} locked = false; var y = scrollY; render(); window.scrollTo(0, y); }
+          else { msg.textContent = 'Not quite. Try again, or ask me for it.'; inp.focus(); }
+        });
+      });
+    }
     function render() {
       main.className = 'wrap clean';
       var n = 0;
       var body = c.sections.map(function (s) {
         if (s.type === 'image') return fig(s.image, 'wide');
-        function paras(t) { return t ? [].concat(t).map(function (x) { return '<p class="p">' + esc(x) + '</p>'; }).join('') : ''; }
+        function paras(t) { return t ? [].concat(t).map(function (x) { return '<p class="p">' + E(x) + '</p>'; }).join('') : ''; }
         if (s.type === 'video') return '<figure class="fig">' + frame('wide') + '<div class="video"><iframe src="https://www.youtube-nocookie.com/embed/' + esc(s.youtube) + '" title="' + esc(s.label || 'Video') + '" loading="lazy" allow="encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe></div></figure>';
         n++;
-        var text = '<div class="col-text dec"><span class="num">' + ('0' + n).slice(-2) + '</span><h2>' + esc(s.heading) + '</h2>' + paras(s.text) +
-          (s.steps ? '<ol class="steps">' + s.steps.map(function (st) { return '<li><b>' + esc(st[0]) + '</b>' + (st[1] ? ' ' + esc(st[1]) : '') + '</li>'; }).join('') + '</ol>' : '') +
+        var text = '<div class="col-text dec"><span class="num">' + ('0' + n).slice(-2) + '</span><h2>' + E(s.heading) + '</h2>' + paras(s.text) +
+          (s.steps ? '<ol class="steps">' + s.steps.map(function (st) { return '<li><b>' + E(st[0]) + '</b>' + (st[1] ? ' ' + E(st[1]) : '') + '</li>'; }).join('') + '</ol>' : '') +
           paras(s.after) + '</div>';
         if (s.prototype) {
           var pr = s.prototype;
           return '<section class="row stack">' + text +
             '<div class="proto">' +
               '<div class="proto-box" style="aspect-ratio:' + (pr.w || 1440) + '/' + (pr.h || 900) + '"><iframe src="' + esc(pr.src) + '" title="' + esc(pr.label || 'Prototype') + '" loading="lazy" width="' + (pr.w || 1440) + '" height="' + (pr.h || 900) + '"></iframe></div>' +
-            '<div class="car-bar"><p class="car-cap">' + esc(pr.label || '') + '</p><a class="btn marker" href="' + esc(pr.src) + '" target="_blank" rel="noopener">Open full screen ' + I.arrow + '</a></div></div>' +
+            '<div class="car-bar"><p class="car-cap">' + E(pr.label || '') + '</p><a class="btn marker" href="' + esc(pr.src) + '" target="_blank" rel="noopener">Open full screen ' + I.arrow + '</a></div></div>' +
           '</section>';
         }
         if (s.carousel) {
@@ -517,27 +545,28 @@
         '<div style="display:flex;flex-direction:column;gap:32px"><a class="lnk marker back" href="index.html#work">' + ARROW_L + 'Back to work</a>' +
         (c.layout !== 'classic' ?
         '<div class="row top split">' +
-          '<div class="col-text" style="gap:28px">' + tags(c.context) + '<h1 class="cs-title">' + esc(c.title) + '<small>' + esc(c.subtitle) + '</small></h1></div>' +
+          '<div class="col-text" style="gap:28px">' + tags(c.context) + '<h1 class="cs-title">' + E(c.title) + '<small>' + E(c.subtitle) + '</small></h1></div>' +
           '<div class="col-text" style="gap:28px">' +
-            '<div style="display:flex;flex-direction:column;gap:10px"><span class="lbl">Summary</span>' + [].concat(c.summary).map(function (x) { return '<p class="p">' + esc(x) + '</p>'; }).join('') + '</div>' +
-            '<div style="display:flex;flex-direction:column;gap:12px"><span class="lbl">Outcomes</span><ul class="ol">' + c.outcomes.map(function (o) { return '<li>' + esc(o) + '</li>'; }).join('') + '</ul></div>' +
+            '<div style="display:flex;flex-direction:column;gap:10px"><span class="lbl">Summary</span>' + [].concat(c.summary).map(function (x) { return '<p class="p">' + E(x) + '</p>'; }).join('') + '</div>' +
+            '<div style="display:flex;flex-direction:column;gap:12px"><span class="lbl">Outcomes</span><ul class="ol">' + c.outcomes.map(function (o) { return '<li>' + E(o) + '</li>'; }).join('') + '</ul>' + unlockBar() + '</div>' +
           '</div>' +
         '</div></div>' +
-        c.heroImages.map(function (im) { return '<div class="car' + (im.narrow ? ' car-narrow' : '') + '">' + fig(im, 'wide') + '<div class="car-bar"><p class="car-cap">' + esc(im.label || '') + '</p></div></div>'; }).join('') :
+        c.heroImages.map(function (im) { return '<div class="car' + (im.narrow ? ' car-narrow' : '') + '">' + fig(im, 'wide') + '<div class="car-bar"><p class="car-cap">' + E(im.label || '') + '</p></div></div>'; }).join('') :
         '<div class="row top">' +
           '<div class="col-text" style="gap:28px">' + tags(c.context) +
-            '<h1 class="cs-title">' + esc(c.title) + '<small>' + esc(c.subtitle) + '</small></h1>' +
-            '<div style="display:flex;flex-direction:column;gap:10px"><span class="lbl">Summary</span><p class="p">' + esc(c.summary) + '</p></div>' +
-            '<div style="display:flex;flex-direction:column;gap:12px"><span class="lbl">Outcomes</span><ul class="ol">' + c.outcomes.map(function (o) { return '<li>' + esc(o) + '</li>'; }).join('') + '</ul></div>' +
+            '<h1 class="cs-title">' + E(c.title) + '<small>' + E(c.subtitle) + '</small></h1>' +
+            '<div style="display:flex;flex-direction:column;gap:10px"><span class="lbl">Summary</span><p class="p">' + E(c.summary) + '</p></div>' +
+            '<div style="display:flex;flex-direction:column;gap:12px"><span class="lbl">Outcomes</span><ul class="ol">' + c.outcomes.map(function (o) { return '<li>' + E(o) + '</li>'; }).join('') + '</ul>' + unlockBar() + '</div>' +
           '</div>' +
           '<div class="col-img">' + c.heroImages.map(function (im, k) { return fig(im, 'bold', k ? 'offset' : ''); }).join('') + '</div>' +
         '</div></div>') +
-        '<div class="stats">' + c.stats.map(function (s) { return '<div class="stat">' + frame('wide', 'draw thin') + '<span class="lbl">' + esc(s.n) + '</span><span>' + esc(s.label) + '</span></div>'; }).join('') + '</div>' +
+        '<div class="stats">' + c.stats.map(function (s) { return '<div class="stat">' + frame('wide', 'draw thin') + '<span class="lbl">' + E(s.n) + '</span><span>' + E(s.label) + '</span></div>'; }).join('') + '</div>' +
         body +
-        (c.quote ? '<blockquote class="pull">“' + esc(c.quote.text) + '”<cite>' + esc(c.quote.by) + '</cite></blockquote>' : '') +
-        '<section class="learned"><span class="lbl">What I learned</span><p>' + esc(c.learned) + '</p></section>' +
+        (c.quote ? '<blockquote class="pull">“' + E(c.quote.text) + '”<cite>' + E(c.quote.by) + '</cite></blockquote>' : '') +
+        '<section class="learned"><span class="lbl">What I learned</span><p>' + E(c.learned) + '</p></section>' +
         prevNext('case-study.html', list, idx);
       initCarousels(main);
+      wireBar();
       main.querySelectorAll('.proto-box').forEach(function (box) {
         var f = box.querySelector('iframe'), w = +f.getAttribute('width');
         function fit() { f.style.transform = 'scale(' + (box.clientWidth / w) + ')'; }
@@ -545,7 +574,7 @@
       });
       drawOnScroll();
     }
-    if (unlocked()) render(); else gate(main, function () { render(); window.scrollTo(0, 0); });
+    render();
   }
 
   function project(main) {
