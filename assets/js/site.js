@@ -456,9 +456,7 @@
   function home(main) {
     var H = S.home;
     var arts = H.heroArt || [];
-    var hero = '<h1><span class="sr-only" data-hero-text>' + esc(arts[0] ? arts[0].text : '') + '</span>' +
-      '<span class="letter" data-letter aria-hidden="true"></span>' +
-      '<svg class="eraser" data-eraser viewBox="0 0 1800 700" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M-40,690 L1840,600 L-40,520 L1840,430 L-40,350 L1840,260 L-40,180 L1840,90 L-40,10 L1840,-40"/></svg></h1>';
+    var hero = '<h1 class="hero-h">' + esc(H.headline || 'I design delightful products.') + '</h1>';
     var cards = S.caseStudies.map(function (c) {
       return '<article class="card"><a class="fig" href="case-study.html?p=' + c.slug + '" tabindex="-1" aria-hidden="true">' + frame('bold') + media(c.thumb) +
         '</a>' +
@@ -476,7 +474,6 @@
         '<div class="cards">' + cards + '</div></section>' +
       projectsSection(H);
 
-    heroLettering(main.querySelector('[data-letter]'), main.querySelector('[data-hero-text]'), main.querySelector('[data-eraser]'), arts, (H.heroHoldSeconds || 6) * 1000);
     initFeeds(main);
     initProjects(main);
   }
@@ -489,6 +486,9 @@
     var locked = !unlocked();
     // numbers stay hidden until the password is entered; the real digits never reach the page
     function mask(t) {
+      return t.split(/(&#\d+;)/).map(function (part, k) { return k % 2 ? part : maskPart(part); }).join('');
+    }
+    function maskPart(t) {
       return t.replace(/[~+\u2212-]?\d[\d.,]*(?:\s?(?:%|\u00d7|x\b|M\b|k\b|\+))?\+?/g, function (m) {
         var d = m.replace(/[^\d]/g, '');
         if (/^(19|20)\d\d$/.test(d) && m.length === 4) return m;
@@ -623,5 +623,4 @@
   ({ home: home, case: caseStudy, project: project, about: about }[page] || home)(main);
   drawOnScroll();
   lightbox();
-  doodles();
 })();

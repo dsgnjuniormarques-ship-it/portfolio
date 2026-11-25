@@ -505,3 +505,56 @@ html,body{overflow-x:clip}
 .nform a{font-size:14px;color:var(--ink-2)}
 .nbar .msg{flex-basis:100%;margin:0;font-size:14px;color:#B00040}
 .nbar .msg:empty{display:none}
+
+/* ===================== SHARP THEME (overrides the sketchbook look) ===================== */
+:root{--hand:'JetBrains Mono',ui-monospace,monospace;--head:'Instrument Sans',system-ui,sans-serif;--line:#DCDCD8;--hover:#F0F0EE;--wobble:8px}
+.sk{filter:none!important}
+.sk.frame,.frame{display:none!important}
+.dd,.doodles{display:none!important}
+mark{background:none;color:inherit;padding:0}
+.marker::after{display:none!important}
+/* type */
+.sec-title h2,.feed-title,.pbar-title,.people .t h2,.sb-h,.why .lbl,.lbl,.learned p{font-family:var(--sans);font-weight:600;letter-spacing:-.02em}
+.brand{font-family:var(--sans);font-weight:600;font-size:20px;letter-spacing:-.01em}
+.navbox{font-family:var(--hand);font-weight:500;font-size:13px;letter-spacing:.08em;border:1px solid var(--ink);border-radius:6px;min-height:38px;padding:6px 14px;transition:background .15s,color .15s}
+.navbox:hover,.navbox[aria-current]{background:var(--ink);color:#fff}
+.btn{font-family:var(--hand);font-weight:500;font-size:13px;letter-spacing:.04em;text-transform:uppercase;border:1px solid var(--ink);border-radius:6px;min-height:40px;transition:background .15s,color .15s}
+.btn:hover{background:var(--ink);color:#fff}
+.card .btn{border:1px solid var(--ink);padding:8px 16px}
+.lnk:hover{text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:1px}
+.ibtn{border:1px solid var(--ink);border-radius:50%;transition:background .15s,color .15s}
+.ibtn:hover{background:var(--ink);color:#fff}
+.tag{font-family:var(--hand);font-size:12px;letter-spacing:.02em;border:1px solid var(--line);border-radius:4px;padding:3px 8px;background:#fff;color:var(--ink-2)}
+.pill{border:1px solid var(--line);border-radius:6px;font-size:14px}
+.views{border:1px solid var(--line);border-radius:8px}
+.lbl{font-size:13px;font-family:var(--hand);font-weight:500;text-transform:uppercase;letter-spacing:.1em;color:var(--ink-2)}
+.why .lbl{font-size:13px}
+.num,.next small,.card .meta,.feed .meta,.pc-cat,.meta,.car-cap,.car-n{font-family:var(--hand);font-size:12px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-2)}
+.car-grp{border:1px solid var(--line);border-radius:4px;font-family:var(--hand);font-size:11px}
+.rule path{stroke:var(--line)}
+/* hero */
+.hero{min-height:calc(100svh - 132px);justify-content:center}
+.hero-art{width:min(1100px,92%)}
+.hero-h{margin:0;font-family:var(--sans);font-weight:600;font-size:clamp(44px,7.4vw,112px);line-height:.98;letter-spacing:-.045em}
+.intro{max-width:640px;margin-top:28px;font-size:clamp(17px,1.3vw,19px);color:var(--ink-2)}
+.down{margin-top:56px;padding-top:0}
+.down svg{filter:none;animation:nudge 2.6s ease-in-out infinite}
+.down svg path{stroke-width:1.6}
+.down svg path:last-child{display:none}
+/* frames → hairlines */
+.card .fig{padding:0;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:#fff}
+.card .fig img{transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.card:hover .fig img{transform:scale(1.02)}
+.clean .fig,.feed .fig,.pcard .fig,.proto-box{border:1px solid var(--line)!important;border-radius:10px!important}
+.stat{border:1px solid var(--line);border-radius:10px;background:#fff}
+.stat .lbl{font-family:var(--sans);font-weight:600;font-size:clamp(40px,4.4vw,56px);letter-spacing:-.03em;text-transform:none;color:var(--ink)}
+.portrait{padding:0;border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.bubble{border:1px solid var(--line);border-radius:12px;background:#fff;padding:48px 48px 56px}
+.bubble .open{font-family:var(--sans);color:#C8C8C4;font-size:64px;top:12px;left:24px}
+.bubble figcaption b{font-family:var(--sans);font-size:16px}
+.dot i{border:1px solid var(--ink);width:8px;height:8px}
+.band{background:#F3F3F1;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.next span{font-family:var(--sans)}
+.nbar{border-radius:10px}
+.pw:focus{box-shadow:0 0 0 3px rgba(26,26,26,.15)}
+.car-cap{text-transform:none;font-size:13px;letter-spacing:0}
